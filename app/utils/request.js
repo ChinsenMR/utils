@@ -6,156 +6,169 @@ import alert from "./alert";
  */
 
 export default {
-  /**
-   * 主请求体
-   * @param {*} options
-   */
-  async request(options) {
-    let that = this;
+    /* 是否需要拦截下一个请求 避免多次跳转到授权页面*/
+    is_need_intercept: false,
+    timeout: 10 * 1000,
+    /**
+     * 主请求体
+     * @param {*} options
+     */
+    async request(options) {
 
-    /* request只拿数据 直接返回不做任何数据处理 */
-    const $ajax = () => {
-      const {
-        method = "GET",
-        data = {},
-        url = "NO_URL",
-        hideLoading = false,
-      } = options;
 
-      const header = that.setHeader(method);
+        /* request只拿数据 直接返回不做任何数据处理 */
+        const $ajax = () => {
+            const {
+                method = "GET",
+                    data = {},
+                    url = "NO_URL",
+                    hideLoading = false,
+            } = options;
 
-      const timeout = 10 * 1000;
+            const header = this.setHeader(method);
 
-      data.sessionId = wx.getStorageSync("sessionId");
+            const timeout = this.timeout;
 
-      const params = {
-        method,
-        data,
-        header,
-        timeout,
-        url: config.url + url,
-      };
+            data.sessionId = wx.getStorageSync("sessionId");
 
-      if (!hideLoading) alert.loading();
+            const params = {
+                method,
+                data,
+                header,
+                timeout,
+                url: config.url + url,
+            };
 
-      return new Promise((resolve, reject) => {
-        wx.request({
-          ...params,
-          success(res) {
-            resolve(res.data);
-          },
-          fail(err) {
-            const { errMsg } = err;
-            const isTimeout = errMsg.indexOf("isTimeout") != -1;
+            if (!hideLoading) alert.loading();
 
-            alert.message(isTimeout ? "请求超时，请检查网络状况" : errMsg);
+            return new Promise((resolve, reject) => {
+                wx.request({
+                    ...params,
+                    success(res) {
+                        resolve(res.data);
+                    },
+                    fail: (err) => {
+                        const { errMsg } = err;
+                        const isTimeout = errMsg.indexOf("isTimeout") != -1;
 
-            reject(err);
-          },
-          complete(spin) {
-            alert.closeLoading();
+                        alert.message(isTimeout ? "请求超时，请检查网络状况" : errMsg);
 
-            that.throw(params, spin);
-          },
+                        reject(err);
+                    },
+                    complete: (spin) => {
+                        alert.closeLoading();
+
+                        this.throwDebugger(params, spin);
+                    },
+                });
+            });
+        };
+
+        /* 拿到请求结果 */
+        const response = await $ajax();
+
+        /* 返回结果 */
+        return this.handleAbnormal(response);
+    },
+
+    /**
+     * 单独处理header
+     * @returns header参数
+     */
+    setHeader(method = "GET") {
+        const Cookie = wx.getStorageSync("cookie");
+        const contentType = {
+            POST: "application/x-www-form-urlencoded",
+            GET: "application/json",
+        };
+
+        return {
+            Cookie,
+            "content-type": contentType[method],
+        };
+    },
+
+    /**
+     *处理异常状态
+     */
+    handleAbnormal(result) {
+        /* 针对新旧版本接口返回值异常处理 */
+
+        const abnormal = [
+            /* 接口无返回值 */
+            {
+                type: "NO_VALUE",
+                bool: Boolean(!result),
+                handle: () => {
+                    alert.error("返回值错误");
+                },
+            },
+
+            /* 处理未登录 */
+            {
+                type: "NO_LOGIN",
+                bool: Boolean(
+                    result.errCode == 2 || ["Login", "login"].includes(result.Status)
+                ),
+                handle: () => {
+                    /* 如果未登录，并且拦截未开启，那么前往登录 */
+                    if (!this.is_need_intercept)
+                        wx.navigateTo({
+                            url: "/pages/authorizationLogin/authorizationLogin",
+                            success: () => {
+                                /* 已经跳转去登录了，无需重复跳转 开启拦截，阻止重复跳转到授权页面 */
+                                this.is_need_intercept = true;
+                            },
+                        });
+                },
+            },
+
+            /* 处理错误结果 */
+            {
+                type: "WARNNING",
+                bool: Boolean(result.Error || result.Message),
+                handle: () => {
+                    alert.error(result.Error || result.Message);
+                },
+            },
+        ];
+
+        /* 循环处理异常 */
+        abnormal.map((type) => {
+            if (type.bool) return type.handle();
         });
-      });
-    };
 
-    /* 拿到请求结果 */
-    const response = await $ajax();
+        /* 正常返回数据，拦截关闭 */
+        this.is_need_intercept = false;
 
-    /* 返回结果 */
-    return that.handleAbnormal(response);
-  },
+        /* 无异常，返回数据 */
+        return result;
+    },
 
-  /**
-   * 单独处理header
-   * @returns header参数
-   */
-  setHeader(method = "GET") {
-    const Cookie = wx.getStorageSync("cookie");
-    const contentType = {
-      POST: "application/x-www-form-urlencoded",
-      GET: "application/json",
-    };
+    /**
+     * 提供请求参数打印，以便快速定位错误
+     */
+    throwDebugger(params, response) {
+        const targetPage = getCurrentPages();
+        const route = targetPage[targetPage.length - 1].route;
 
-    return {
-      Cookie,
-      "content-type": contentType[method],
-    };
-  },
+        console.log("<debugger>");
 
-  /**
-   *处理异常状态
-   */
-  handleAbnormal(result) {
-    /* 针对新旧版本接口返回值异常处理 */
-    const abnormal = [
-      /* 接口无返回值 */
-      {
-        type: "NO_VALUE",
-        bool: Boolean(!result),
-        handle: () => {
-          alert.error("返回值错误");
-        },
-      },
+        console.info(
+            ` 请求页面：${route}\n 请求地址：${params.url}\n 请求方式：${params.method} \n`,
+            `请求头部：`,
+            params.header,
+            `\n`,
+            `请求参数：`,
+            params.data,
+            `\n`,
+            `返回状态：`,
+            response.statusCode,
+            `\n`,
+            `返回数据：`,
+            response.data
+        );
 
-      /* 处理未登录 */
-      {
-        type: "NO_LOGIN",
-        bool: Boolean(
-          result.errCode == 2 || ["Login", "login"].includes(result.Status)
-        ),
-        handle: () => {
-          wx.navigateTo({
-            url: "/pages/authorizationLogin/authorizationLogin",
-          });
-        },
-      },
-
-      /* 处理错误结果 */
-      {
-        type: "WARNNING",
-        bool: Boolean(result.Error || result.Message),
-        handle: () => {
-          alert.error(result.Error || result.Message);
-        },
-      },
-    ];
-
-    /* 循环处理异常 */
-    abnormal.map((type) => {
-      if (type.bool) return type.handle();
-    });
-
-    /* 无异常，返回数据 */
-    return result;
-  },
-
-  /**
-   * 提供请求参数打印，以便快速定位错误
-   */
-  throw(params, response) {
-    const targetPage = getCurrentPages();
-    const route = targetPage[targetPage.length - 1].route;
-
-    console.log("<debugger>");
-
-    console.info(
-      ` 请求页面：${route}\n 请求地址：${params.url}\n 请求方式：${params.method} \n`,
-      `请求头部：`,
-      params.header,
-      `\n`,
-      `请求参数：`,
-      params.data,
-      `\n`,
-      `返回状态：`,
-      response.statusCode,
-      `\n`,
-      `返回数据：`,
-      response.data
-    );
-
-    console.log("</debugger>");
-  },
+        console.log("</debugger>");
+    },
 };
