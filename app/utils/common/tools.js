@@ -4,49 +4,46 @@ import Config from '../config'
  * Author: Chinsen
  * Date: 2020.05.22
  */
-
-
-module.export = {
+export default {
   /* 修改小程序标题 */
   setTitle(title) {
     wx.setNavigationBarTitle({
       title
     });
   },
+
   /* 同步缓存处理 */
   storage: {
-    //获取本地缓存
-    get(key, cb) {
+    get(key, success) {
       wx.getStorage({
         key,
-        success: (res) => {
-          cb(res);
-        },
+        success: res => {
+          success(res)
+        }
       });
     },
-    //设置本地缓存
-    set(key, data, cb) {
+    set(key, data, success) {
       wx.setStorage({
         key,
         data,
-        success: (res) => {
-          cb(res);
-        },
+        success: res => {
+          success(res)
+        }
       });
     },
-    //清除本地缓存
-    del(key, cb) {
+    remove(key, success) {
       wx.removeStorage({
         key,
-        success: (res) => {
-          cb(res);
-        },
+        success: res => {
+          success(res)
+        }
       });
     },
   },
+
   /* 用于请求结束后的操作 */
-  goPage(params, time = 0) {
-    let timeout = setTimeout(() => {
+  goPage(params = {}, time = 0) {
+    const timeout = setTimeout(() => {
       wx.navigateTo({
         ...params,
         complete: () => {
@@ -55,44 +52,45 @@ module.export = {
       });
     }, Number(time));
   },
+
   /* 用于请求结束后的操作 */
-  goBack(page = 1, time = 0) {
-    let timeout = setTimeout(() => {
+  goBack(delta = 1, time = 0) {
+    const timeout = setTimeout(() => {
       wx.navigateBack({
-        delta: page,
+        delta,
         complete: () => {
           clearTimeout(timeout);
-        },
+        }
       });
     }, Number(time));
   },
+
   /* 获取当前格式化猴日期 */
-  getDate(currentDate) {
-    const date = currentDate || new Date();
+  getDate(targetDate = new Date()) {
+    const date = targetDate;
 
-    let year = date.getFullYear();
-    let month = date.getMonth() + 1;
-    let strDate = date.getDate();
-    let _ = "-";
+    let [year, month, strDate, line] = [date.getFullYear(), date.getMonth(), date.getDate(), "-"]
 
-    if (month >= 1 && month <= 9) month = "0" + month;
+    month = month >= 1 && month <= 9 ? "0" + month : month;
 
-    if (strDate >= 0 && strDate <= 9) strDate = "0" + strDate;
+    strDate = strDate >= 0 && strDate <= 9 ? "0" + strDate : strDate;
 
-    const currentdate = year + _ + month + _ + strDate;
+    const currentDate = year + line + month + line + strDate;
 
-    return currentdate;
+    return currentDate;
   },
+
   /* 设置所有数据,包括本页面和view视图的数据 */
   setAllData(that, data) {
     for (let i in data) {
       that.data[i] = data[i];
     }
+
     that.setData(data);
   },
 
   /* 查看图片 */
-  previewImage(current, urls) {
+  previewImage(current = '', urls = []) {
     /* 如果传入的是索引值 */
     if (typeof current == "number") {
       current = urls[current];
@@ -105,56 +103,66 @@ module.export = {
   },
 
   /* 计算数量,超过一万缩略显示 */
-  tranNumber(num) {
-    let _num = Number(num);
-    if (_num < 10000) {
-      return _num;
+  tranNumber(num = 0) {
+    let targetNumber = Number(num);
+
+    if (targetNumber < 10000) {
+      return targetNumber;
     } else {
-      return (_num / 10000).toFixed(2);
+      return (targetNumber / 10000).toFixed(2);
     }
   },
 
   /* 获取位置信息*/
-  async getLocation() {
+  getLocation() {
+
     wx.getSetting({
       success: (res) => {
-        if (
-          res.authSetting["scope.userLocation"] != undefined &&
-          res.authSetting["scope.userLocation"] != true
-        ) {
-          wx.showModal({
+
+        const isNeedAuth = res.authSetting["scope.userLocation"] != undefined &&
+          res.authSetting["scope.userLocation"] != true;
+
+        if (isNeedAuth) {
+          Alert.confirm({
             title: "请求授权当前位置",
             content: "需要获取您的地理位置，请确认授权",
-            success: function (res) {
-              if (res.cancel) {
-                Alert.error("您拒绝了地理位置授权");
-              } else if (res.confirm) {
-                wx.openSetting({
-                  success(dataAu) {
-                    if (dataAu.authSetting["scope.userLocation"] == true) {
-                      Alert.success("授权成功");
-                      //再次授权，调用wx.getLocation的API
-                    } else {
-                      Alert.error("授权失败");
-                    }
-                  },
-                });
-              }
-            },
-          });
+          }, (result) => {
+
+            /* 拒绝授权 */
+            if (!result) {
+              Alert.message("您拒绝了地理位置授权");
+              return
+            }
+
+            /* 正常授权 */
+            wx.openSetting({
+              success(authData) {
+                if (authData.authSetting["scope.userLocation"] == true) {
+                  Alert.message("授权成功");
+                  /* 再次授权，调用wx.getLocation的API */
+                } else {
+                  Alert.message("授权失败");
+                }
+              },
+            });
+          })
+
         } else if (res.authSetting["scope.userLocation"] == undefined) {
-          //调用wx.getLocation的API
+          /* 调用wx.getLocation的API wx.getLocation()*/
         } else {
+
           //调用wx.getLocation的API
           wx.getLocation({
             type: "wgs84",
             success(res) {
+
               const {
                 latitude,
                 longitude,
                 speed,
                 accuracy
               } = res;
+
               return {
                 latitude,
                 longitude,
@@ -182,7 +190,7 @@ module.export = {
     } = options;
 
     /* 参数校验 */
-    const checkUploadQuery = () => {
+    const verifyArguments = () => {
       /* 参数检测 */
       if (!url && typeof type !== "string" && url[0] != "/") {
         return Alert.message("URL不能为空", "错误");
@@ -240,6 +248,7 @@ module.export = {
 
             /* 微信服务端返回包装结果 */
             if (response.errMsg == "uploadFile:ok") {
+
               /* 纯服务器返回结果 ----------------排查服务端错误请看这里------------*/
               if (response.data) {
                 const res = JSON.parse(response.data);
@@ -266,6 +275,7 @@ module.export = {
             }
             if (response.statusCode != 200) {
               Alert.message("文件上传失败，请检查文件上传环境", "错误");
+
               reject(response);
             }
           },
@@ -290,7 +300,7 @@ module.export = {
     };
 
     /* 上传前检验参数 */
-    checkUploadQuery();
+    verifyArguments();
 
     /* 执行选择文件并上传到服务器，拿取结果 */
 
@@ -310,7 +320,7 @@ module.export = {
    */
   scopeAuth(params) {
     let scopeType = params.scope;
-    let errorMessage = "";
+    let errorMessage;
 
     switch (Number(scopeType)) {
       case 1:
@@ -320,44 +330,57 @@ module.export = {
         break;
     }
 
-    wx.getSetting({
-      success(res) {
-        if (!res.authSetting[scopeType]) {
-          wx.authorize({
-            scope: scopeType,
-            success() {
-              //这里是用户同意授权后的回调
-              return true;
-            },
-            fail() {
-              //这里是用户拒绝授权后的回调
-              Alert.model({
-                  content: errorMessage,
-                },
-                (confirm) => {
-                  wx.openSetting({
-                    success: (res) => {
-                      if (res.authSetting[scopeType]) {
-                        ////如果用户重新同意了授权登录
-                        wx.authorize({
-                          scope: scopeType,
-                          success() {
-                            //这里是用户同意授权后的回调
-                            return true;
-                          },
-                        });
-                      }
-                    },
-                  });
-                }
-              );
+    /* 用户拒绝授权后的回调 */
+    const executeFailHandle = () => {
+
+      Alert.model({
+          content: errorMessage,
+        },
+        (confirm) => {
+          wx.openSetting({
+            success: (res) => {
+              if (res.authSetting[scopeType]) {
+                ////如果用户重新同意了授权登录
+                wx.authorize({
+                  scope: scopeType,
+                  success() {
+                    //这里是用户同意授权后的回调
+                    return true;
+                  },
+                });
+              }
             },
           });
-        } else {
-          //用户已经授权过了
-          return true;
         }
+      );
+    }
+
+    /* 用户授权成功后的回调 */
+    const executeSuccessHandle = (res) => {
+      if (!res.authSetting[scopeType]) {
+        wx.authorize({
+          scope: scopeType,
+          success() {
+            /* 这里是用户同意授权后的回调 */
+            return true;
+          },
+          fail() {
+            executeFailHandle()
+          },
+        });
+      } else {
+        /* 用户已经授权过了 */
+        return true;
+      }
+    }
+
+    wx.getSetting({
+      success(res) {
+        executeSuccessHandle(res)
       },
+      fail() {
+        executeFail(res)
+      }
     });
   },
   /**
@@ -386,13 +409,13 @@ module.export = {
 
     if (init) {
       list = [];
-      pageIndex = 0;
       loadMore = true;
+      pageIndex = 0;
 
       this.setData({
-        pageIndex,
         list,
-        loadMore
+        loadMore,
+        pageIndex
       });
     }
 
@@ -400,33 +423,34 @@ module.export = {
 
     pageIndex++;
 
-    const formData = {
-      pageIndex,
-      limit
-    };
-
     this.setData({
       loadMore: true
     });
 
+    const formData = {
+      limit,
+      pageIndex,
+    };
+
     wx.$api.getList(formData).then((res) => {
       const {
-        TotalCount = 1, resultData = []
+        totalLimit = 1, resultData = []
       } = res.data;
 
-      const maxPageIndex = Math.ceil(TotalCount / rows);
+      const maxPageLength = Math.ceil(totalLimit / rows);
 
-      loadMore = Boolean(pageIndex >= maxPageIndex);
+      loadMore = pageIndex >= maxPageLength
 
       list = list.concat(resultData);
 
       wx.stopPullDownRefresh();
 
       this.setData({
-        pageIndex,
         list,
-        loadMore
+        loadMore,
+        pageIndex,
       });
+
     });
   },
   /**
@@ -444,22 +468,25 @@ module.export = {
   },
 
   observe(obj, key, watchFun) {
-    var val = obj[key]; // 给该属性设默认值
+    let val = obj[key]; // 给该属性设默认值
     Object.defineProperty(obj, key, {
       configurable: true,
       enumerable: true,
-      set: function (value) {
+      set: (value) => {
         val = value;
         watchFun(value, val); // 赋值(set)时，调用对应函数
       },
-      get: function () {
+      get: () => {
         return val;
       },
     });
   },
+
   initPage(page) {
     const methods = page.methods;
+
     delete page.methods;
+
     return {
       ...page,
       ...methods

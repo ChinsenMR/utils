@@ -1,0 +1,7 @@
+
+<view class="layout-wrapper">
+    <view class="layout-container">
+    
+        <custom-layout id="layout" list="{{layoutList}}"></custom-layout>
+    </view>
+</view>

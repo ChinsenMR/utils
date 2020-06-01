@@ -1,0 +1,10 @@
+
+{
+    "component": true,
+    "usingComponents": {
+        "custom-layout": "/components/custom/layout/layout"
+    },
+    "enablePullDownRefresh": true,
+    "backgroundTextStyle": "dark",
+    "navigationBarTitleText": "瀑布流"
+}

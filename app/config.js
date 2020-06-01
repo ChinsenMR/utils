@@ -1,9 +1,17 @@
+/**
+ * 全局 配置文件
+ **/
 module.exports = {
-  //url:'https://madmin8beta.hmeshop.cn'
-  // url:'http://2b76w15052.zicp.vip:4937'
-  //url:'http://192.168.3.120:8022'
-  // url:'http://192.168.3.51:8912'
-  // url:'http://192.168.3.134:8020'
-  // url: "http://192.168.3.189:8081",
-  url: "http://192.168.3.49:9876",
+    api: {
+        domain: 'https://nissanxk.aiitec.net/nissan-php',
+        url: 'https://nissanxk.aiitec.net',
+        version: '1.0.0.1'
+    },
+    share: {
+        title: '分享标题',
+        desc: '分享描述',
+        path: '/pages/index/index',
+        imageUrl: 'https://nissan-1251039400.image.myqcloud.com/20190425/20190425_93899.jpg'
+    },
+    switchUrl: ['pages/index/index', 'pages/personal/personal']
 };

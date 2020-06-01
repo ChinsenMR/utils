@@ -1,0 +1,64 @@
+/*--authorization--*/
+.authorization-wrapper {
+  .authorization-container {
+    /* pages/authorization/authorization.wxss */
+    .wrap {
+      width: 100%;
+      height: 100%;
+      /* background: rgba(0,0,0,0.3); */
+    }
+
+    .container {
+      width: 550rpx;
+      /* height: 550rpx; */
+      background: #fff;
+      text-align: center;
+      margin: 300rpx auto;
+      padding: 30rpx 25rpx;
+      border-radius: 12rpx;
+      box-shadow: 0 0 30rpx 5rpx rgba(0, 0, 0, 0.1);
+    }
+
+    image {
+      margin-top: 98rpx;
+      display: block;
+      width: 160rpx;
+      height: 160rpx;
+      margin: 0 auto;
+    }
+
+    .title {
+      margin-top: 19rpx;
+      font-size: 30rpx;
+      color: #000000;
+      margin-bottom: 20rpx;
+    }
+
+    .desc {
+      margin: 0 auto;
+      margin-top: 30rpx;
+      font-size: 26rpx;
+      color: #adadad;
+      letter-spacing: 0;
+      /* padding-bottom: 30rpx; */
+      /* border-top: 1px solid #eee; */
+    }
+
+    .desc image {
+      width: 24rpx;
+      height: 24rpx;
+      margin-right: 14rpx;
+      margin-left: 50rpx;
+    }
+
+    .btn {
+      height: 90rpx;
+      line-height: 90rpx;
+      margin-top: 29rpx;
+      background: rgba(0, 129, 204, 1);
+      font-size: 30rpx;
+      color: #ffffff;
+      border-radius: 8rpx;
+    }
+  }
+}

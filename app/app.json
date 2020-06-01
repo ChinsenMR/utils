@@ -1,0 +1,27 @@
+{
+  "pages": [
+    "pages/testWeStore/testWeStore",
+    "pages/testWeStore2/testWeStore",
+    "pages/test/test"
+  ],
+  "subpackages": [
+    {
+      "root": "pages-expand",
+      "pages": ["pages/index/index"]
+    }
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#FAFAFA",
+    "navigationBarTitleText": "AIITEC PACKAGE",
+    "navigationBarTextStyle": "black"
+  },
+  "permission": {
+    "scope.userLocation": {
+      "desc": "你的位置信息将用于定位效果展示"
+    }
+  },
+  "usingComponents": {},
+
+  "sitemapLocation": "sitemap.json"
+}

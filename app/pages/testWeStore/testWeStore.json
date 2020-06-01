@@ -1,0 +1,9 @@
+{
+    "component": true,
+    "usingComponents": {
+        "header": "/components/common/header/header"
+    },
+    "enablePullDownRefresh": false,
+    "backgroundTextStyle": "dark",
+    "navigationBarTitleText": "测试"
+}

@@ -1,0 +1,10 @@
+
+{
+    "component": true,
+    "usingComponents": {
+        "custom-viewer": "/components/custom/imageViewer/imageViewer"
+    },
+    "enablePullDownRefresh": false,
+    "backgroundTextStyle": "dark",
+    "navigationBarTitleText": "瀑布流"
+}

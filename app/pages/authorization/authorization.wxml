@@ -1,0 +1,17 @@
+<!-- authorization -->
+<view class="authorization-wrapper">
+    <view class="authorization-container">
+        <view class="wrap">
+            <view class="container">
+                <image src="/assets/images/logo.png"></image>
+                <view class="title">全新逍客申请获得以下权限：</view>
+                <view class="desc flex-center">
+                    <view class="text-center">获得你的公开信息（昵称，头像等）</view>
+                </view>
+                <button class="btn" open-type="getUserInfo" lang="zh_CN" bindgetuserinfo="onGotUserInfo">
+                    授权登录
+                </button>
+            </view>
+        </view>
+    </view>
+</view>

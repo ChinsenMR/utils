@@ -1,16 +1,25 @@
 import methods from "./request.js";
+
 module.exports = {
   /* 获取申请代理记录列表 */
   getAgencyList(data) {
     return methods
-      .request({ url: "/WebApi/KjApi/KjMemberAuditList", data, method: "POST" })
+      .request({
+        url: "/WebApi/KjApi/KjMemberAuditList",
+        data,
+        method: "POST"
+      })
       .then((res) => res);
   },
 
   /* 申请代理 */
   applyAgency(data) {
     return methods
-      .request({ url: "/WebApi/KjApi/KjMemberApply", data, method: "POST" })
+      .request({
+        url: "/WebApi/KjApi/KjMemberApply",
+        data,
+        method: "POST"
+      })
       .then((res) => res);
   },
 

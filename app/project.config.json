@@ -1,0 +1,98 @@
+{
+	"description": "项目配置文件。",
+	"packOptions": {
+		"ignore": []
+	},
+	"setting": {
+		"urlCheck": false,
+		"es6": true,
+		"enhance": false,
+		"postcss": true,
+		"minified": true,
+		"newFeature": true,
+		"coverView": true,
+		"nodeModules": true,
+		"autoAudits": false,
+		"checkInvalidKey": true,
+		"checkSiteMap": true,
+		"uploadWithSourceMap": true,
+		"babelSetting": {
+			"ignore": [],
+			"disablePlugins": [],
+			"outputPath": ""
+		},
+		"useCompilerModule": false
+	},
+	"compileType": "miniprogram",
+	"libVersion": "2.0.4",
+	"appid": "wx4555f4e2018260bb",
+	"projectname": "%E6%B5%8B%E8%AF%95%E7%89%88%E7%9A%84%E8%84%9A%E6%89%8B%E6%9E%B6",
+	"isGameTourist": false,
+	"simulatorType": "wechat",
+	"simulatorPluginLibVersion": {},
+	"condition": {
+		"search": {
+			"current": -1,
+			"list": []
+		},
+		"conversation": {
+			"current": -1,
+			"list": []
+		},
+		"plugin": {
+			"current": -1,
+			"list": []
+		},
+		"game": {
+			"currentL": -1,
+			"list": []
+		},
+		"miniprogram": {
+			"current": 5,
+			"list": [
+				{
+					"id": -1,
+					"name": "授权",
+					"pathName": "pages/authorization/authorization",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "我的",
+					"pathName": "pages/personal/personal",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "layout",
+					"pathName": "pages/demos/layout/layout",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "imageViewer",
+					"pathName": "pages/demos/imageViewer/imageViewer",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "首页",
+					"pathName": "pages/index/index",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "jz",
+					"pathName": "pages/home/index/index",
+					"query": "",
+					"scene": null
+				}
+			]
+		}
+	}
+}

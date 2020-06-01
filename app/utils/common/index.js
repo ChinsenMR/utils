@@ -9,6 +9,7 @@ export default {
     app.alert = alert;
     app.tools = tools;
     app.verify = verify;
+    
     wx.$api = $api;
     wx.$request = $request;
   },

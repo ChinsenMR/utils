@@ -1,0 +1,10 @@
+page {
+  width: 100%;
+  height: 100%; }
+  page .image-viewer-wrapper {
+    width: 100%;
+    height: 100%; }
+    page .image-viewer-wrapper .image-viewer-container {
+      width: 100%;
+      height: 100%; }
+
