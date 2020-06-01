@@ -1,0 +1,189 @@
+/* pages/detailList/detailList.wxss */
+
+/* 佣金明细 */
+.detailList{
+  margin-top: 2rpx;
+}
+.Skin-VCommissionDetails .listdetail {
+	margin-top: 30rpx;
+	background:#fff;
+	border-top:2rpx solid #e5e5e5;
+	border-bottom:2rpx solid #e5e5e5;
+}
+.Skin-VCommissionDetails .listdetail .listCont {
+	display: flex;
+	padding-right: 40rpx;
+	margin-left: 40rpx;
+	border-bottom:2rpx solid #e5e5e5;
+    align-items: center;
+}
+.Skin-VCommissionDetails .listdetail .listCont:last-child {
+	border:none;
+}
+.Skin-VCommissionDetails .listdetail .listCont>.info {
+	flex:1;
+	padding:20rpx 0;
+	font-size: 24rpx;
+	color:#999;
+}
+.Skin-VCommissionDetails .listdetail .storeName {
+	font-size: 28rpx;
+	color:#333;
+}
+.Skin-VCommissionDetails .listdetail .moneys {
+	width:120rpx;
+	font-size: 40rpx;
+	color:#E0001B;
+}
+.Skin-VCommissionDetails .listdetail .color {
+	font-size: 24rpx;
+	color:#999;
+	margin-left: 10rpx;
+}
+
+/* 提现结算列表样式 */
+.Skin-BalanceDrawRequesList .orderTitle {
+	display: flex;
+  /* padding: 10rpx 0; */
+  /* align-items: center; */
+	background: #fff;
+}
+.Skin-BalanceDrawRequesList .orderTitle .list {
+  position: relative;
+	flex:1;
+  padding: 10rpx 0;
+	height: 64rpx;
+  line-height: 64rpx;
+	text-align: center;
+	font-size: 28rpx;
+	color:#BEBEBE;
+}
+
+.list1::after{
+  content: '';
+  position: absolute;
+  display: block;
+  width: 2rpx;
+  height: 50rpx;
+  top: 20rpx;
+  right: 0;
+  background-color: #e5e5e5;
+}
+
+.Skin-BalanceDrawRequesList .orderTitle .actives {
+	color:#FF950D;
+	border-bottom:4rpx solid #FF950D;
+	font-weight: bold;
+}
+.Skin-BalanceDrawRequesList .orderTitle text {
+	width:100%;
+	display: inline-block;
+	border-right:2rpx solid #E5E5E5;
+}
+.Skin-BalanceDrawRequesList .listdetail {
+	margin-top: 30rpx;
+	background:#fff;
+	border-top:2rpx solid #e5e5e5;
+	border-bottom:2rpx solid #e5e5e5;
+}
+.Skin-BalanceDrawRequesList .listdetail .ListContent {
+	display: flex;
+	padding-right: 40rpx;
+	margin-left: 40rpx;
+	border-bottom:2rpx solid #e5e5e5;
+    align-items: center;
+}
+.Skin-BalanceDrawRequesList .listdetail .ListContent:last-child {
+	border:none;
+}
+.Skin-BalanceDrawRequesList .listdetail .ListContent>.info {
+	flex:1;
+	padding:20rpx 0;
+	font-size: 24rpx;
+	color:#999;
+}
+.Skin-BalanceDrawRequesList .listdetail .storeName {
+	font-size: 28rpx;
+	color:#333;
+}
+.Skin-BalanceDrawRequesList .listdetail .moneys {
+	width:120rpx;
+	font-size: 40rpx;
+	color:#E0001B;
+  text-align: right;
+}
+.Skin-BalanceDrawRequesList .listdetail .color {
+	font-size: 24rpx;
+	color:#999;
+}
+.Skin-BalanceDrawRequesList .listdetail .moneys text {
+	display: block;
+}
+.Skin-BalanceDrawRequesList .listdetail .achieve {
+	font-size: 24rpx;
+	color:#666;
+}
+.Skin-BalanceDrawRequesList .listdetail .achieve1 {
+	color:#29C500;
+}
+.symbol{
+  margin-top: 10rpx;
+  font-size: 28rpx;
+}
+.money-box{
+  font-size: 40rpx;
+  color:#E0001B;
+}
+.commissions{
+  font-size: 28rpx;
+}
+.Skin-BalanceDrawRequesList .listdetail .moneyCont text {
+  display: inline;
+}
+.moneyTop{
+  display: flex;
+  justify-content: flex-end;
+}
+
+
+/* 列表区 */
+.group-list{
+  margin-top: 10px;
+  padding: 0 20rpx;
+  box-sizing: border-box;
+  display: block;
+  font-size: 12px;
+}
+.group-list>.gl-item{
+  padding: 20rpx 10rpx;
+  box-sizing: border-box;
+  display: flex;
+  background: #fff;
+  border-bottom: 2rpx solid #e5e5e5;
+  border-left: 2rpx solid #e5e5e5;
+  border-right: 2rpx solid #e5e5e5;
+}
+.gli-text{
+  flex: 1;
+  text-align: center;
+  padding: 0 10rpx;
+  word-break: break-all;
+}
+.br{
+  border-right: 2rpx solid #e5e5e5;
+}
+
+/*缺省页*/
+.empty{
+  position: fixed;
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%,-40%);
+  color: #666666;
+  text-align: center;
+  font-size: 16px;
+}
+.empty>image{
+  width: 360rpx;
+  height: 360rpx;
+}

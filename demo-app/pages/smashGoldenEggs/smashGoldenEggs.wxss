@@ -1,0 +1,167 @@
+/* pages/smashGoldenEggs/smashGoldenEggs.wxss */
+
+.box {
+  position: relative;
+}
+
+.bg {
+  width: 100%;
+  height: 1710rpx;
+}
+
+.content {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 1652rpx;
+}
+
+/*砸金蛋文字  */
+
+.content .contentTitle {
+  position: relative;
+}
+
+.content .contentTitle .title {
+  margin: 0 auto;
+  width: 520rpx;
+  height: 264rpx;
+}
+
+.content .contentTitle .date {
+  position: absolute;
+  bottom: 48rpx;
+  left: 31%;
+  font-size: 24rpx;
+  color: #fff;
+}
+
+.content .winnerBox {
+  display: flex;
+  justify-content: flex-end;
+  width: 100%;
+}
+
+.content .winnerBox .winner {
+  position: relative;
+  right: 0;
+  width: 150rpx;
+  height: 50rpx;
+  line-height: 50rpx;
+  text-align: center;
+  font-size: 26rpx;
+  color: #fff;
+  border-bottom-left-radius: 30rpx;
+  border-top-left-radius: 30rpx;
+  background-color: #d95449;
+}
+
+/*锤子  */
+
+.hammerBox {
+  position: relative;
+  display: flex;
+  justify-content: flex-end;
+  width: 100%;
+  height: 140rpx;
+}
+
+.hammerBox .hammer {
+  position: absolute;
+  margin-right: 80rpx;
+  width: 142rpx;
+  height: 140rpx;
+  right: 12rpx;
+  top: -30rpx;
+}
+
+/*金蛋  */
+
+.eggBox {
+  position: relative;
+  width: 100%;
+  height: 534rpx;
+}
+
+.eggBox .egg {
+  position: absolute;
+  top: -150rpx;
+  width: 90%;
+}
+
+.eggBox .redPacket {
+  position: absolute;
+  top: -80rpx;
+  left: 0;
+  width: 98%;
+  height: 70%;
+}
+
+/*开始砸蛋  */
+.begin{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: -180rpx auto 0;
+  width: 390rpx;
+  height: 70rpx;
+  border-radius: 30rpx;
+  font-weight: 600;
+  font-size: 32rpx;
+  color: #fff;
+  background-color: #D87E00;
+}
+.begin image{
+  width: 38rpx;
+  height: 38rpx;
+}
+
+.change{
+  margin-top: 10rpx;
+  margin-bottom: 30rpx;
+  font-size: 32rpx;
+  color: #D87E00;
+  text-align: center;
+}
+
+.award{
+  margin: 0 auto 20rpx;
+  padding: 26rpx 20rpx;
+  width: 92%;
+  border-radius: 20rpx;
+  box-sizing: border-box;
+  background-color: rgba(255, 255, 255, .5);
+}
+.award .title{
+  display: flex;
+  align-items: center;
+  font-size: 28rpx;
+  font-weight: 600;
+  color: #BB1D11;
+}
+.award .title image{
+  margin-right: 6rpx;
+  width: 30rpx;
+  height: 30rpx;
+}
+.award .award_content{
+  margin-top: 8rpx;
+  font-size: 24rpx;
+  color: #fff;
+}
+
+.checkMyAward{
+  position: relative;
+  margin: 60rpx auto 0;
+  width: 495rpx;
+  height: 70rpx;
+}
+.checkMyAward view{
+  position: absolute;
+  top: 10rpx;
+  left: 150rpx;
+  font-size: 32rpx;
+  font-weight: 600;
+  color: #fff;
+}

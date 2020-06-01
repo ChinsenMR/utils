@@ -1,0 +1,66 @@
+<view class="tabbox">
+  <view class="nav">
+    <view class="{{selected?'red':'default'}}" bindtap="selected">所有活动</view>
+    <view class="{{selected1?'red':'default'}}" bindtap="selected1">积分兑换</view>
+    <view class="{{selected2?'red':'default'}}" bindtap="selected2">满减活动</view>
+    <view class="{{selected3?'red':'default'}}" bindtap="selected3">优惠券</view>
+    <view class="{{selected4?'red':'default'}}" bindtap="selected4">其他活动</view>
+
+  </view>
+    <view class='box'>
+      <view class='img'>
+        <image src='/images/banner_1.png'></image>
+      </view>
+      <view class='font'>
+        <view>活动时间：2018-12-12 09.00 ~ 2018-12-13 09.00</view>
+        <view>参与会员：全部会员</view>
+      </view>
+      <view class='discounts'>
+        <view class='left'>优惠大甩卖</view>
+        <navigator class='right'>我要参加 ></navigator>
+      </view>
+      <view>
+        <view class='item'>
+          <image class="bg" src='../../images/yellow.png'></image>
+          <view class="content">
+            <view class='left yellow'>
+              <text class='icon'>¥ </text>
+              <text class='money'>1000</text>
+            </view>
+            <view class='right'>
+              <text class='info' decode='true'>满&nbsp; &nbsp;9 9 9 元 &nbsp;可  &nbsp; 用</text>
+              <text class='date'>生效时间：2018.12.12 14:00:00</text>
+              <text class='date'>到期时间：2018.12.12 14:00:00</text>
+            </view>
+          </view>
+          <text class="btn">优惠券</text>
+        </view>
+      </view>
+      <view class='title'>优惠券大放送</view>
+      <view class='font font1'>
+        <view>参与限制：每人参与1次</view>
+        <view>优惠方式：满500.00元，减150.00元，免邮，送优惠券</view>
+        <view>活动商品：全部商品参与</view>
+      </view>
+      <view class='font font2'>
+        <view>活动时间：2018-12-12 09.00 ~ 2018-12-13 09.00</view>
+        <view>参与会员：全部会员</view>
+      </view>
+      <view class='title'>优惠券大甩卖</view>
+
+      <view class='font font1'>
+        <view>参与限制：每人参与1次</view>
+        <view>消费积分：0积分/次</view>
+        <view>游戏说明：无</view>
+      </view>
+      <view class='font font2'>
+        <view>活动时间：2018-12-12 09.00 ~ 2018-12-13 09.00</view>
+        <view>参与会员：全部会员</view>
+      </view>
+      <view class='lucky'>
+        <view>幸运大转盘</view>
+        <view class='join'>我要参加 > </view>
+      </view>
+    </view>
+    <view class='null'></view>
+</view>

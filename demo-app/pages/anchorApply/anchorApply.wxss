@@ -1,0 +1,291 @@
+.upload-wrap {
+  background-color: #fff;
+  padding: 30rpx 35rpx;
+  border-bottom: 10rpx solid #eaeaeaff;
+}
+
+.upload-wrap .item-left {
+  flex: 1;
+}
+
+.upload-wrap .item-left .title {
+  font-size: 30rpx;
+  font-family: PingFang-SC-Medium, PingFang-SC;
+  font-weight: 500;
+  color: rgba(74, 74, 74, 1);
+  line-height: 42rpx;
+}
+
+.upload-wrap .item-left .desc {
+  font-size: 20rpx;
+  font-family: PingFang-SC-Medium, PingFang-SC;
+  font-weight: 500;
+  color: #6e6e6eff;
+}
+
+.upload-text {
+  width: 389rpx;
+}
+
+.upload-img {
+  position: relative;
+  width: 260rpx;
+  height: 150rpx;
+}
+
+.upload-img .del {
+  position: absolute;
+  width: 35rpx;
+  height: 35rpx;
+  top: -12rpx;
+  right: -12rpx;
+  background: rgba(255, 73, 99, 1);
+  border-radius: 50%;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.upload-box {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 260rpx;
+  height: 150rpx;
+  background: rgba(255, 255, 255, 1);
+  border-radius: 2rpx;
+  border: 1px solid rgba(225, 224, 224, 1);
+}
+
+.upload-box image {
+  width: 68rpx;
+  height: 60rpx;
+}
+
+.cu-form-group .title {
+  font-size: 30rpx;
+  font-family: PingFang-SC-Medium, PingFang-SC;
+  font-weight: 500;
+  color: rgba(74, 74, 74, 1);
+  width: 200rpx;
+}
+
+.input-desc {
+  font-size: 26rpx;
+  font-family: PingFang-SC-Medium, PingFang-SC;
+  font-weight: 500;
+  color: rgba(212, 212, 212, 1);
+}
+
+.picker-text {
+  line-height: 100rpx;
+}
+
+/* .red{ background: #3cf;} */
+
+.wx-switch-input {
+  width: 72rpx !important;
+  height: 44rpx !important;
+}
+
+.cu-form-group-cus {
+  /* padding: 20rpx; */
+  background: #fff;
+}
+
+.cu-form-group-cus .title {
+  padding: 20rpx 0;
+  font-size: 28rpx;
+  font-family: PingFang-SC-Medium, PingFang-SC;
+  font-weight: 500;
+  color: rgba(74, 74, 74, 1);
+  line-height: 40rpx;
+  border-top: 1rpx solid #eee;
+}
+
+.cu-form-group {
+  padding: 1rpx 0rpx;
+}
+
+.cu-item {
+  /* padding: 20rpx; */
+  min-height: 189rpx!important;
+  height: auto!important;
+  margin-bottom: 10rpx;
+  background-color: rgba(249, 249, 249, 1) !important;
+  border-bottom: 1rpx solid #eee;
+}
+
+.cu-avatar {
+  width: 142rpx;
+  height: 142rpx;
+}
+
+.cu-list.menu-avatar>.cu-item .content {
+  left: 190rpx;
+  width: 500rpx!important;
+}
+
+.cu-list.menu-avatar>.cu-item .content>view {
+  display: block;
+  /* background: red; */
+  width: 470rpx!important;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.cu-list.menu-avatar>.cu-item .content .it-title {
+  font-size: 28rpx;
+  font-family: PingFang-SC-Bold, PingFang-SC;
+  font-weight: bold;
+  color: rgba(51, 51, 51, 1);
+  line-height: 40rpx;
+}
+
+.cu-list.menu-avatar>.cu-item .content .it-desc {
+  font-size: 26rpx;
+  font-family: PingFang-SC-Medium, PingFang-SC;
+  font-weight: 500;
+  color: rgba(155, 155, 155, 1);
+  line-height: 37rpx;
+}
+
+.cu-list.menu-avatar>.cu-item .content .tag-list {
+  margin-top: 15rpx;
+}
+
+.cu-list.menu-avatar>.cu-item .content .it-tag {
+  background: rgba(234, 234, 234, 1);
+  border-radius: 6rpx;
+  font-size: 24rpx;
+  font-family: PingFang-SC-Medium, PingFang-SC;
+  font-weight: 500;
+  color: rgba(155, 155, 155, 1);
+  line-height: 33rpx;
+}
+
+.cu-list>.cu-item .move {
+  width: 131rpx;
+  font-size: 30rpx;
+  font-family: PingFang-SC-Bold, PingFang-SC;
+  font-weight: bold;
+  color: rgba(255, 255, 255, 1);
+  line-height: 42rpx;
+}
+
+.move-cur {
+  transform: translateX(-131rpx)!important;
+}
+
+.append-goods {
+  border-radius: 4rpx;
+  border: 1px dashed rgba(255, 73, 101, 1);
+  font-size: 30rpx;
+  height: 88rpx;
+  margin-top: 40rpx;
+  font-family: PingFang-SC-Bold, PingFang-SC;
+  font-weight: bold;
+  color: rgba(255, 73, 99, 1);
+}
+
+.send-apply {
+  width: 661rpx;
+  height: 93rpx;
+  background: linear-gradient(90deg, rgba(255, 76, 96, 1) 0%, rgba(255, 62, 119, 1) 100%);
+  border-radius: 47rpx;
+  margin: 98rpx auto;
+  font-size: 30rpx;
+  font-family: PingFang-SC-Bold, PingFang-SC;
+  font-weight: bold;
+  color: rgba(255, 255, 255, 1);
+  line-height: 93rpx;
+}
+
+.cu-dialog {
+  /* padding-top: 16rpx; */
+  /* padding: 0 20rpx; */
+  background: rgba(255, 255, 255, 1);
+  border-radius: 20rpx 20rpx 0px 0px!important;
+}
+
+.close-image {
+  width: 45rpx;
+  height: 45rpx;
+}
+
+.link-btn {
+  background: linear-gradient(270deg, rgba(255, 75, 97, 1) 0%, rgba(255, 64, 116, 1) 100%);
+  border-radius: 44rpx;
+  font-size: 30rpx;
+  font-family: PingFang-SC-Bold, PingFang-SC;
+  font-weight: bold;
+  color: rgba(255, 255, 255, 1);
+}
+
+.cu-form-group .sel-title {
+  width: 64rpx;
+  font-size: 32rpx;
+  font-family: PingFang-SC-Medium, PingFang-SC;
+  font-weight: 500;
+  color: rgba(74, 74, 74, 1);
+  margin-right: 10rpx;
+}
+
+checkbox .wx-checkbox-input {
+  /* 自定义样式.... */
+  height: 44rpx;
+  width: 44rpx;
+  margin-top: -4rpx;
+  border-radius: 50%;
+  border: 1px solid rgba(151, 151, 151, 1);
+  background: transparent;
+}
+
+checkbox .wx-checkbox-input.wx-checkbox-input-checked {
+  border-color: #FF3E76FF!important;
+}
+
+checkbox .wx-checkbox-input.wx-checkbox-input-checked:before{
+  background-color: #e02e24;
+  border-color: #FF3E76FF!important;
+
+  /* 自定义样式.... */
+}
+.act-wrap {
+  height: 78rpx;
+  background: rgba(248, 248, 248, 1);
+  border-radius: 44rpx;
+  padding-left: 35rpx;
+  /* margin-top: 220rpx; */
+}
+.goods-list{
+  height: 650rpx;
+  overflow: scroll;
+}
+.goods-list .goods-item .avatar {
+  width: 142rpx;
+  height: 142rpx;
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+}
+.goods-list .goods-item{
+  padding: 24rpx 20rpx;
+  margin-bottom: 11rpx;
+  background:rgba(249,249,249,1);
+}
+.goods-list .goods-item .content .name {
+  font-size: 28rpx;
+  font-family: PingFang-SC-Bold, PingFang-SC;
+  font-weight: bold;
+  color: rgba(51, 51, 51, 1);
+}
+
+.goods-list .goods-item .content .price {
+  font-size: 26rpx;
+  font-family: PingFang-SC-Bold, PingFang-SC;
+  font-weight: bold;
+  color: rgba(74, 74, 74, 1);
+}

@@ -1,0 +1,41 @@
+<!--pages/turnBrand/turnBrand.wxml-->
+<!-- <text>pages/turnBrand/turnBrand.wxml</text> -->
+<view class='bg'>
+  <image src='https://hmeshop-1256233971.cos.ap-guangzhou.myqcloud.com/wxapp/images/bigbg@2x.png'></image>
+  <view class='content'>
+    <image class='top_img' src='https://hmeshop-1256233971.cos.ap-guangzhou.myqcloud.com/wxapp/images/title@3x.png'></image>
+    <image class='brand' src='https://hmeshop-1256233971.cos.ap-guangzhou.myqcloud.com/wxapp/images/diban@2x.png'>
+      <view class='con'>
+         <text class='text'>今天剩余<text>1</text>次翻牌机会</text>
+         <view class='container'>
+           <image src='https://hmeshop-1256233971.cos.ap-guangzhou.myqcloud.com/wxapp/images/fanpai_01@2x.png'></image> 
+           <image src='https://hmeshop-1256233971.cos.ap-guangzhou.myqcloud.com/wxapp/images/fanpai_02@2x.png'></image> 
+           <image src='https://hmeshop-1256233971.cos.ap-guangzhou.myqcloud.com/wxapp/images/fanpai_03@2x.png'></image> 
+           <image src='https://hmeshop-1256233971.cos.ap-guangzhou.myqcloud.com/wxapp/images/fanpai_04@2x.png'></image> 
+           <image src='https://hmeshop-1256233971.cos.ap-guangzhou.myqcloud.com/wxapp/images/fanpai_05@2x.png'></image> 
+           <image src='https://hmeshop-1256233971.cos.ap-guangzhou.myqcloud.com/wxapp/images/fanpai_06@2x.png'></image> 
+         </view>
+         <image class='img' src='https://hmeshop-1256233971.cos.ap-guangzhou.myqcloud.com/wxapp/images/xipai_button@2x.png'></image>
+      </view>
+    </image>
+    <view class='button'>
+        <view class='btn'>我的奖品</view>
+        <view class='btn2'>中奖名单</view>
+    </view>
+    <image class='prize' src='https://hmeshop-1256233971.cos.ap-guangzhou.myqcloud.com/wxapp/images/jiangpinshezhi@2x.png'>
+      <view class='text'>
+        <view>一等奖：新款 9.7 英寸ipad平板电脑</view>
+        <view>二等奖：iphone手机一台</view>
+        <view>三等奖：红包300元奖励</view>
+      </view>
+    </image>
+    <image class='rule' src='https://hmeshop-1256233971.cos.ap-guangzhou.myqcloud.com/wxapp/images/huodongguize@2x.png'>
+      <view class='text'>
+        <view>1.活动时间：2018.02.01-2018.06.31;</view>
+        <view>2.抽奖获得商品，不得兑换成现金；</view>
+        <view>3.在确认获奖者身份，手机号码及快递地址后，奖品将在一周内寄出；</view>
+        <view>4.请开通私信功能，并在收到获奖通知后3天内与我们联系，逾期将视为自动放弃奖品。</view>
+      </view>
+    </image>
+  </view>
+</view>

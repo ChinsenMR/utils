@@ -1,0 +1,57 @@
+<!--pages/productList/productList.wxml-->
+<view class='pro-list-top'>
+  <view class='search-box' bindtap='onToSeachPage'>
+    <icon class="icon" type="search" data-page='search'></icon>
+    <input type='text' data-page='search' placeholder='请输入' value='{{kw}}' disabled='true'></input>
+  </view>
+  <view class='tab-bar'>
+    <view class="{{sort=='saleprice'?'current':''}}" 
+          data-type="saleprice"  
+          bindtap='onSelectSort'>
+      <text>价格 </text>
+      <image src='../../images/down.png' wx:if="{{thePriceOrder=='desc'}}"></image>
+      <image src='../../images/up.png' wx:if="{{ thePriceOrder=='asc'}}"></image>
+    </view>
+    <view class="{{sort=='addedDate'?'current':''}}" 
+          data-type="addedDate"  
+          bindtap='onSelectSort'>
+      <text>上架 </text>
+      <image src='../../images/down.png' wx:if="{{theAddedTimeOrder=='desc'}}"></image>
+      <image src='../../images/up.png' wx:if="{{ theAddedTimeOrder=='asc'}}"></image>
+    </view>
+    <view class="{{sort=='showsaleCounts'?'current':''}}"
+          data-type="showsaleCounts"  
+          bindtap='onSelectSort'>
+      <text>销量 </text>
+      <image src='../../images/down.png' wx:if="{{theSaleCountOrder=='desc'}}"></image>
+      <image src='../../images/up.png' wx:if="{{ theSaleCountOrder=='asc'}}"></image>
+    </view>
+    <view class="{{sort=='VistiCounts'?'current':''}}" 
+          data-type="VistiCounts"  
+          bindtap='onSelectSort'>
+      <text>浏览量 </text>
+      <image src='../../images/down.png' wx:if="{{theVCountOrder=='desc'}}"></image>
+      <image src='../../images/up.png' wx:if="{{ theVCountOrder=='asc'}}"></image>
+    </view>
+  </view>
+</view>
+<view class='store-products'>
+  <view class='pro-item' wx:for="{{proList}}" wx:key="index">
+    <view class='item-wrap' bindtap='onToDetailPage' data-id='{{item.ProductId}}'>
+      <view class='img-box'>
+        <image src='{{item.ThumbnailUrl60}}'></image>
+        <text class="sale-count">已销售{{item.SaleCounts}}件</text>
+      </view>
+      <text class='title'>{{item.ProductName}}</text>
+      <view class='price-box'>
+        <text class='icon-red'>¥</text><text class='current-price'>{{item.SalePrice}}</text>
+        <text class='original-price'>¥{{item.MarketPrice}}</text>
+      </view>
+    </view>
+  </view>
+</view>
+<view class='empty' wx:if='{{isEmpty}}'>
+    <image src='../../images/pic-kong.png'></image>
+    <text>暂无数据</text>
+</view>
+

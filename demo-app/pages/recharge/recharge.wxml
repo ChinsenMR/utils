@@ -1,0 +1,54 @@
+<!--pages/withdraw/withdraw.wxml-->
+<view class='top'>
+  选择充值方式
+</view>
+<view class='content'>
+  <view class="active">
+    <view>
+      <image src='https://hmeshop-1256233971.cos.ap-guangzhou.myqcloud.com/wxapp/images/qianbao.png'></image>
+    </view>
+    微信钱包
+  </view>
+</view>
+<view class='tixian'>
+  <view class='tixianFont'>充值金额：</view>
+  <view class='fuhao'>￥</view>
+  <input placeholder-class="place-holder place-holder1" type='number' bindinput='writeMoney' value='{{money}}' placeholder='可充值金额为整数'></input>
+</view>
+<view class='btn' bindtap='confirmPrepaid'>确认充值</view>
+
+
+<view wx:if="{{false}}">
+  <view wx:if="{{false}}" class='{{ selected2?"active":"default" }}' bindtap="selected2">
+    <view>
+      <image src='https://hmeshop-1256233971.cos.ap-guangzhou.myqcloud.com/wxapp/images/fgb.png'></image>
+    </view>
+    支付宝</view>
+  <view class="{{selected1?'show':'hidden'}}"></view>
+  <view class="{{selected2?'show':'hidden'}}">
+    <view class='list'>
+      <view class='left'>
+        收款人
+      </view>
+      <view class='right'>
+        <input placeholder-class="place-holder" placeholder='请输入收款人姓名'></input>
+      </view>
+    </view>
+    <view class='list'>
+      <view class='left'>
+        提现账号
+      </view>
+      <view class='right'>
+        <input placeholder-class="place-holder" placeholder='请输入提现账号'></input>
+      </view>
+    </view>
+    <view class='list'>
+      <view class='left'>
+        备注
+      </view>
+      <view class='right'>
+        <input placeholder-class="place-holder" placeholder='请输入备注信息'></input>
+      </view>
+    </view>
+  </view>
+</view>

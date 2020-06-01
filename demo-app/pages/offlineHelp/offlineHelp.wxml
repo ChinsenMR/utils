@@ -1,0 +1,21 @@
+<!--pages/offlineHelp/offlineHelp.wxml-->
+<view class="cart-header">
+  <view class="cart-header-top">
+    <icon class="finish"></icon>
+    <icon class="finish"></icon>
+    <icon class="finish"></icon>
+    <icon class="finish"></icon>
+  </view>
+  <view class="cart-header-bottom">
+    <text class="current-item">购物车</text>
+    <text class="current-item">确认订单</text>
+    <text class="current-item">下单成功</text>
+  </view>
+</view>
+<view class='img-box'>
+  <image mode='widthFix' src='../../images/pic-ding.png'></image>
+</view>
+<view class='info-wrapper'>
+  <textarea class='input-info' row="5" maxlength="1000" placeholder='请填写在线支付帮助内容'></textarea>
+</view>
+<button class='submit' type='warn'>提交内容</button>

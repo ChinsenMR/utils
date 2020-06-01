@@ -1,0 +1,5 @@
+{
+    "navigationBarTitleText": "满减专区",
+    "enablePullDownRefresh": true,
+    "onReachBottomDistance": 200
+}

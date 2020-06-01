@@ -1,0 +1,77 @@
+.list{
+  font-size: 30rpx;
+  color: #333;
+  background-color: #fff;
+}
+.list view{
+  display: flex;
+  padding: 20rpx;
+  justify-content: space-between;
+}
+.list view{
+  padding-bottom: 0;
+}
+.finished{
+  color: #999;
+}
+.gofinish{
+  color: #e0001b;
+}
+.once{
+  display: flex;
+  padding-top:20rpx;
+  width: 100%;
+  height: 100rpx;
+  font-size: 28rpx;
+  vertical-align: middle;
+  color: #999;
+  background-color: #fff;
+}
+
+.once image{
+  padding: 5rpx 20rpx;
+  padding-left: 36rpx;
+  width: 30rpx;
+  height: 30rpx;
+}
+.btn {
+  margin: 70rpx auto 0;
+  padding: 20rpx 0;
+  width: 90%;
+  font-size: 32rpx;
+  text-align: center;
+  border-radius: 6rpx;
+  color: #fff;
+  background-color: #e0001b;
+}
+
+
+
+.box .title{
+  margin: 100rpx 0 50rpx 0;  
+  text-align: center;
+  font-size: 30rpx;
+  color: #333;
+}
+.box .li{
+  display: flex;
+  margin-bottom: 50rpx;
+  align-items: center;
+  
+}
+
+.box .li image{
+  padding: 0 30rpx;
+  width: 46rpx;
+  height: 46rpx;
+}
+
+.box .li .img{
+  width: 60rpx;
+}
+
+.box .li view{
+  padding-right: 30rpx;
+  font-size: 26rpx;
+  color: #666666;
+}

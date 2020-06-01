@@ -1,0 +1,3 @@
+<image class="icon" src="{{iconUrl}}" mode="aspectFill"></image>
+<view class="message">申请代理提交成功</view>
+<button class="send-apply" bindtap="submit">查看申请记录</button>

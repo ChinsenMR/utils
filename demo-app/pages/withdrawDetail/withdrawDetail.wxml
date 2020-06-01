@@ -1,0 +1,24 @@
+<view class="tabbox">
+  <view class="nav" bindtap="selected">
+    <view class="{{detailType === 1?'red':'default'}} left" data-type='1'>支出</view>
+    <view class="{{detailType === 2?'red':'default'}}" data-type='2'>收入</view>
+  </view>
+  <navigator  class='list' 
+              wx:for="{{dataList}}" 
+              wx:key="{{item.id}}" 
+              url='/pages/balanceDetail/balanceDetail?id={{item.id}}'>
+    <view class='l_left'>
+      <view class='info'>{{item.TradeType}}</view>
+      <view class='time'>{{item.TradeTime}}</view>
+    </view>
+    <view class='l_right'>
+      <view class='money {{detailType === 2?"shouru":""}}' >
+        <text>{{detailType === 2?"+":"-"}}￥</text>{{detailType === 2?item.TradeAmount:item.TradeAmount*(-1)}}
+      </view>
+    </view>
+  </navigator>
+</view>
+ <view class='empty' wx:if='{{!dataList.length}}'>
+    <image src='https://hmeshop-1256233971.cos.ap-guangzhou.myqcloud.com/wxapp/images/pic-kong.png'></image>
+    <text>暂无数据</text>
+  </view>

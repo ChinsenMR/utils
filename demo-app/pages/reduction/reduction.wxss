@@ -1,0 +1,2 @@
+/* pages/reduction/reduction.wxss */
+@import '../../module/activityArea/activityArea.wxss';

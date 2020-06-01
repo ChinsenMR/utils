@@ -1,0 +1,32 @@
+<!--components/showcase/showcase.wxml-->
+<!-- <text>components/showcase/showcase.wxml</text> -->
+<view class='showcase' wx:if="{{showCaseList.content.layout==1}}">
+  <ul>
+    <li wx:for="{{showCaseList.content.dataset}}">
+      <navigator bindtap='jumptap' data-type='{{item.linkType}}' data-index='{{index}}'>
+        <image mode='widthFix' src='{{item.pic}}'></image>
+      </navigator>
+    </li>
+  </ul>
+</view>
+<!-- 2列 -->
+<view class='showcase1' wx:if="{{showCaseList.content.layout==0}}">
+    <view class="leftright" >
+      <block wx:for="{{showCaseList.content.dataset}}">
+        <ul>
+          <li class="list_o" wx:key="{{index}}" wx:if="{{index%3 ===0||index===0}}">
+            <navigator bindtap='jumptap' data-type='{{item.linkType}}' data-index='{{index}}'>
+              <image mode='widthFix' src='{{item.pic}}' alt=""></image>
+            </navigator>
+          </li>
+        </ul>
+        <ul>
+          <li class="list_t" wx:key="{{index}}" wx:if="{{index%3!=0}}">
+            <navigator bindtap='jumptap' data-type='{{item.linkType}}' data-index='{{index}}'>
+              <image mode='widthFix' src='{{item.pic}}' alt=""></image>
+            </navigator>
+          </li>
+        </ul>
+      </block>
+    </view>  
+</view>

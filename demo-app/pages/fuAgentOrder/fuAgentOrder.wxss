@@ -1,0 +1,235 @@
+page {
+  height: 100%;
+  font-size: 30rpx;
+  position: relative;
+  background: #f1f1f1;
+}
+.shopORders {
+  border-top: 2rpx solid #e5e5e5;
+}
+.Skin-DistributorOrders > .list {
+  position: relative;
+  flex: 1;
+  height: 60rpx;
+  line-height: 60rpx;
+  text-align: center;
+  padding: 10rpx 0;
+  font-size: 30rpx;
+  color: #BEBEBE;
+}
+.Skin-DistributorOrders > .list1::after {
+  content: '';
+  position: absolute;
+  display: block;
+  width: 2rpx;
+  height: 50rpx;
+  top: 20rpx;
+  right: 0;
+  background-color: #e5e5e5;
+}
+.Skin-DistributorOrders .actives {
+  color: #E0001B;
+  border-bottom: 6rpx solid #E0001B;
+  font-weight: bold;
+  background: #fff;
+}
+.Skin-DistributorOrders .orderList .all-orders {
+  margin-top: 20rpx;
+  background: #fff;
+  border-top: 2rpx solid #F5F5F5;
+  border-bottom: 2rpx solid #F5F5F5;
+}
+.Skin-DistributorOrders .orderList .orderinfo {
+  position: relative;
+  font-size: 26rpx;
+  padding: 30rpx 0 30rpx 40rpx;
+  color: #999;
+}
+.Skin-DistributorOrders .orderList .orderinfo .state {
+  position: absolute;
+  right: 40rpx;
+  top: 30rpx;
+  font-size: 28rpx;
+  color: #E0001B;
+}
+.Skin-DistributorOrders .orderinfo view {
+  margin-bottom: 10rpx;
+}
+.Skin-DistributorOrders .orderList .coloractive {
+  font-size: 28rpx;
+  color: #E0001B;
+}
+.Skin-DistributorOrders .commodity {
+  display: flex;
+  padding: 30rpx 40rpx;
+  border-top: 2rpx solid #e5e5e5;
+  border-bottom: 2rpx solid #e5e5e5;
+}
+.Skin-DistributorOrders .commodity > .commodityinfo {
+  flex: 1;
+  position: relative;
+  font-size: 26rpx;
+  color: #333333;
+}
+.Skin-DistributorOrders .commodityImg image {
+  width: 144rpx;
+  height: 144rpx;
+  margin-right: 10rpx;
+}
+.Skin-DistributorOrders .commodityinfo .money {
+  width: 100%;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  overflow: hidden;
+  font-size: 28rpx;
+  color: #FF950D;
+}
+.Skin-DistributorOrders .commodityinfo .money text {
+  float: right;
+  color: #999;
+}
+.Skin-DistributorOrders .commodityNum {
+  text-align: right;
+  font-size: 28rpx;
+  height: 88rpx;
+  line-height: 88rpx;
+  padding-right: 40rpx;
+  color: #999;
+  overflow: hidden;
+}
+.Skin-DistributorOrders .commodityNum text {
+  margin-left: 40rpx;
+}
+.Skin-DistributorOrders .commission {
+  float: left;
+  font-size: 26rpx;
+  color: #E0001B;
+}
+.empty {
+  position: fixed;
+  top: 30%;
+  left: 50%;
+  transform: translate(-50%, -40%);
+  color: #666666;
+  font-size: 14px;
+  text-align: center;
+}
+.empty > image {
+  width: 360rpx;
+  height: 360rpx;
+}
+.o-search {
+  margin: 120rpx 20rpx 20rpx 20rpx;
+  display: flex;
+  align-items: center;
+}
+.os-input {
+  color: #333;
+  font-size: 28rpx;
+  flex: 1;
+  margin-right: 20rpx;
+  border: 1rpx solid #ccc;
+  border-radius: 3rpx;
+  padding: 0 20rpx;
+}
+.os-btn {
+  width: 100rpx;
+  line-height: 60rpx;
+  text-align: center;
+  margin: 0;
+  padding: 0;
+  color: #fff;
+  font-size: 28rpx;
+  background-color: #E0001B;
+  border-radius: 5rpx;
+}
+#fuAgentOrder {
+  background: #fff;
+  border-radius: 20rpx;
+  margin: 20rpx 20rpx 0;
+  padding: 20rpx;
+  box-sizing: border-box;
+}
+#fuAgentOrder .order {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10rpx;
+}
+#fuAgentOrder .order .flex {
+  flex: 1;
+}
+#fuAgentOrder .order .red {
+  color: red;
+}
+.alert {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.2);
+  transform: translateY(100%);
+  z-index: 3;
+  transition: 0.3s;
+}
+.alert .contant {
+  position: absolute;
+  height: 50%;
+  width: 100%;
+  overflow: auto;
+  bottom: 0;
+  left: 0;
+  background: white;
+}
+.alert .contant .child {
+  padding: 20rpx;
+  box-sizing: border-box;
+  text-align: center;
+  border-bottom: 1px solid #f5f5f5;
+}
+.alert2 {
+  display: flex;
+  align-items: center;
+  justify-items: center;
+  transform: translateY(100%);
+  z-index: 2;
+}
+.alert2 .contant {
+  width: 80%;
+  height: auto;
+  position: relative;
+  margin: 0 auto;
+  border-radius: 20rpx;
+}
+.alert2 .contant .child {
+  display: flex;
+  align-items: center;
+}
+.alert2 .contant .child .val {
+  flex: 1;
+  margin-left: 20rpx;
+}
+.alert2 .contant .child .val input {
+  width: 100%;
+}
+.alert2 .contant .btn {
+  text-align: center;
+  padding: 20rpx;
+  box-sizing: border-box;
+  background: #008cff;
+  color: white;
+}
+.show01 {
+  transform: translateY(0);
+}
+.show {
+  transform: translateY(0);
+}
+.noMore {
+  padding: 20rpx;
+  box-sizing: border-box;
+  text-align: center;
+  color: #666;
+}
+/*# sourceMappingURL=./fuAgentOrder.css.map */

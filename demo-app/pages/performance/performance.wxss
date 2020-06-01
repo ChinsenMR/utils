@@ -1,0 +1,93 @@
+/* pages/performance/performance.wxss */
+
+page {
+  background-color: #ddedfe;
+}
+
+.content {
+  width: 100%;
+  background-color: #f0f9fe;
+  padding: 40rpx 0 40rpx 0;
+}
+
+.topimg {
+  width: 100%;
+  text-align: center;
+  margin: 20rpx auto 40rpx;
+}
+
+.topimg image {
+  display: inline-block;
+  width: 148rpx;
+  height: 148rpx;
+  border-radius: 50%;
+  border: 2rpx solid #e5e5e5;
+  margin: 40rpx auto;
+}
+
+.topimg .name {
+  font-size: 36rpx;
+  font-weight: bold;
+  color: #2f4f4f;
+}
+
+.graded {
+  width: 90%;
+  margin: 0 auto;
+  padding-bottom: 5rpx;
+  background-color: white;
+}
+
+.title {
+  color: #98a2ab;
+  padding: 10rpx 10rpx 0 10rpx;
+}
+
+/* 打星 */
+
+.startpanel {
+  display: flex;
+  justify-content: space-between;
+  border-radius: 5%;
+  padding: 10rpx 40rpx 10rpx 40rpx;
+}
+
+.stars {
+  width: 80rpx;
+  height: 80rpx;
+}
+
+/* 评价内容 */
+
+textarea {
+  width: 87%;
+  font-size: 28rpx;
+  border-radius: 2%;
+  margin: 20rpx auto 20rpx;
+  padding: 20rpx;
+  background-color: #faf9fe;
+}
+
+/* 按钮 */
+
+.btn {
+  width: 93%;
+  height: 80rpx;
+  color: #8c8c8c;
+  text-align: center;
+  line-height: 80rpx;
+  font-size: 36rpx;
+  background-color: #e5e5e5;
+  margin: 20rpx auto 30rpx;
+}
+
+.button {
+  width: 93%;
+  height: 80rpx;
+  color: #7094b3;
+  text-align: center;
+  line-height: 80rpx;
+  font-size: 36rpx;
+  background-color: #c0e2fd;
+  margin: 20rpx auto 30rpx;
+}

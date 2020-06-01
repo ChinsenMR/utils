@@ -1,0 +1,71 @@
+<!--pages/cart/cart.wxml-->
+<wxs src="../../utils/base64.wxs" module="base64Imgs" />
+<view class='content' wx:if="{{cartData.data.length}}">
+  <view class='top'>
+    <view class='half active'></view>
+    <view class='all'></view>
+    <view class='all'></view>
+    <view class='half'></view>
+  </view>
+  <view class='tab'>
+    <text class='active'>购物车</text>
+    <text>确认订单</text>
+    <text>下单成功</text>
+  </view>
+  <view class='item' >
+  <block wx:for="{{cartData.data}}">
+    <view class='act-show' wx:if="{{item.Activities.length}}">
+      <text class='acts-title'>满减</text>
+      <text class='acts-item' wx:for="{{item.Activities}}">满{{item.MeetMoney}}元减{{item.ReductionMoney}}元</text>
+    </view>
+    <view class='itemList' style='margin-top:{{item.Activities.length?0:(index?20:0)}}rpx'>
+      <label class="checkbox">
+        <checkbox value="{{index}}" data-index='{{index}}' data-checked="{{ischecked}}" checked='{{ischecked}}'  bindtap="checkboxChange" disabled="{{item.Stock <= 0}}"/>
+      </label>
+      <view class='left' bindtap='onTodDetailPage' data-id='{{item.ProductId}}'>
+        <image src='{{item.Img}}'></image>
+      </view>
+      <view class='right'>
+        <view class='r_top'>
+          <view class='r_t_left' bindtap='onTodDetailPage' data-id='{{item.ProductId}}'>
+            <text class='title'>{{item.productName}}</text>
+          </view>
+          <view class='r_t_right'>
+            <image data-skuid="{{item.SkuId}}" data-index="{{index}}" bindtap='remove' src='https://hmeshop-1256233971.cos.ap-guangzhou.myqcloud.com/wxapp/images/del_icon.png'></image>
+          </view>
+        </view>
+        <view class='r_center' wx:if="{{item.SkuContent}}">{{item.SkuContent}}</view>
+        <view class='r_center' wx:else></view>
+        <view class='r_bottom'>
+          <view class='price'>￥{{item.Price}}</view>
+          <view class='tips' wx:if="{{item.LimitedTimeDiscountInfo != ''}}">{{item.LimitedTimeDiscountInfo[0].ActivityName}}</view>
+          <view class='calc'>
+            <block wx:if="{{item.Stock > 0}}">
+              <view class='calc_left {{item.Quantity>1?"useReduce":""}}' data-skuid="{{item.SkuId}}" data-index="{{index}}" bindtap='minus'>-</view>
+              <view class='calc_center'>{{item.Quantity}}</view>
+              <view class='calc_right' data-skuid="{{item.SkuId}}" data-index="{{index}}" bindtap='add'>+</view>
+            </block>
+            <text wx:if="{{item.Stock <= 0}}" style='font-size: 15px;color:#666;'>库存不足!</text>
+          </view>
+        </view>
+      </view>
+    </view>
+    </block>
+  </view>
+  <view class='total'>
+    <label class="checkbox">
+        <checkbox value="-1" data-index='-1' checked='{{isAllchecked}}'    bindtap="checkboxAllChange"/>
+      </label>
+    <text>共{{totalCount}}件商品</text> 合计：
+    <text class='font-red'>￥{{totalMoney}}(不含运费)</text>
+    <view class='font-red' wx:if="{{discountMoney}}">已优惠¥{{discountMoney}}</view>
+  </view>
+  <view style='width:100%;height:160rpx;'></view>
+  <view class='btn' bindtap='goOrder'>去结算</view>
+</view>
+<view class='none' wx:else>
+  <view>
+    <image src='{{base64Imgs.emptyImg}}'></image>
+    <text>购物车暂时没有商品</text>
+  </view>
+</view>

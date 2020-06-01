@@ -1,0 +1,86 @@
+<view class="tabbox">
+  <view class="nav" bindtap="selected">
+    <view class="{{status == 0?'red':'default'}}" data-status="0">全部订单</view>
+    <view class="{{status == 1?'red':'default'}}" data-status="1">待付款</view>
+    <view class="{{status == 2?'red':'default'}}" data-status="2">待发货</view>
+    <view class="{{status == 3?'red':'default'}}" data-status="3">待收货</view>
+  </view>
+  <view class="orderList" wx:for="{{orderList}}" wx:key="orderList" wx:for-item="i">
+    <view class="ol_top" catchtap='onTodDetailPage' data-id='{{i.OrderId}}'>
+      <view class="ott_left">
+        <view class="check_icon" wx:if='{{status == 1}}' data-id="{{index}}" catchtap="select">
+          <view class="ot_left" wx-if="{{!i.checked}}">
+            <image src="https://hmeshop-1256233971.cos.ap-guangzhou.myqcloud.com/wxapp/images/unchecked.png"></image>
+          </view>
+          <view class="ot_left" wx-if="{{i.checked}}">
+            <image src="https://hmeshop-1256233971.cos.ap-guangzhou.myqcloud.com/wxapp/images/select.png"></image>
+          </view>
+        </view>
+        <view class="ot_center">
+          <view>订单编号：{{i.OrderId}}</view>
+          <view>订单日期：{{i.OrderDate}}</view>
+        </view>
+      </view>
+      <view class="ot_right">{{i.OrderStatus}}</view>
+    </view>
+    <view class="ol_center" wx:for="{{i.OrderItems}}" wx:for-index="idx" wx:for-item="proItem">
+      <view class="oc_left" catchtap='onTodDetailPage' data-id='{{i.OrderId}}'>
+        <image src="{{proItem.Img}}"></image>
+      </view>
+      <view class="oc_right" catchtap='onTodDetailPage' data-id='{{i.OrderId}}'>
+        <text class='title'>{{proItem.ProductName}}</text>
+        <text class='sku-content' wx:if="{{proItem.SkuContent}}">{{proItem.SkuContent}}</text>
+        <view class="ocr_bottom">
+          <text class="price" wx:if="{{proItem.Type === 0}}">￥{{proItem.Price}}</text>
+          <text class="price" wx:else>{{proItem.SinglePointNumber}}积分</text>
+          <text class="num">x{{proItem.Quantity}}</text>
+        </view>
+        <view wx:if="{{proItem.Type === 0}}">
+          <view wx:if="{{proItem.OrderItemsStatus == '申请退款' ||proItem.OrderItemsStatus == '申请退货'}}">
+            <text wx:if="{{i.OrderStatusNum == 2 || i.OrderStatusNum == 3}}" class='btn-refund check' catchtap='onApplyRefund' data-index='{{index+"_"+idx}}'>{{proItem.OrderItemsStatus}}</text>
+          </view>
+          <view wx:else>
+            <text wx:if="{{i.OrderStatusNum == 2 || i.OrderStatusNum == 3}}" class='btn-refund check' data-index='{{index+"_"+idx}}'>{{proItem.OrderItemsStatus}}</text>
+          </view>
+        </view>
+      </view>
+    </view>
+    <view class="ol_all">
+      <view wx:if='{{i.CollageTeamId}}' data-id='{{i.OrderId}}' bindtap='togroupPage' style='padding:15rpx;background-color:#e5e5e5;text-align:center;'>拼团订单</view>
+      <view class="all">共{{i.orderCount}}件商品</view>
+      <view class="total" wx:if="{{proItem.Type === 0}}">合计:￥{{i.OrderTotal}}</view>
+      <view class="total" wx:else>合计:{{i.OrderItems[0].PointNumber}}积分</view>
+    </view>
+    <view class="ol_bottom">
+      <text class='pay-now' wx:if='{{i.OrderStatusNum == 1}}' data-order="{{i.OrderId}}" bindtap='onPayNow'>立即支付</text>
+      <text class='check' wx:if='{{i.OrderStatusNum == 1}}' data-oid="{{i.OrderId}}" bindtap='cancelOrder'>取消订单</text>
+
+      <navigator class='check help' wx:if='{{false}}' url='/pages/offlineHelp/offlineHelp'>线下支付帮助</navigator>
+      <text class='check' wx:if='{{i.OrderStatusNum == 3}}' data-order="{{i.OrderId}}" bindtap='sureReceive'>确认收货</text>
+      <text class="check" data-num='{{i.OrderId}}' data-idx='{{index}}' bindtap='checklogistics' wx:if='{{i.ExpressCompanyName}}'>查看物流</text>
+    </view>
+  </view>
+
+  <view class='empty' wx:if="{{isEmpty}}">
+    <image src='https://hmeshop-1256233971.cos.ap-guangzhou.myqcloud.com/wxapp/images/pic-kong.png'></image>
+    <text>暂无数据</text>
+  </view>
+
+  <view class="bottom" style="{{isFullIphone?'height:120rpx':''}}" wx:if='{{!isEmpty && status == 1}}'>
+    <block wx:if="{{select_all}}">
+      <view bindtap="select_none" class="select">
+        <image src="https://hmeshop-1256233971.cos.ap-guangzhou.myqcloud.com/wxapp/images/select.png"></image>
+        <view>取消全选</view>
+      </view>
+    </block>
+    <block wx:if="{{!select_all}}">
+      <view bindtap="select_all" class="select">
+        <image src="https://hmeshop-1256233971.cos.ap-guangzhou.myqcloud.com/wxapp/images/unchecked.png"></image>
+        <view>全选</view>
+      </view>
+    </block>
+    <view class="center" bindtap='cancelMany'>批量取消订单</view>
+    <view class="right" bindtap='onPay'>合并付款</view>
+  </view>
+</view>
+<mask wx:if='{{isMask}}' />

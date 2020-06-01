@@ -1,0 +1,15 @@
+<view class='logo'>
+  <image src='/images/loginLogo.png'></image>
+</view>
+
+
+<view class='input'>
+  <input placeholder='用户名/绑定手机/绑定邮箱'></input>
+</view>
+<view class='input psd'>
+  <input placeholder='登录密码'></input>
+</view>
+
+
+<button class='login'>登录</button>
+

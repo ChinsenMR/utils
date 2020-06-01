@@ -1,0 +1,63 @@
+/* pages/ merchant/merchant.wxss */
+/*商城会员 累计消费  */
+.membership{
+  display: flex;
+  justify-content:space-between;
+  background-color: #ffffff;
+  padding:10rpx 42rpx;
+  font-size:30rpx;
+  color: #333333;
+}
+.finish-state{
+  color: #999999;
+}
+.to-finish{
+  color:#E0001B;
+}
+.mark{
+  color:#E0001B;
+  font-weight: bold;
+  border:#E0001B solid 2px;
+  border-radius: 40%;
+  font-size:19rpx;
+  margin-right:10rpx;
+}
+.member-bottom{
+  background-color: #ffffff;
+  padding:0rpx 40rpx 50rpx 50rpx;
+  font-size:26rpx;
+  color:#999999;
+}
+/*继续逛逛  */
+.go-on{
+  padding:28rpx 260rpx;
+  text-align: center;
+  margin:60rpx 30rpx;
+  background-color: #E0001B;
+  color: #ffffff;
+  font-size: 29rpx;
+  font-family: MicrosoftYaHei;
+}
+
+/*分销商特权  */
+.distrub-top{
+  text-align: center;
+}
+.distrub{
+  margin-top:150rpx;
+  font-size: 29rpx;
+  color: #333333;
+  font-family: MicrosoftYaHei;
+}
+.distrub-list{
+  font-size: 25rpx;
+  color: #666666;
+  margin:10rpx 15rpx;
+  display: flex;
+  line-height: 71rpx;
+}
+.images{
+  margin:20rpx;
+  height:25rpx;
+  width:25rpx;
+}

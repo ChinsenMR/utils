@@ -1,0 +1,40 @@
+<!--pages/Consultative/Consultative.wxml-->
+<!-- <text>pages/Consultative/Consultative.wxml</text> -->
+<view class='product'>
+  <view class='left'>
+    <image src='{{productlist.ImageUrl1}}'></image>
+  </view>
+  <view class='right'>
+    <view class='top'>{{productlist.ProductName}}</view>
+    <view class='bottom'>
+      <view class='price'>￥{{productlist.MinShowPrice}}</view>
+      <view class='sold'>已售{{productlist.SaleCounts}}件</view>
+    </view>
+  </view>
+</view>
+<view class='Consultative'>
+  <textarea name="textarea" value="{{inputTxt}}" maxlength='300' placeholder='  请填写您对该商品的咨询' placeholder-class='placeholder' bindinput="consultInput"></textarea>
+  <button class='submit' bindtap='postConsult'>提交咨询</button>
+</view>
+<!-- 咨询列表 -->
+<view class='allevaluate' wx:if="{{row != 0 }}">全部咨询</view>
+<view class='all-evaluate'>
+  <view class='evaluate-contents'>
+    <view class='items' wx:for="{{allData}}" wx:key="index">
+      <text class='usercon'>用户咨询</text>
+      <view class='items-top'>
+        <view class='items-content'>{{item.ConsultationText}}</view>
+        <view class='item-Data'>{{item.ConsultationDate}}</view>
+      </view>
+      <text class='usercon' wx:if="{{item.ReplyText != ''}}">客服回复</text>
+      <view class='item-bottom'>
+        <view class='items-content'>{{item.ReplyText}}</view>
+        <view class='item-Data'>{{item.ReplyDate}}</view>
+      </view>
+    </view>
+  </view>
+</view>
+<view class='empty' wx:if="{{isEmpty}}">
+  <image src='https://hmeshop-1256233971.cos.ap-guangzhou.myqcloud.com/wxapp/images/pic-kong.png'></image>
+  <text>暂无咨询内容</text>
+</view>

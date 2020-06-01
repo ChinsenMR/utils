@@ -1,0 +1,74 @@
+<!--pages/smashGoldenEggs/smashGoldenEggs.wxml-->
+<view class='box'>
+  <image class='bg' src='https://hmeshop-1256233971.cos.ap-guangzhou.myqcloud.com/wxapp/images/eggsbg.png'></image>
+  <view class='content'>
+    <view class='contentTitle'>
+      <image class='title' src='https://hmeshop-1256233971.cos.ap-guangzhou.myqcloud.com/wxapp/images/Fonttitle@2x.png'></image>
+      <view class='date'>{{baseData.BeginTime+"-"+baseData.EndTime}}</view>
+    </view>
+    <navigator class='winnerBox' url='/pages/winners/winners?id={{baseData.GameId}}'>
+      <view class='winner'>中奖名单</view>
+    </navigator>
+    <view class='hammerBox'>
+      <!-- <image  wx:if='{{openEgg}}' class='hammer' src='https://hmeshop-1256233971.cos.ap-guangzhou.myqcloud.com/wxapp/images/chuizi@2x.png'></image> -->
+    </view>
+    <view class='eggBox'>
+      <!-- <image hidden='{{!openEgg}}'  class='egg' src='https://hmeshop-1256233971.cos.ap-guangzhou.myqcloud.com/wxapp/images/liekai@2x.png'></image> -->
+      <!-- <image hidden='{{openEgg}}' class='egg' src='https://hmeshop-1256233971.cos.ap-guangzhou.myqcloud.com/wxapp/images/goldEggs.png'></image> -->
+      <image wx:if='{{openEgg}}' class='egg' src='{{imgUrl}}'></image>
+      <image class="first-egg {{!openEgg?'':'hidden'}}" src='../../images/first-egg.png'></image>
+      <image class="gift" src='../../images/lihe@2x.png'></image>
+
+      <!-- <image  class='redPacket' src='https://hmeshop-1256233971.cos.ap-guangzhou.myqcloud.com/wxapp/images/redpacket.png'></image> -->
+    </view>
+    <view class='begin'>
+      <image bindtap='bindStartGame' src='https://hmeshop-1256233971.cos.ap-guangzhou.myqcloud.com/wxapp/images/xiaocuizi@2x.png'></image>
+      <view bindtap='bindStartGame'>开始砸蛋</view>
+    </view>
+    <block wx:if="{{baseData.TodayCanPlayTime == -1}}">
+      <view class='change'>今日可用机会不限次数</view>
+    </block>
+    <block wx:else>
+      <view class='change'>今日剩余{{baseData.TodayCanPlayTime}}次机会</view>
+    </block>
+    <view class='award'>
+      <view class='title'>
+        <image src='https://hmeshop-1256233971.cos.ap-guangzhou.myqcloud.com/wxapp/images/zhuanpan_jiagnpin@2x.png'></image>
+        <view>奖品设置</view>
+      </view>
+      <view class='award_content' wx:for="{{prizeData}}">{{item.PrizeName+"："+ item.Prize}} </view>
+      <!-- <view class='award_content'>二等奖：iphone手机一台</view>
+      <view class='award_content'>三等奖：红包300元奖励</view> -->
+    </view>
+    <view class='award'>
+      <view class='title'>
+        <image src='https://hmeshop-1256233971.cos.ap-guangzhou.myqcloud.com/wxapp/images/zhuanpan_huodong@2x.png'></image>
+        <view>活动规则</view>
+      </view>
+      <rich-text class='award_content' nodes="{{baseData.Description}}"></rich-text>
+      <!-- <view class='award_content'>1.抽奖获得商品，不得兑换成现金； </view>
+      <view class='award_content'>2.在确认获奖者身份，手机号码及快递地址后，奖品将在一周内寄出；</view>
+      <view class='award_content'>3.请开通私信功能，并在收到获奖通知后3天内与我们联系，逾期将视为自动放弃奖品。</view> -->
+
+    </view>
+    <!-- <view class='checkMyAward'>
+      <image src='https://hmeshop-1256233971.cos.ap-guangzhou.myqcloud.com/wxapp/images/anniu@2x.png'></image>
+       <navigator class='btn' url='/pages/award/award'>查看奖品</navigator>
+    </view> -->
+  </view>
+</view>
+<view class="shade" hidden="{{flag}}" catchtouchmove="myCatchTouch" bindtap="conceal">
+  <image class='gift' src='https://hmeshop-1256233971.cos.ap-guangzhou.myqcloud.com/wxapp/images/gift@2x.png'>
+    <view class='success'>
+      <image src='https://hmeshop-1256233971.cos.ap-guangzhou.myqcloud.com/wxapp/images/gift_txt@2x.png'></image>
+      <text>获得{{finalPrize.Prize}}</text>
+      <navigator class='btn' url='/pages/award/award'>查看奖品</navigator>
+    </view>
+  </image>
+</view>
+<view class="shade" hidden='{{isEmpty}}'>
+  <view class='pop'>
+    <text>{{baseData.NotPrzeDescription}}</text>
+    <button class="knowBtn" bindtap="conceal">知道了</button>
+  </view>
+</view>

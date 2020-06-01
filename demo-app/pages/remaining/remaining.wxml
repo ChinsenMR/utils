@@ -1,0 +1,22 @@
+<view class="tabbox">
+  <view class="nav" bindtap="selected">
+    <view class="{{detailType === 0?'red':'default'}} left" data-type='0'>所有 </view>
+    <view class="{{detailType === 1?'red':'default'}}" data-type='1'>处理中</view>
+  </view>
+  <navigator class='list' wx:for="{{dataList}}" wx:key="{{index}}" url='/pages/withdrawList/withdrawList?id={{item.id}}'>
+    <view class='l_left'>
+      <view>{{item.RequestType}}</view>
+      <view class='time'>{{item.RequestTime}}</view>
+    </view>
+    <view class='l_right'>
+      <view class='money'>
+        <text>￥</text>{{item.Amount}}
+      </view>
+      <view class='{{item.State?"finish":"wait"}}'>{{item.State?"已完成":"待处理"}}</view>
+    </view>
+  </navigator>
+</view>
+ <view class='empty' wx:if='{{!dataList.length}}'>
+    <image src='https://hmeshop-1256233971.cos.ap-guangzhou.myqcloud.com/wxapp/images/pic-kong.png'></image>
+    <text>暂无数据</text>
+  </view>

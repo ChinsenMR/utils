@@ -1,0 +1,46 @@
+<!--pages/coupons/coupons.wxml-->
+<view class='coupons'>
+  <block wx:if="{{dataList}}">
+    <view wx:for="{{dataList}}" wx:key="{{index}}" class='box {{item.IsReceive == "已领完" || item.ReceiveNum == item.StockNum ? "bg-grey" : "bg-red"}}'>
+   <!-- <image src='https://hmeshop-1256233971.cos.ap-guangzhou.myqcloud.com/wxapp/images/red.png'></image>  -->
+      <view class='item'>
+        <view class='content' style='background-image:url(https://hmeshop-1256233971.cos.ap-guangzhou.myqcloud.com/wxapp/images/coupon.png);'>
+          <view class='left'>
+            <text class=' {{item.IsReceive == "已领完" || item.ReceiveNum == item.StockNum ? "fontcolor-grey" : "fontcolor-red"}}'>¥</text>
+            <text class='money {{item.IsReceive == "已领完" || item.ReceiveNum == item.StockNum ? "fontcolor-grey" : "fontcolor-red"}}'>{{item.CouponValue}}</text>
+          </view>
+          <view class='right'>
+            <text class='font {{item.IsReceive == "已领完" || item.ReceiveNum == item.StockNum ? "fontcolor-grey" : "fontcolor-black"}}'>{{detailData.ConditionValue!=0?"满"+item.ConditionValue+"元可用":'无消费额限制'}}</text>
+            <text class='time'>生效时间：{{item.BeginDate}}</text>
+            <text class='time'>到期时间：{{item.EndDate}}</text>
+          </view>
+        </view>
+        <view class="btn" wx:if="{{item.ReceiveNum!=item.StockNum}}" data-text="{{item.IsReceive}}" data-couponId='{{item.CouponId}}' bindtap='getCoupon'>{{item.IsReceive=='可领取'?'领取':'已领取'}}</view>
+        <view class="btn" wx:else data-text="{{item.IsReceive}}" data-couponId='{{item.CouponId}}' bindtap='getCoupon'>{{item.ReceiveNum==item.StockNum?'已领完':''}}</view>
+      </view>
+    </view>
+    <!-- <navigator class='item' wx:for="{{dataList}}" wx:key="{{index}}" url='/pages/couponDetail/couponDetail?id={{item.CouponId}}'>
+        <image class="bg" src='../..https://hmeshop-1256233971.cos.ap-guangzhou.myqcloud.com/wxapp/images/red.png'></image>
+        <view class="content">
+          <view class='left red'>
+            <text class='icon'>¥</text>
+            <text class='money'>{{item.CouponValue}}</text>
+          </view>
+          <view class='right'>
+            <text class='info'>{{detailData.ConditionValue!=0?"满"+item.ConditionValue+"元可用":'无消费额限制'}}</text>
+            <text class='date'>生效时间：{{item.BeginDate}}</text>
+            <text class='date'>到期时间：{{item.EndDate}}</text>
+          </view>
+        </view>
+      </navigator>
+      <text class="btn" data-couponId='{{item.couponId}}' bindtap='getCoupon'>领取</text> -->
+
+
+  </block>
+  <block wx:if="{{isEmpty}}">
+    <view class='empty'>
+      <image src='../..https://hmeshop-1256233971.cos.ap-guangzhou.myqcloud.com/wxapp/images/pic-kong.png'></image>
+      <text class='empty-text'>暂无优惠卷</text>
+    </view>
+  </block>
+</view>

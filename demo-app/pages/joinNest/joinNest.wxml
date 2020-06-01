@@ -1,0 +1,70 @@
+<import src="../../wxParse/wxParse.wxml" />
+<block wx:for="{{allData}}" wx:key="{{index}}">
+  <!-- 富文本 -->
+  <block wx:if="{{item.type == 1}}">
+    <view class='richtext'>
+      <template is="wxParse" data="{{wxParseData:richtext.nodes}}" />
+    </view>
+  </block>
+
+  <!-- 文本标题 -->
+  <block wx:if="{{item.type == 2}}">
+    <headings headingsUrls="{{item.content}}" />
+  </block>
+
+  <!-- 商品 -->
+  <block wx:if="{{item.type == 4}}">
+    <product-list productlist="{{item}}" />
+  </block>
+
+  <!-- 商品列表 -->
+  <block wx:if="{{item.type == 5}}">
+    <goods-List goodList="{{item}}" />
+  </block>
+
+  <!-- 搜索 -->
+  <block wx:if="{{item.type == 6}}">
+    <search/>
+  </block>
+
+  <!-- 文本导航 -->
+  <block wx:if="{{item.type == 7}}">
+    <text-Navigation textNavUrls="{{item}}" />
+  </block>
+
+  <!-- 图片导航 -->
+  <block wx:if="{{item.type == 8}}">
+    <sort-Navigation sortNavUrls="{{item}}" />
+  </block>
+
+  <!-- 图片广告 -->
+  <block wx:if="{{item.type == 9}}">
+    <ad-pic adpicUrls="{{item}}" />
+  </block>
+
+  <!-- 分割线 -->
+  <block wx:if="{{item.type == 10}}">
+    <cutting-Line cuttlineUrls="{{item.content}}" />
+  </block>
+
+  <!-- 辅助空白 -->
+  <block wx:if="{{item.type == 11}}">
+    <view style='height:{{item.content.height}}px'></view>
+  </block>
+
+  <!-- 顶部菜单 -->
+  <block wx:if="{{item.type == 12}}">
+    <top-Menu topMenuUrls="{{item}}" />
+  </block>
+  
+  <!-- 橱窗 -->
+  <block wx:if="{{item.type == 13}}">
+    <show-Case showCaseList="{{item}}" />
+  </block>
+
+  <!-- 视频 -->
+  <block wx:if="{{item.type == 14}}">
+    <video style='width:100%; margin: 20rpx auto;' objectFit="fill" src="{{item.content.website2}}"></video>
+  </block>
+
+</block>

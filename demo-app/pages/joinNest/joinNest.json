@@ -1,0 +1,16 @@
+{
+  "component": true,
+  "usingComponents": {
+    "ad-pic": "/components/adPic/adPic",
+    "search": "/components/search/search",
+    "product-list": "/components/productList/productList",
+    "sort-Navigation": "/components/sortNavigation/sortNavigation",
+    "cutting-Line": "/components/cuttingLine/cuttingLine",
+    "headings": "/components/headings/headings",
+    "text-Navigation": "/components/textNavigation/textNavigation",
+    "top-Menu": "/components/topMenu/topMenu",
+    "goods-List": "/components/goodsList/goodsList",
+    "show-Case": "/components/showcase/showcase"
+  },
+  "enablePullDownRefresh": true
+}

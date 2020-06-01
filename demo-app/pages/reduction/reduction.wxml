@@ -1,0 +1,22 @@
+<!--pages/reduction/reduction.wxml-->
+<!-- <text>pages/reduction/reduction.wxml</text> -->
+<!-- <image class='banner' src='../../images/banner01@2x.png'></image>
+<view class='content'>
+  <image class='title' src='../../images/zhuangshi@2x.png'>
+    <view class='text'>狂欢满减 乐翻天</view>
+  </image>
+  <view class='li' wx:if="{{!isEmpty}}">
+    <view class='list' wx:for="{{productList}}" wx:key="{{item.CategoryId}}">
+      <image src='{{item.ThumbnailUrl40}}'></image>
+      <view class='manjian'>{{activityData.ActivitiesName}}</view>
+      <view class='txt'>{{item.ProductName}}</view>
+      <view class='price'>￥{{item.SalePrice}}<text>￥{{item.MarketPrice}}</text></view>
+    </view>
+  </view>
+   <view class='empty' wx:if="{{isEmpty}}">
+    <image src='../../images/pic-kong.png'></image>
+    <text>暂无数据</text>
+  </view>
+</view> -->
+<import src="../../module/activityArea/activityArea.wxml"/>
+<template is="activity" data="{{activityData: activityData,isEmpty:isEmpty,productList:productList,discount: 0}}"/>

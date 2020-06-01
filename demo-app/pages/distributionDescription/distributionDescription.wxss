@@ -1,0 +1,91 @@
+/* pages/distributionDescription/distributionDescription.wxss */
+.under-bg{
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+}
+.img-box{
+  position: relative;
+  top: 83rpx;
+  left: 0;
+  width: 100%;
+  height: 890rpx;
+  padding: 0 32rpx;
+  box-sizing: border-box;
+  z-index: 1;
+}
+.img-box>.up-bg{
+  width: 100%;
+  height: 100%;
+}
+.btn-del{
+  position: fixed;
+  top: 34rpx;
+  right: 32rpx;
+  z-index: 2;
+  width: 32rpx;
+  height: 30rpx;
+}
+.text-info{
+  position: absolute;
+  top: 212rpx;
+  left: 32rpx;
+  padding: 0 55rpx;
+  z-index: 2;
+  font-size: 24rpx;
+}
+.text-info>li.item{
+  display: -webkit-flex;
+  display: flex;
+  margin-bottom: 63rpx;
+}
+.text-info>li.item>image{
+  flex-shrink: 0;
+  margin-right: 33rpx;
+  width: 40rpx;
+  height: 40rpx;
+  vertical-align: top;
+}
+.text-info>li.item>text{
+  flex: 1;
+  color: #FFFFFF;
+}
+.text-info>li.bottom{
+  padding-top: 67rpx;
+  box-sizing: border-box;
+  display: -webkit-flex;
+  display: flex;
+  align-items: center;
+  color: #FFFFFF;
+}
+.text-info>li.bottom>.bottom-left{
+  font-size: 30rpx;
+  margin-right: 37rpx;
+}
+.bottom-right>li{
+  display: block;
+}
+.bottom-right>li:first-child{
+  margin-bottom: 1em;
+}
+.btn-box{
+  position: absolute;
+  /* bottom: 90rpx; */
+  left: 0;
+  margin:150rpx 0 90rpx 0;
+  width: 100%;
+  height: 88rpx;
+  padding: 0 32rpx;
+  box-sizing: border-box;
+}
+.btn-box>button{
+  display: inline-block;
+  width: 100%;
+  height: 100%;
+  background: #E0001B;
+  color: #FFFFFF;
+  border-radius: 8rpx;
+  font-size: 30rpx;
+  line-height: 88rpx;
+}

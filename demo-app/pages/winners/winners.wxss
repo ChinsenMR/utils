@@ -1,0 +1,48 @@
+/* pages/winners/winners.wxss */
+.tab{
+  width: 100%;
+  height: 88rpx;
+  background-color: white;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  border-top: 1rpx solid #E5E5E5;
+  border-bottom: 1rpx solid #E5E5E5;
+}
+.tab text{
+  font-size: 28rpx;
+  color: #666666;
+}
+.content{
+  width: 100;
+  height: 120rpx;
+  background-color: white;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  border-bottom: 1rpx solid #E5E5E5;
+}
+.content text{
+  font-size: 28rpx;
+  color: #222222;
+}
+.content .txt{
+  font-size: 24rpx;
+  width: 135rpx;
+  text-align: center;
+}
+
+/*缺省页*/
+.empty{
+  position: fixed;
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%,-40%);
+  color: #666666;
+  font-size: 14px;
+  text-align: center;
+}
+.empty>image{
+  width: 360rpx;
+  height: 360rpx;
+}

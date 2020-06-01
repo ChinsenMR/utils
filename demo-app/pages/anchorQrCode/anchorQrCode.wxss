@@ -1,0 +1,56 @@
+.alert {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background:rgba(240,240,240,1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  transition: .3s;
+
+
+}
+
+.btn {
+  padding: 10rpx 0 15rpx;
+  width: 568rpx;
+  height: 78rpx;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 28rpx;
+  color: #fff;
+  background: linear-gradient(90deg, rgba(255, 83, 83, 1) 0%, rgba(255, 43, 149, 1) 100%);
+  border-radius: 40rpx;
+  border: none;
+}
+
+
+
+
+#myCanvas {
+  width: 700rpx;
+  height: 905rpx;
+}
+
+/* image {
+  width: 70rpx;
+  height: 70rpx;
+  margin-top: 40rpx;
+} */
+
+#myCanvasT {
+  width: 700rpx;
+  height: 905rpx;
+}
+
+
+/**/ 
+
+.alertInfo {
+  transform: translateX(0%);
+}

@@ -1,0 +1,83 @@
+<!--pages/withdraw/withdraw.wxml-->
+<view class='top'>
+  提现方式
+  <view></view>
+</view>
+<view class='content'>
+  <view wx:for="{{allData.payType}}" wx:key="allData" >
+    <view wx:if="{{item.payName == '微信钱包'}}" 
+          class='{{ selectedtype == 0?"active":"default" }}'
+          bindtap="selected" 
+          data-type="{{item.payId}}" >
+      <view>
+        <image src='https://hmeshop-1256233971.cos.ap-guangzhou.myqcloud.com/wxapp/images/qianbao.png'></image>
+      </view>
+      {{item.payName}}
+    </view>
+    <view wx:if="{{item.payName == '线下转帐'}}" 
+          class='{{ selectedtype == 2?"active":"default" }}'  
+          bindtap="selected" 
+          data-type="{{item.payId}}">
+      <view>
+        <image src='https://hmeshop-1256233971.cos.ap-guangzhou.myqcloud.com/wxapp/images/transfer.png'></image>
+      </view>
+      {{item.payName}}
+    </view>    
+    <view wx:if="{{item.payName == '支付宝'}}" 
+          class='{{ selectedtype == 1?"active":"default" }}'  
+          bindtap="selected" 
+          data-type="{{item.payId}}">
+      <view>
+        <image src='https://hmeshop-1256233971.cos.ap-guangzhou.myqcloud.com/wxapp/images/fgb.png'></image>
+      </view>
+      {{item.payName}}
+    </view>
+    <view wx:if="{{item.payName == '微信红包'}}" 
+          class='{{ selectedtype == 3?"active":"default" }}'  
+          bindtap="selected"
+          data-type="{{item.payId}}">
+      <view>
+        <image src='https://hmeshop-1256233971.cos.ap-guangzhou.myqcloud.com/wxapp/images/hongbao.png'></image>
+      </view>
+      {{item.payName}}
+    </view>
+  </view>
+</view>
+
+<!-- 提现数据 -->
+<view class='tixian'>
+  <view class='tixianFont'>提现金额：</view>
+  <view class='fuhao'>￥</view>
+  <input type='number' bindinput="writeMoney" value="{{money}}" placeholder-class="place-holder place-holder1" placeholder='本次可提现{{allData.AvailableAmount}}元'></input>
+</view>
+<view class='' hidden='{{selectedtype == 0 || selectedtype == 3}}'>
+  <view class='list'>
+    <view class='left'>收款人</view>
+    <view class='right'>
+      <input bindinput="writeName" value="{{name}}" placeholder-class="place-holder" placeholder='请输入收款人姓名'></input>
+    </view>
+  </view>
+  <view class='list'>
+    <view class='left'>提现账号</view>
+    <view class='right'>
+      <input bindinput="writeRequestAccount" value="{{requestAccount}}" placeholder-class="place-holder" placeholder='请输入提现账号'></input>
+    </view>
+  </view>
+  <view class='list'>
+    <view class='left'>账号说明</view>
+    <view class='right'>
+      <input bindinput="writeAccountExplain" value="{{AccountExplain}}" placeholder-class="place-holder" placeholder='如开户行/支付宝/微信钱包'></input>
+    </view>
+  </view>
+  <view class='list'>
+    <view class='left'>备注</view>
+    <view class='right'>
+      <input bindinput="writeRemark" value="{{Remark}}" placeholder-class="place-holder" placeholder='请输入备注信息'></input>
+    </view>
+  </view>
+</view>
+<view class='content2' hidden='{{selectedtype != 3}}'>
+    <image src='https://hmeshop-1256233971.cos.ap-guangzhou.myqcloud.com/wxapp/images/zhuyi.png'></image>
+    <text>微信红包限额200元</text>
+  </view>
+<view class='btn' bindtap='onSubmit'>确认提现</view>

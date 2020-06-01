@@ -1,0 +1,68 @@
+<!--pages/voteDetail/voteDetail.wxml-->
+<view class='box'>
+  <view class='img'>
+    <image src='/images/banner_1.png'></image>
+  </view>
+  <view class='font'>
+    <view>活动时间：2018-12-12 09.00 ~ 2018-12-13 09.00</view>
+    <view>参与会员：全部会员</view>
+  </view>
+  <view class='discounts'>
+    <view class='left'>优惠大甩卖</view>
+  </view>
+</view>
+
+<view class='evaluate'>
+  <view>
+    <view class='e_left'>
+      <view class='l_top'>
+        <view>好</view>
+        <view>1
+          <text>(100%)</text> </view>
+      </view>
+      <view class='l_bottom'>
+        <view></view>
+      </view>
+    </view>
+    <view class='e_right' bindtap='checkOne'>
+      <checkbox style='zoom:65%'></checkbox>
+      <view>选择</view>
+    </view>
+  </view>
+  <view>
+    <view class='e_left'>
+      <view class='l_top'>
+        <view>好</view>
+        <view>0
+          <text>(0%)</text> </view>
+      </view>
+      <view class='l_bottom'>
+        <view></view>
+      </view>
+    </view>
+    <view class='e_right' bindtap='checkTwo'>
+      <checkbox style='zoom:65%'></checkbox>
+      <view>选择</view>
+    </view>
+  </view>
+  <view>
+    <view class='e_left'>
+      <view class='l_top'>
+        <view>好</view>
+        <view>0
+          <text>(0%)</text> </view>
+      </view>
+      <view class='l_bottom'>
+        <view></view>
+      </view>
+    </view>
+
+    <view class='e_right' bindtap='checkThree'>
+      <checkbox style='zoom:65%'></checkbox>
+      <view>选择</view>
+    </view>
+  </view>
+</view>
+
+
+<view class='voteBtn'>投票</view>

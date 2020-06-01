@@ -1,0 +1,36 @@
+<!--pages/distributionDescription/distributionDescription.wxml-->
+<view class='description'>
+  <image src='https://hmeshop-1256233971.cos.ap-guangzhou.myqcloud.com/wxapp/images/bigbg.png' class='under-bg'></image>
+  <view class='img-box'>
+    <image src='https://hmeshop-1256233971.cos.ap-guangzhou.myqcloud.com/wxapp/images/border.png' class='up-bg'></image>
+  </view>
+  <image src='https://hmeshop-1256233971.cos.ap-guangzhou.myqcloud.com/wxapp/images/del.png' class='btn-del' bindtap='onClose'></image>
+  <ul class="text-info">
+    <li class="item">
+      <image src='../../images/1.png'></image>
+      <text>将店铺、商品或图文素材发送给朋友或分享到朋友圈；</text>
+    </li>
+    <li class="item">
+      <image src='../../images/2.png'></image>
+      <text>从您分享的链接进入店铺注册成为会员的，将成为您的下级会员；</text>
+    </li>
+    <li class="item">
+      <image src='../../images/3.png'></image>
+      <text>若下级会员购买商品，您可以获取相应的佣金；</text>
+    </li>
+    <li class="item">
+      <image src='../../images/4.png'></image>
+      <text>下级会员成为分销商以后，下级分销商的下级会员若购买商品，您又可以获取相应的佣金；</text>
+    </li>
+    <li class="bottom">
+      <text class='bottom-left'>说明</text>
+      <ul class="bottom-right">
+        <li class="top-info">您分享出去的链接都会带有您专属的推广码，好友通过您的链接进店注册，将自动成为您的下级会员</li>
+        <li>计算佣金时，不包含运费和优惠部分的金额，只计算实付款减去运费的金额</li>
+      </ul>
+    </li>
+  </ul>
+  <view class='btn-box'>
+    <button bindtap='onConfirm'>我已阅读说明</button>
+  </view>
+</view>

@@ -1,0 +1,38 @@
+<view class='list'>
+  <view>
+    <view>申请成为商城会员(且登入)</view>
+    <view class='finished'>已达成</view>
+  </view>
+  <view>
+    <view>账号在商城累计消费额满0元</view>
+    <view class='gofinish'>去完成</view>
+  </view>
+</view>
+  <view class='once'>
+    <image src='/images/zhuyi.png'></image>
+    <view>一次性预存1980元，即可成为分销商！</view>
+  </view>
+
+<navigator class='btn'>继续逛逛</navigator>
+
+
+<view class='box'>
+  <view class='title'>分销商特权</view>
+  <view class='li'>
+    <image src='/images/1qqq@2x.png'></image>
+    <view>零库存开设微信店铺，平台统一发货；</view>
+  </view>
+  <view class='li'>
+    <image src='/images/2qqq@2x.png'></image>
+    <view>拥有专属推广链接，快速发展下级分销商和会员；</view>
+  </view>
+  <view class='li'>
+    <image class='img' src='/images/3qqq@2x.png'></image>
+    <view>除了可以分享店铺主页和商品，平台也提供精美素材供 分销商分享；
+    </view>
+  </view>
+  <view class='li'>
+    <image src='/images/4qqq@2x.png'></image>
+    <view>通过下级会员消费获得佣金收益，佣金可以提现。</view>
+  </view>
+</view>

@@ -1,0 +1,108 @@
+/* pages/reduction/reduction.wxss */
+.banner-box{
+  position: relative;
+  width: 100%;
+}
+.activity-title{
+  position: absolute;
+  top: 94rpx;
+  left: 34rpx;
+  color: #fff;
+}
+.activity-name{
+  display: block;
+  font-size: 50rpx;
+}
+.banner{
+  width: 100%;
+  height: 330rpx;
+  display: flex;
+  justify-content: center;
+}
+.content{
+  width: 100%;
+  height: auto;
+  background: #7109FE;
+}
+.title{
+  width: 420rpx;
+  height: 20rpx;
+  position: relative;
+  padding-top: 34rpx;
+  margin: 0 auto;
+}
+.title .text{
+  font-size: 36rpx;
+  color: white;
+  position: absolute;
+  top: 10rpx;
+  left: 85rpx;
+}
+.li{
+  display: flex;
+  width: 714rpx;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  margin-left: 20rpx;
+  padding-bottom: 20rpx
+}
+.list{
+  width: 348rpx;
+  height: auto;
+  background-color: white;
+  margin: 28rpx 0 0 0;
+  text-align: center;
+}
+.list image{
+  width: 348rpx;
+  height: 348rpx;
+}
+.list .manjian{
+  padding: 2px 4px;
+  box-sizing: border-box; 
+  border-radius: 19rpx;
+  border: 2rpx solid #E0001B;
+  color: #E0001B;
+  font-size: 24rpx; 
+  font-weight: 700;
+}
+.list .txt{
+  font-size: 24rpx;
+  color: #333333;
+  border-top: 1rpx solid #E5E5E5;
+  padding: 15rpx 5rpx 0 13rpx;
+  overflow:hidden; 
+  text-overflow:ellipsis;
+  display:-webkit-box; 
+  -webkit-box-orient:vertical;
+  -webkit-line-clamp:2;
+  line-height: 28rpx;
+  height: 56rpx;
+}
+.list .price{
+  font-size: 32rpx;
+  color: #E0001B;
+  margin: auto 0 13rpx 13rpx;
+}
+.list .price text{
+  font-size: 24rpx;
+  color: #999999;
+  text-decoration: line-through;
+}
+.txt,.price{
+  text-align: left;
+}
+/*缺省页*/
+.empty{
+  margin: 0 auto;
+  padding-bottom: 30rpx;
+  box-sizing: border-box;
+  color: #666666;
+  text-align: center;
+  font-size: 16px;
+}
+.empty>image{
+  margin: 0 auto;
+  width: 360rpx;
+  height: 360rpx;
+}

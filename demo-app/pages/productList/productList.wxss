@@ -1,0 +1,149 @@
+/* pages/productList/productList.wxss */
+/*头部 */
+.pro-list-top{
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 2;
+  width: 100%;
+  background: #f5f5f5;
+}
+.pro-list-top>.search-box{
+  position: relative;
+  padding: 8px 30rpx;
+  box-sizing: border-box;
+  width: 100%;
+}
+.pro-list-top>.search-box>.icon{
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  left: 20px;
+}
+.pro-list-top>.search-box>input{
+  padding-left: 35px; 
+  padding-right: 20px;
+  border-radius: 28px;
+  background: #ffffff;
+  font-size: 13px;
+  height: 30px;
+}
+.tab-bar{
+  display: -webkit-flex;
+  display: flex;
+  align-items: center;
+  height: 44px;
+  background: #ffffff;
+  border-bottom: 2rpx solid #e5e5e5;
+}
+.tab-bar>view{
+  position: relative;
+  flex: 1;
+  display: -webkit-flex;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  color: #B2B2B2;
+}
+.tab-bar>view.current{
+  color: #FA7153;
+  font-weight: 700;
+}
+.tab-bar>view>image{
+  display: inline-block;
+  margin-left: 3px;
+  width: 30rpx;
+  height: 30rpx;
+}
+/*列表  */
+.store-products{
+  margin-top: 90px;
+  padding-left: 18rpx;
+  padding-top: 18rpx;
+  box-sizing: border-box; 
+  background: #ffffff;
+}
+.pro-item{
+  display: inline-block;
+  width: 50%;
+  padding-right: 18rpx;
+  padding-bottom: 18rpx; 
+  box-sizing: border-box;
+}
+.item-wrap{
+  border: 2rpx solid #E5E5E5;
+  border-radius: 8rpx;
+  overflow: hidden;
+  box-sizing: border-box;
+}
+.item-wrap>.img-box{
+  position: relative;
+  width: 100%;
+  padding-bottom: 100%; 
+  box-sizing: border-box;
+}
+.item-wrap>.img-box>image{
+  position: absolute;
+}
+.item-wrap>.img-box>.sale-count{
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  z-index: 1;
+  width: 100%;
+  text-align: right;
+  padding: 6rpx 10rpx;
+  box-sizing: border-box;
+  font-size: 12px;
+  color: #fff;
+  background: rgba(0, 0, 0, .4);
+}
+.item-wrap>.title{
+  padding: 13rpx 13rpx 0 13rpx;
+  box-sizing: border-box;
+  width: 100%;
+  height: 38px;
+  line-height: 16px;
+  font-size: 12px;
+   word-break: break-all;
+  text-overflow: ellipsis;
+  display: -webkit-box; /** 对象作为伸缩盒子模型显示 **/
+  -webkit-box-orient: vertical; /** 设置或检索伸缩盒对象的子元素的排列方式 **/
+  -webkit-line-clamp: 2; /** 显示的行数 **/
+  overflow: hidden; /** 隐藏超出的内容 **/
+}
+.price-box{
+  margin-top: 3px;
+  padding-bottom: 8rpx;
+  padding-left: 13rpx;
+  box-sizing: border-box;
+}
+.price-box>.icon-red{
+  font-size: 12px;
+  color: #FA7153;
+}
+.price-box>.current-price{
+  font-size: 18px;
+  color: #FA7153;
+}
+.price-box>.original-price{
+  margin-left: 16rpx;
+  font-size: 12px;
+  color: #999999;
+  text-decoration: line-through;
+}
+
+.empty{
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+  color: #666666;
+  font-size: 14px;
+  text-align: center;
+}
+.empty>image{
+  width: 360rpx;
+  height: 360rpx;
+}

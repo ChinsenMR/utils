@@ -1,0 +1,23 @@
+<wxs module="index">
+  var trunClass = function (type){
+   return type == 0 ? 'success' : type == 1 ?  'error' : ''
+  }
+  module.exports.trunClass = trunClass
+</wxs>
+<block wx:if="{{list.length > 0}}">
+  <view class="bg-white">
+    <navigator class="cu-form-group padding-l-30 padding-r-30" wx:for="{{list}}" wx:key="{{index}}" url="./apply?fromType=1&id={{item.ApplyId}}">
+      <view class="title {{ index.trunClass(item.AuditCode) }}">{{item.AuditCodeDes}}</view>
+      <input disabled />
+      <view class="action">{{item.ApplyDate}}</view>
+    </navigator>
+  </view>
+</block>
+<block wx:else>
+  <view class="text-center font-26 padding-30">暂无数据</view>
+</block>
+<block>
+  <navigator url="./apply">
+    <button class="send-apply">申请代理</button>
+  </navigator>
+</block>

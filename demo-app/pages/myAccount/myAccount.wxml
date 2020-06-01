@@ -1,0 +1,58 @@
+<view class="top">
+  <image src='https://hmeshop-1256233971.cos.ap-guangzhou.myqcloud.com/wxapp/images/bg_red.png'></image>
+  <view class='top_content'>
+    <!-- <view class='c_top'>
+      <view class='ct_left'>
+        <image src='https://hmeshop-1256233971.cos.ap-guangzhou.myqcloud.com/wxapp/images/retnrnw.png'></image>
+      </view>
+      <view>我的账户</view>
+      <view></view>
+    </view> -->
+    <view class='c_center'>
+      <text class='symbel'>￥</text>{{money}}
+    </view>
+    <view class='c_bottom'>账户余额</view>
+  </view>
+</view>
+<view class='items'>
+  <navigator class='right' url='/pages/withdraw/withdraw'>提现</navigator>
+  <!-- <navigator url='/pages/recharge/recharge'>充值</navigator> -->
+</view>
+
+<view class='list'>
+  <navigator url='/pages/remaining/remaining'>
+    <view class='left'>
+      <view class='img'>
+        <image src='https://hmeshop-1256233971.cos.ap-guangzhou.myqcloud.com/wxapp/images/getcashrecord@2x.png'></image>
+      </view>
+      <view>提现记录</view>
+    </view>
+    <view class='right'>
+      <view class='img'>
+        <image src='https://hmeshop-1256233971.cos.ap-guangzhou.myqcloud.com/wxapp/images/more.png'></image>
+      </view>
+    </view>
+  </navigator>
+  <navigator url='/pages/withdrawDetail/withdrawDetail'>
+    <view class='left'>
+      <view class='img'>
+        <image src='https://hmeshop-1256233971.cos.ap-guangzhou.myqcloud.com/wxapp/images/list.png'></image>
+      </view>
+      <view>余额明细</view>
+    </view>
+    <view class='right'>
+      <view class='img'>
+        <image src='https://hmeshop-1256233971.cos.ap-guangzhou.myqcloud.com/wxapp/images/more.png'></image>
+      </view>
+    </view>
+  </navigator>
+  <!-- <navigator url='/pages/remaining/remaining'>
+    <view class='left'>
+      <image src='https://hmeshop-1256233971.cos.ap-guangzhou.myqcloud.com/wxapp/images/list.png'></image>
+      <view>余额明细</view>
+    </view>
+    <view class='right'>
+      <image src='https://hmeshop-1256233971.cos.ap-guangzhou.myqcloud.com/wxapp/images/more.png'></image>
+    </view>
+  </navigator> -->
+</view>

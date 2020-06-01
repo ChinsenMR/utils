@@ -1,0 +1,40 @@
+<!--pages/productEvaluate/productEvaluate.wxml-->
+<view class='products'>
+  <view class='pro-item' wx:for="{{order.OrderItems}}" wx:key="{{index}}">
+    <image src='{{item.Img}}'></image>
+    <view class='right'>
+      <text selectable class='title'>{{item.ProductName}}</text>
+      <view class='bottom'>
+        <text class='money'>¥{{item.Price}}</text>
+        <text class='quantity'>x{{item.Quantity}}</text>
+      </view>
+    </view>
+  </view>
+</view>
+<view class='text-wrap'>
+ <textarea maxlength='200' placeholder='说说它的优点和美中不足的地方吧~' bindinput="onGetInfo"></textarea>
+</view>
+<view class='btn-wrap'>
+ <button bindtap='onSubmit'>提交评价</button>
+</view>
+
+<view class='bottom' wx:if="{{orderData.length > 0}}">
+  <view class='bottom_title'>全部评价</view>
+  <view class='evalute-box' style='padding-bottom: 98rpx;'>
+    <view class='all-evaluate'>
+      <view class='evaluate-contents'>
+        <view class='items' wx:for="{{orderData}}" wx:key="index">
+          <view class='items-top'>
+            <text>{{item.UserName}}：</text>
+            <text>{{item.ReviewDate}}</text>
+          </view>
+          <text class='items-content'>{{item.ReviewText}}</text>
+        </view>
+      </view>
+    </view>
+    <view class='empty' wx:if="{{isEmpty}}">
+      <image src='https://hmeshop-1256233971.cos.ap-guangzhou.myqcloud.com/wxapp/images/pic-kong.png'></image>
+      <text>暂无评价内容</text>
+    </view>
+  </view>
+</view>

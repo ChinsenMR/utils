@@ -1,0 +1,270 @@
+<!--pages/myConsultation/myConsultation.wxml-->
+<wxs src="../../utils/base64.wxs" module="base64Imgs" />
+<scroll-view style="height: {{screenHeight-125}}px;" scroll-y='{{isscroll}}' bindscrolltoupper="upper" scroll-into-view="content-box" scroll-top="{{scrollTop}}">
+  <view id='allpull' bindtap='outbtn' wx:if="{{newslist || historyList}}">
+    <view class='nothing' wx:if="{{maxlength>=10}}">下拉加载更多</view>
+    <!-- 历史记录 -->
+    <view class='content-box' wx:for="{{historyList}}" wx:key="{{index}}">
+      <!-- 用户 -->
+      <view class='ask' wx:if="{{item.isCS === 'False'}}">
+        <view class='left'>
+          <!-- 文字 -->
+          <view wx:if="{{item.type == 'text'}}">
+            <view class='ask-text'>
+              <block wx:for="{{item.content}}" wx:key="{{index}}">
+                <text wx:if="{{!emojiData[item]}}">{{item}}</text>
+                <image class='textEmoji' wx:if="{{emojiData[item]}}" src="{{emojiData[item]}}"></image>
+              </block>
+            </view>
+            <text class='date'>{{item.date}}</text>
+          </view>
+          <!-- title -->
+          <view wx:if="{{item.type == 'title'}}">
+            <text class='ask-text'>{{item.note}}</text>
+            <text class='date'>{{item.date}}</text>
+          </view>
+          <!-- 图片 -->
+          <view class='askimg' wx:if="{{item.type == 'image'}}">
+            <image mode='aspectFit' data-src="{{item.content}}" lazy-load="true" bindtap="previewImg" class='image' src='{{item.content}}'></image>
+            <text class='date'>{{item.date}}</text>
+          </view>
+          <!-- 语音 -->
+          <view class='askvoice' wx:if="{{item.type == 'voice'}}">
+            <text class='view'>{{item.note}}″</text>
+            <view class='ask-voice' data-file='{{item.content}}' data-second='{{item.second}}' bindtap='playVoice'>
+              <image class='image' src="{{playVoiceStatus&&selectfile==item.content?base64Imgs.voicegif:base64Imgs.voicepng}}"></image>
+            </view>
+            <text class='date'>{{item.date}}</text>
+          </view>
+          <!-- 商品名片 -->
+          <view class='goodsCard' wx:if="{{item.type == 'goodsCard'}}">
+            <navigator class='card' url='/pages/productDetail/productDetail?id={{item.content[0]}}'>
+              <view class='img'>
+                <image src='{{item.content[2]}}'></image>
+              </view>
+              <view style='width: 70%;overflow: hidden;'>
+                <view class='txt'>{{item.content[1]}}</view>
+                <view style='color:red;float:right'>￥{{item.content[3]}}</view>
+              </view>
+            </navigator>
+            <text class='date'>{{item.date}}</text>
+          </view>
+        </view>
+        <image class='avatarimg' src='{{userInfo.avatarUrl}}'></image>
+      </view>
+      <!-- 客服 -->
+      <view class='answer' wx:if="{{item.isCS === 'True'}}">
+        <image class='avatarimg' src='{{item.avatarUrl}}'></image>
+        <view class='right'>
+          <!-- 文字&自动回复 -->
+          <view wx:if="{{item.type == 'text' || item.type == 'Reply'}}">
+            <view class='answer-text'>
+              <block wx:for="{{item.content}}" wx:key="{{index}}">
+                <text wx:if="{{!emojiData[item]}}">{{item}}</text>
+                <image class='textEmoji' wx:if="{{emojiData[item]}}" src="{{emojiData[item]}}"></image>
+              </block>
+            </view>
+            <text class='date'>{{item.date}}</text>
+          </view>
+          <!-- 自定义页面跳转 -->
+          <view wx:if="{{item.type == 'link'}}">
+            <navigator hover-class='none' url='/pages/joinNest/joinNest?parameter={{item.content[0]}}'>
+              <text class='answer-text' style='color:blue'>{{item.content[1]}}</text>
+            </navigator>
+            <text class='date'>{{item.date}}</text>
+          </view>
+          <!-- 自定义列表 -->
+          <view wx:if="{{item.type == 'list'}}">
+            <view class='custom-list' style='padding:0 28rpx'>
+              <view wx:for='{{item.content}}' style='margin:12rpx 0' data-index='{{index}}' data-id='{{item.ReplyId}}' data-title='{{item.Title}}' bindtap='customlist'>{{index+1}}、{{item.Title}}</view>
+            </view>
+            <text class='date'>{{item.date}}</text>
+          </view>
+          <!-- 图片 -->
+          <view class='askimg' wx:if="{{item.type == 'image'}}">
+            <image mode='aspectFit' data-src="{{item.content}}" lazy-load="true" bindtap="previewImg" class='img' src='{{item.content}}'></image>
+            <text class='date'>{{item.date}}</text>
+          </view>
+          <!-- 商品名片 -->
+          <view class='goodsCard' wx:if="{{item.type == 'goodsCard'}}">
+            <navigator class='card' url='/pages/productDetail/productDetail?id={{item.content[0]}}'>
+              <view class='img'>
+                <image src='{{item.content[2]}}'></image>
+              </view>
+              <view style='width: 70%;overflow: hidden;'>
+                <view class='txt'>{{item.content[1]}}</view>
+                <view style='color:red;float:right'>￥{{item.content[3]}}</view>
+              </view>
+            </navigator>
+            <text class='date'>{{item.date}}</text>
+          </view>
+        </view>
+      </view>
+    </view>
+    <view class='nothing' wx:if='{{historyList.length != 0}}'>———— 以上为历史记录 ————</view>
+    <!-- 即时聊天 -->
+    <view class='content-box' wx:for="{{newslist}}" wx:key="{{index}}">
+      <!-- 用户 -->
+      <view class='ask' wx:if="{{item.isCS === 'false'}}">
+        <view class='left'>
+          <!-- 文字 -->
+          <view wx:if="{{item.type == 'text'}}">
+            <view class='ask-text'>
+              <block wx:for="{{item.content}}">
+                <text wx:if="{{!emojiData[item]}}">{{item}}</text>
+                <image class='textEmoji' wx:if="{{emojiData[item]}}" src="{{emojiData[item]}}"></image>
+              </block>
+            </view>
+            <text class='date'>{{item.date}}</text>
+          </view>
+          <!-- title -->
+          <view wx:if="{{item.type == 'title'}}">
+            <text class='ask-text'>{{item.note}}</text>
+            <text class='date'>{{item.date}}</text>
+          </view>
+          <!-- 图片 -->
+          <view class='askimg' wx:if="{{item.type == 'image'}}">
+            <image mode='aspectFit' data-src="{{item.content}}" lazy-load="true" bindtap="previewImg" class='image' src='{{item.content}}'></image>
+            <text class='date'>{{item.date}}</text>
+          </view>
+          <!-- 商品名片 -->
+          <view class='goodsCard' wx:if="{{item.type == 'goodsCard'}}">
+            <navigator class='card' url='/pages/productDetail/productDetail?id={{item.content[0]}}'>
+              <view class='img'>
+                <image src='{{item.content[2]}}'></image>
+              </view>
+              <view style='width: 70%;overflow: hidden;'>
+                <view class='txt'>{{item.content[1]}}</view>
+                <view style='color:red;float:right'>￥{{item.content[3]}}</view>
+              </view>
+            </navigator>
+            <text class='date'>{{item.date}}</text>
+          </view>
+          <!-- 语音 -->
+          <view class='askvoice' wx:if="{{item.type == 'voice'}}">
+            <text class='view'>{{item.note}}″</text>
+            <view class='ask-voice' data-file='{{item.content}}' data-second='{{item.second}}' bindtap='playVoice'>
+              <image class='image' src="{{playVoiceStatus&&selectfile==item.content?base64Imgs.voicegif:base64Imgs.voicepng}}"></image>
+            </view>
+            <text class='date'>{{item.date}}</text>
+          </view>
+        </view>
+        <image class='avatarimg' src='{{userInfo.avatarUrl}}'></image>
+      </view>
+      <!-- 客服 -->
+      <view class='answer' wx:if="{{item.isCS === 'true'}}">
+        <image class='avatarimg' src='{{item.avatarUrl}}'></image>
+        <view class='right'>
+          <!-- 文字&自动回复 -->
+          <view wx:if="{{item.type == 'text' || item.type == 'Reply'}}">
+            <view class='answer-text'>
+              <block wx:for="{{item.content}}">
+                <text wx:if="{{!emojiData[item]}}">{{item}}</text>
+                <image class='textEmoji' wx:if="{{emojiData[item]}}" src="{{emojiData[item]}}"></image>
+              </block>
+            </view>
+            <text class='date'>{{item.date}}</text>
+          </view>
+          <!-- 自定义页面跳转 -->
+          <view wx:if="{{item.type == 'link'}}">
+            <navigator hover-class='none' url='/pages/joinNest/joinNest?parameter={{item.content[0]}}'>
+              <text class='answer-text' style='color:blue'>{{item.content[1]}}</text>
+            </navigator>
+            <text class='date'>{{item.date}}</text>
+          </view>
+          <!-- 自定义列表 -->
+          <view wx:if="{{item.type == 'list'}}">
+            <view class='custom-list' style='padding:0 28rpx'>
+              <view wx:for='{{item.content}}' style='margin:12rpx 0' data-index='{{index}}' data-id='{{item.ReplyId}}' data-title='{{item.Title}}' bindtap='customlist'>{{index+1}}、{{item.Title}}</view>
+            </view>
+            <text class='date'>{{item.date}}</text>
+          </view>
+          <!-- 图片 -->
+          <view class='askimg' wx:if="{{item.type == 'image'}}">
+            <image mode='aspectFit' data-src="{{item.content}}" lazy-load="true" bindtap="previewImg" class='img' src='{{item.content}}'></image>
+            <text class='date'>{{item.date}}</text>
+          </view>
+          <!-- 商品名片 -->
+          <view class='goodsCard' wx:if="{{item.type == 'goodsCard'}}">
+            <navigator class='card' url='/pages/productDetail/productDetail?id={{item.content[0]}}'>
+              <view class='img'>
+                <image src='{{item.content[2]}}'></image>
+              </view>
+              <view style='width: 70%;'>
+                <view class='txt'>{{item.content[1]}}</view>
+                <view style='color:red;float:right'>￥{{item.content[3]}}</view>
+              </view>
+            </navigator>
+            <text class='date'>{{item.date}}</text>
+          </view>
+        </view>
+      </view>
+      <!-- 客服评价 -->
+      <view class="{{performance?'performance':'perform'}}" data-id='{{item.CsId}}' data-name='{{item.nickName}}' data-url='{{item.avatarUrl}}' bindtap='toPerformance' wx:if="{{item.type === 'performance'}}">{{performance?'点击去往客服评价':'已评价'}}</view>
+    </view>
+  </view>
+  <view class='empty' wx:if='{{!newslist.length &&!historyList.length }}'>
+    <image src='https://hmeshop-1256233971.cos.ap-guangzhou.myqcloud.com/wxapp/images/pic-kong.png'></image>
+    <text>暂无数据</text>
+  </view>
+  <view id="flag"></view>
+</scroll-view>
+
+
+<!-- 输入控件 -->
+<view class="{{increase || emojiShow?'bottomput':'bottom'}}"></view>
+<view class="message" style='bottom:{{keyheight}}px'>
+  <view bindreset="cleanInput" class="sendMessage">
+    <view class='voice' bindtap='switchicon'>
+      <image class='voiceimg' wx:if='{{voicekeyborad == true}}' src='https://s1.mtcdn.cn/hme/html/20181030/1f14af1e-79c6-4db2-9aa5-c893b60cd7e9.png'></image>
+      <image class='voiceimg' wx:if='{{voicekeyborad == false}}' src='https://s1.mtcdn.cn/hme/html/20181030/2d66b57d-dcd5-489a-8921-b9dbb107be13.png'></image>
+      <image class='voiceimg' wx:if='{{voicekeyborad == "robot"}}' src='https://s1.mtcdn.cn/hme/html/20181130/2d2cc3f9-0db8-41c1-a200-81381ff391f3.png'></image>
+    </view>
+    <view class='sendinput' wx:if='{{voicekeyborad == true ||voicekeyborad == "robot" }}'>
+      <input cursor-spacing='6' confirm-type='send' confirm-hold="true" maxlength="-1" focus="{{focus}}" type="text" value="{{message}}" adjust-position='{{adjustposition}}' bindblur='bindblur' bindfocus='bindfocus' bindconfirm='send' bindinput='bindChange'></input>
+    </view>
+    <!-- 语音 -->
+    <view class='sendinput' wx:if='{{voicekeyborad == false}}'>
+      <view class='voiceinput' bindlongpress="touchdown" bindtouchend="touchup" bindtouchmove="handletouchmove" hover-class="voicepress">{{voiceStatus?(!sendLock?'松开 结束':'松开手指 取消发送'):'按住 说话'}}</view>
+    </view>
+    <!-- showToast -->
+    <view wx:if="{{voiceStatus}}" class='showToast' catchtouchmove='showToastmove'>
+      <view class='content'>
+        <image class='img' src='{{!sendLock?base64Imgs.voiceplay:base64Imgs.revocation}}'></image>
+        <view class='txt'>{{!sendLock?'手指上滑，取消发送':'松开手指，取消发送'}}</view>
+      </view>
+    </view>
+    <!-- 按钮 -->
+    <view class='button'>
+      <view wx:if="{{btnAadd}}" class="add" bindtap='increase'>+</view>
+      <input wx:else class='send' bindtap='send' value='发送'></input>
+    </view>
+    <view class='button'>
+      <image class='images' src='{{base64Imgs.emojiicon}}' bindtap='onEmoji'></image>
+    </view>
+  </view>
+  <!-- 多功能列表 -->
+  <view class='increased {{aniStyle?"slideup":"slidedown"}}' wx:if="{{increase}}">
+    <view class='image'>
+      <image bindtap='chooseImage' src='https://s1.mtcdn.cn/hme/html/20181031/d6d593c7-a907-4bc7-b4f9-869a49332155.png'></image>
+      <text>上传图片</text>
+    </view>
+    <view class='image' wx:if="{{phoneNum != 0}}">
+      <image catchtap="CallTel" src='https://s1.mtcdn.cn/hme/html/20181031/b11470eb-0868-4b2e-a920-b0c14d70b7bd.png'></image>
+      <text>呼叫客服</text>
+    </view>
+    <view class='image'>
+      <image bindtap='toGoodsCard' src='https://s1.mtcdn.cn/hme/html/20181031/40d004f1-43e7-4962-878d-2ea76665e332.png'></image>
+      <text>商品名片</text>
+    </view>
+  </view>
+  <!-- 表情包列表 -->
+  <view class='increased {{emojiShow?"slideup":"slidedown"}}' style='padding:0;height:380rpx' wx:if="{{emojiShow}}">
+    <view class="AllEmoji">
+      <view class="emojiContent" wx:for='{{emojiData}}' data-index='{{index}}' data-val='{{item}}' bindtap='sendEmoji'>
+        <image class="emojiImg" src='{{item}}'></image>
+      </view>
+    </view>
+  </view>
+</view>
+<view class="{{isFullIphone?'FullIphone':''}}"></view>

@@ -1,0 +1,8 @@
+.loading-box{
+  margin: 50% auto;
+  text-align: center;
+}
+.loading-box image{
+  width: 40px;
+  height: 40px;
+}

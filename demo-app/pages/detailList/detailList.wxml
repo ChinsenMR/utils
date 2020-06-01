@@ -1,0 +1,92 @@
+<!--pages/detailList/detailList.wxml-->
+<wxs src="../../utils/base64.wxs" module="base64Imgs" />
+<view class='detailList'>
+  <view class="Skin-BalanceDrawRequesList">
+    <view class="orderTitle">
+      <view class="list list1 {{detailIndex == 0 ? 'actives' : ''}}" data-index='0' bindtap='tabDetail'>预计佣金</view>
+      <view class="list list1 {{detailIndex == 1 ? 'actives' : ''}}" data-index='1' bindtap='tabDetail'>佣金明细</view>
+      <view class="list {{detailIndex == 2 ? 'actives' : ''}}" data-index='2' bindtap='tabDetail'>提现结算列表</view>
+    </view>
+
+    <!-- 历史佣金明细 -->
+    <view class='Skin-VCommissionDetails' wx:if="{{detailIndex==0 &&dataList.length}}">
+      <view class="listdetail" >
+        <view class="shopcommssion">
+          <view class='listCont' wx:for="{{dataList}}" >
+            <view class="info" >
+              <view class="storeName">订单号：{{item.OrderId}} </view>
+              <view>
+                <text style='margin-top: 8px;'>订单金额：¥{{item.ItemListPrice}}</text>
+              </view>
+              <text class="date" style='margin-top: 8px;'>时间：{{item.OrderDate}}</text>
+            </view>
+            <view class="money-box">+<text class='commissions'>￥</text>{{item.Money}}</view>
+          </view>
+        </view>
+      </view>
+    </view> 
+    <!-- 历史佣金明细 end-->
+
+    <!-- 佣金明细 start-->
+    <ul class='group-list' wx:if="{{detailIndex==1&&dataList.length}}">
+      <li class="gl-item" style="border: 2rpx solid #e5e5e5;">
+        <text class='gli-text br'>流水号</text>
+        <text class='gli-text br'>订单总额</text>
+        <text class='gli-text br'>奖励金额</text>
+        <text class='gli-text br'>奖励说明</text>
+        <text class='gli-text'>奖励状态</text>
+      </li>
+
+      <li class="gl-item" wx:for="{{dataList}}">
+        <text class='gli-text br'>{{item.OrderId}}</text>
+        <text class='gli-text br'>¥{{item.OrderTotal}}</text>
+        <text class='gli-text br'>¥{{item.CommTotal}}</text>
+        <text class='gli-text br'>{{item.CommRemark}}</text>
+        <text class='gli-text'>{{item.Status?"已完成":"待确认"}}</text>
+      </li>
+
+    </ul>
+    <view class='empty' wx:if="{{!dataList.length}}">
+      <image src='{{base64Imgs.emptyImg}}'></image>
+      <text>暂无数据</text>
+    </view>
+    <!-- 佣金明细 end-->
+
+    <!-- //提现结算列表 -->
+    <view class="listdetail" wx:if="{{detailIndex==2&&dataList.length}}">
+      <view class="shopbalancedraw">
+        <view class='ListContent' wx:for="{{dataList}}">
+
+          <view class="info">
+            <view class="storeName">{{item.MerchantCode}}</view>
+            <view>
+              <text class="color">{{item.CheckTime}}</text>
+            </view>
+          </view>
+          <view class="moneys">
+            <view class='moneyTop'>
+              <text class='symbol'>￥</text>{{item.Amount}}</view>
+            <text class="achieve {{item.ChekcNum != 2?'achieve1':''}}">{{item.Status}}</text>
+          </view>
+        </view>
+
+        <!-- <view class='ListContent'>
+          <view class="info">
+            <view class="storeName">建设银行(4584 **** **** 4584)</view>
+            <view>
+              <text class="color">2018.12.12 12:04:49</text>
+            </view>
+          </view>
+          <view class="moneys">
+            <view class='moneyTop'>
+              <text class='symbol'>￥</text>10</view>
+            <text class="achieve achieve1">等待受理</text>
+          </view>
+        </view> -->
+
+      </view>
+    </view>
+    <!-- //提现结算列表 end-->
+    <view class="under"></view>
+  </view>
+</view>

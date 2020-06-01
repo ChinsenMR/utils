@@ -1,0 +1,125 @@
+/* pages/userInfo/userInfo.wxss */
+
+.skin-vuserInfo .headImg {
+	background: #fff;
+	border-bottom:2rpx solid #e5e5e5;
+}
+.skin-vuserInfo .headImg .img {
+	text-align: center;
+}
+.skin-vuserInfo .headImg .img image {
+	display: inline-block;
+	width:148rpx;
+	height:148rpx;
+	border-radius: 50%;
+  border: 2rpx solid #e5e5e5;
+	margin:40rpx 0;
+}
+.btnUpload {
+	text-align: center;
+	margin-bottom: 60rpx;
+}
+.btnUpload .uploadImg {
+	position: relative;
+}
+.btnUpload .uploadImg,.btnUpload .gain {
+	width:240rpx;
+	height: 68rpx;
+	display: inline-block;
+	line-height:68rpx;
+	text-align: center;
+	color:#E0001B;
+	font-size:26rpx;
+	/* border:2rpx solid #E0001B; */
+	border-radius: 8rpx;
+  vertical-align: top;
+}
+.btnUpload .gain {
+	margin-left: 6%;
+  background-color: #fff;
+}
+.uploadImg input {
+	position: absolute;
+	left:0;
+	bottom:0;
+	width:100%;
+	height: 100%;
+	overflow: hidden;
+  text-indent: -9999px;
+  opacity: 0;
+}
+.btnUpload .active {
+	background:#E0001B;
+	color:#fff;
+}
+.formData {
+	margin-top: 20rpx;
+}
+.formData .formContent {
+	padding-left: 40rpx;
+  background:#fff;
+}
+.formData .formContent .list {
+  display: flex;
+	height: 88rpx;
+	line-height: 88rpx;
+	border-bottom:2rpx solid #e5e5e5;
+	font-size: 26rpx;
+}
+.formData .list:last-child {
+	border:none;
+}
+.formData .list view{
+	width:200rpx;
+  vertical-align: top;
+	display: inline-block;
+	color:#333333;
+	font-size: 28rpx;
+}
+.formData .list input {
+	border:none;
+  display: inline-block;
+  height:88rpx;
+  line-height: 88rpx;
+}
+
+.changePassword {
+	height:88rpx;
+	line-height:88rpx;
+	font-size: 28rpx;
+	color:#333333;
+	position: relative;
+	margin-top: 20rpx;
+	border-top:2rpx solid #e5e5e5;
+	background: #fff;
+	padding-left: 40rpx;
+}
+.changePassword .icons {
+	width:16rpx;
+	height: 16rpx;
+	display: inline-block;
+	position: absolute;
+	right:40rpx;
+	top:36rpx;
+	border-top:4rpx solid #999999;
+	border-right:4rpx solid #999999;
+	transform:rotate(45deg);
+	-webkit-transform:rotate(45deg);
+}
+.skin-vuserInfo .saveBtn {
+	width:90%;
+	margin:60rpx auto;
+	height: 88rpx;
+	line-height: 88rpx;
+	text-align: center;
+	font-size: 30rpx;
+	background:#E0001B;
+	color:#fff;
+	border-radius:8rpx;
+}
+
+.place-holder {
+  margin-top: 4rpx;
+  font-size: 28rpx;
+  color: #bfbfbf;
+}

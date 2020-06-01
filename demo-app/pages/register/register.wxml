@@ -1,0 +1,28 @@
+<!--pages/register/register.wxml-->
+<view class='top'>
+  <view class='item'>
+    <view class='left'>
+      <image src='../../images/user.png'></image>
+      <label>用户名</label>
+    </view>
+    <input type='text' placeholder='请输入您的姓名'></input>
+  </view>
+  <view class='item'>
+    <view class='left'>
+      <image src='../../images/password.png'></image>
+      <label>密码</label>
+    </view>
+    <input type='password' placeholder='请输入您的账号密码'></input>
+  </view>
+  <view class='item'>
+    <view class='left'>
+      <image src='../../images/password.png'></image>
+      <label>重新输入</label>
+    </view>
+    <input type='password' placeholder='请重新输入密码'></input>
+  </view>
+</view>
+<view class='bottom'>
+  <button class='btn-register'>注册完成</button>
+  <button class='btn-login'>立即登录</button>
+</view>

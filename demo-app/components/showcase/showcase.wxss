@@ -1,0 +1,74 @@
+/* components/showcase/showcase.wxss */
+/* 3列 */
+.showcase {
+  width: 100%;
+  height: auto;
+}
+.showcase ul {
+  display: flex;
+  flex-wrap: wrap;
+  padding-left: 2.5%;
+  margin-top: 20rpx;
+}
+.showcase ul li {
+  width: 32%;
+  border: 2rpx solid #e5e5e5;
+}
+.showcase ul li navigator image {
+  width: 100%;
+}
+/* 2列 */
+/* .showcase1{
+  width: 100%;
+  margin-top: 20rpx;
+  display: flex;
+  justify-content: space-around;
+}
+.showcase1 .left{
+  width: 45%;
+  height: 680rpx;
+  border: 2rpx solid #e5e5e5;
+}
+.showcase1 .left image{
+  width: 100%;
+}
+.showcase1 .right{
+  width: 45%;
+  height: 680rpx;
+}
+
+.showcase1 .right li{
+  width: 90%;
+  height: 300rpx;
+  border: 2rpx solid #e5e5e5;
+} */
+.leftright{
+  width: 100%;
+  height: 725rpx;
+  margin-top:20rpx;
+  position: relative;
+}
+.list_o navigator{
+  width: 45%;
+  height: 680rpx;
+  margin-bottom: 20rpx;
+  border: 2rpx solid #E9E9E9;
+  position: absolute;
+  left: 20rpx;
+}
+.list_o image {
+  margin: 10rpx auto;
+  width: 96%;
+}
+
+.list_t navigator{
+  width: 45%;
+  height: 320rpx;
+  border: 2rpx solid #E9E9E9;
+  margin-left:50%;
+  margin-bottom:38rpx;
+}
+.list_t image {
+  margin: 10rpx auto;
+  width: 96%;
+}

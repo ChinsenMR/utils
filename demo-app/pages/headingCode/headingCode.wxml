@@ -1,0 +1,53 @@
+<!--pages/headingCode/headingCode.wxml-->
+<!-- wx:for='{{serviceList}}' -->
+<view class='overall'>
+  <view class='conten' wx:for='{{serviceList}}' wx:key="{{index}}" data-amount='{{item.ConsultAmount}}' wx:if="{{item.Statu == 'True'}}" data-index="{{item.CsId}}" bindtap='linkCustomer'>
+    <view class="{{item.Statu == 'True'?'left_images':'unleft_images'}}">
+      <image wx:if="{{item.UserHead}}" src='{{item.UserHead}}'></image>
+    </view>
+    <view class='right_conten'>
+      <view class='title'>
+        <text>{{item.UserName}}</text>
+        <view wx:if="{{item.Statu == 'True'}}" class='status'>在线</view>
+        <view wx:else class='unStatus'>未上线</view>
+      </view>
+      <view class='brief'>{{item.Resume}}</view>
+      <!-- <view class='securities' wx:if="{{item.Statu == 'True'&&linktype != 'customer'}}">
+        <image src='https://s1.mtcdn.cn/hme/html/20181024/20e0bf16-fa21-4387-8618-cd91983e3ec3.png'></image>
+        <text class='onText'>X {{item.ConsultAmount}}</text>
+      </view> -->
+      <!-- <view class='securities' wx:if="{{item.Statu != 'True'&&linktype != 'customer'}}">
+        <image src='https://s1.mtcdn.cn/hme/html/20181024/c2176d88-790d-44c5-b36c-ebcc525fcf2e.png'></image>
+        <text class='inText'>X {{item.ConsultAmount}}</text>
+      </view> -->
+    </view>
+  </view>
+  <view class='conten' wx:for='{{serviceList}}' wx:if="{{item.Statu == 'False'}}" data-index="{{item.CsId}}" bindtap='linkCustomer' wx:key="{{item.CsId}}">
+    <view class="{{item.Statu == 'True'?'left_images':'unleft_images'}}">
+      <image wx:if="{{item.UserHead}}" src='{{item.UserHead}}'></image>
+    </view>
+    <view class='right_conten'>
+      <view class='title'>
+        <text>{{item.UserName}}</text>
+        <view wx:if="{{item.Statu == 'True'}}" class='status'>在线</view>
+        <view wx:else class='unStatus'>未上线</view>
+      </view>
+      <view class='brief'>{{item.Resume}}</view>
+      <!-- <view class='securities' wx:if="{{item.Statu == 'True'}}">
+        <image src='https://s1.mtcdn.cn/hme/html/20181024/20e0bf16-fa21-4387-8618-cd91983e3ec3.png'></image>
+        <text class='onText'>X {{item.ConsultAmount}}</text>
+      </view> -->
+      <!-- <view class='securities' wx:else>
+        <image src='https://s1.mtcdn.cn/hme/html/20181024/c2176d88-790d-44c5-b36c-ebcc525fcf2e.png'></image>
+        <text class='inText'>X {{item.ConsultAmount}}</text>
+      </view> -->
+    </view>
+  </view>
+</view>
+<view class="{{refresh?'refreshAn':'refresh'}}" bindtap='toRefresh'>
+  <image class='refreshimg' src='https://s1.mtcdn.cn/hme/html/20181024/c1ef4a3d-e675-42f5-8f6e-b3db47825245.png'></image>
+</view>
+<view class="return" bindtap='backtoindex'>
+  <image class='refreshimg' style='opacity: 0.5;' src='https://s1.mtcdn.cn/hme/html/20181115/d7a6f2e3-8bb2-4ddc-af3c-cb1556fc25e4.png'></image>
+</view>
+<!-- <view class='btn123' bindtap='toGoCustomer'>go</view> -->

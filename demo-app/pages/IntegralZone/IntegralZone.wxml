@@ -1,0 +1,28 @@
+<!--pages/IntegralZone/IntegralZone.wxml-->
+<!-- <text>pages/IntegralZone/IntegralZone.wxml</text> -->
+<image style="width:100%;height:353px;" src='{{banner}}'></image>
+<view class='content'>
+  <image class='title' src='https://hmeshop-1256233971.cos.ap-guangzhou.myqcloud.com/wxapp/images/zhuangshi@2x.png'>
+    <view class='text'>积分兑换享好礼</view>
+    <text>
+      <block wx:if="{{total_micro_second<=0}}">剩余时间：已经截止</block>
+      <block wx:if="{{clock!='已经截止'}}">剩余时间：{{clock}}</block>
+    </text>
+  </image>
+  <view class='li'>
+    <view class='list' wx:for='{{dataList}}' wx:key="index">
+      <navigator url='/pages/productDetail/productDetail?id={{item.ProductId}}&exChangeId={{item.exChangeId}}' hover-class="none">
+        <image src='{{item.ThumbnailUrl100}}'></image>
+        <view class='jifen'>积分换购</view>
+        <view class='txt'>{{item.ProductName}}</view>
+        <view class='price'>{{item.PointNumber}}积分
+          <!-- <text>￥{{item.MarketPrice}}</text> -->
+        </view>
+      </navigator>
+    </view>
+  </view>
+  <view class='empty' wx:if="{{isEmpty}}">
+    <image src='https://hmeshop-1256233971.cos.ap-guangzhou.myqcloud.com/wxapp/images/pic-kong.png'></image>
+    <text>暂无数据</text>
+  </view>
+</view>

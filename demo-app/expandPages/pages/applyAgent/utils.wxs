@@ -1,0 +1,8 @@
+var tranClass = function (type) {
+  return type == 0 ? "success" : type == 1 ? "error" : "";
+};
+var tranRegion = function (form) {
+  return form.province + " / " + form.city + " / " + form.county;
+};
+module.exports.tranClass = tranClass;
+module.exports.tranRegion = tranRegion;

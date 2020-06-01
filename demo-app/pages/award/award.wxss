@@ -1,0 +1,89 @@
+.nav {
+  display: flex;
+  margin-top: 2rpx;
+  margin-bottom: 20rpx;
+  width: 100%;
+  height: 80rpx;
+  line-height: 80rpx;
+  font-size: 30rpx;
+  background-color: #fff;
+}
+
+.left {
+  position: relative;
+}
+
+.left::after {
+  content: '';
+  position: absolute;
+  display: block;
+  width: 2rpx;
+  height: 40rpx;
+  top: 20rpx;
+  right: 0;
+  background-color: #eee;
+}
+
+.default {
+  flex: 1;
+  text-align: center;
+  color: #bebebe;
+}
+
+.red {
+  flex: 1;
+  text-align: center;
+  font-weight: 600;
+  color: #e0001b;
+  border-bottom: 6rpx solid #e0001b;
+}
+
+.show {
+  display: block;
+}
+
+.hidden {
+  display: none;
+}
+
+.tabList {
+  margin-bottom: 2rpx;
+  padding: 20rpx;
+  font-size: 26rpx;
+  line-height: 42rpx;
+  color: #333;
+  background-color: #fff;
+}
+
+.tabList .right {
+  position: relative;
+}
+.tabList .right .time{
+  position: absolute;
+  font-size: 24rpx;
+  right: 14rpx;
+  bottom: 0rpx;
+  color: #999;
+}
+.tabList .right text {
+  margin-right: 14rpx;
+  padding: 2rpx 10rpx;
+  border-radius: 5rpx;
+  font-size: 24rpx;
+  color: #fff;
+  background-color: #e0001b;
+}
+
+.empty{
+  position: fixed;
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+  color: #666666;
+  font-size: 14px;
+  text-align: center;
+}
+.empty>image{
+  width: 360rpx;
+  height: 360rpx;
+}

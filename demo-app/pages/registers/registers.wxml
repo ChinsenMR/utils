@@ -1,0 +1,23 @@
+
+<view class='list'>
+  <view class='left'>
+  <image src='/images/user.png'></image>
+    用户名
+  </view>
+  <view class='right'>
+    <input placeholder-style='color:#bebebe' placeholder='请输入用户名'></input>
+
+  </view>
+</view>
+<view class='list'>
+  <view class='left'>
+  <image src='/images/password.png'></image>  
+    密码
+  </view>
+  <view class='right'>
+    <input placeholder-style='color:#bebebe' placeholder='请输入您的账号密码' password='true' maxlength="15"></input>
+  </view>
+</view>
+
+<navigator class='btn'>立即登录</navigator>
+<navigator class='register'>免费注册</navigator>

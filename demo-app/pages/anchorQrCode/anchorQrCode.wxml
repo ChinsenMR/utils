@@ -1,0 +1,12 @@
+<!-- <view class="placeHoder"></view>
+ <canvas style="width:{{canvasWidth}}px; height:{{canvasHeight}}px;" canvas-id="myCanvas" /> -->
+<view class="alert alertInfo">
+  <view style="position: relative;    background: #fff;">
+    <canvas data-mode="content" canvas-id="myCanvasT" id="myCanvasT" />
+  </view>
+  <!-- <view class="btn margin-t-20">
+   
+  </view> -->
+   <button class="btn margin-t-40" bindtap="saveImg">保存到相册</button>
+  <!-- <image bindtap="closeAlert" src="http://hmqy.oss-cn-hangzhou.aliyuncs.com/tdhmd/close_qw.png" /> -->
+</view>

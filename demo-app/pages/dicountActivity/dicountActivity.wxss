@@ -1,0 +1,2 @@
+/* pages/dicountActivity/dicountActivity.wxss */
+ @import '../../module/activityArea/activityArea.wxss'; 

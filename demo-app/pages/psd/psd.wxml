@@ -1,0 +1,32 @@
+<view class='list'>
+  <view class='left'>
+    原密码
+  </view>
+  <view class='right'>
+    <input placeholder='请输入原密码' placeholder-style='color:#bebebe' password='true' maxlength="15"></input>
+    <image src='/images/select.png' style='display:{{display}}'></image>
+    <image src='/images/fail.png' style='display:{{display1}}'></image>
+  </view>
+</view>
+<view class='list'>
+  <view class='left'>
+    新密码
+  </view>
+  <view class='right'>
+    <input password='true' placeholder-style='color:#bebebe' placeholder='输入6-15位数密码' maxlength="15"></input>
+    <image src='/images/select.png' style='display:{{display2}}'></image>
+    <image src='/images/fail.png' style='display:{{display3}}'></image>
+  </view>
+</view>
+<view class='list'>
+  <view class='left'>
+    确认密码
+  </view>
+  <view class='right'>
+    <input placeholder-style='color:#bebebe' placeholder='输入6-15位数密码' password='true' maxlength="15"></input>
+    <image src='/images/select.png' style='display:{{display4}}'></image>
+    <image src='/images/fail.png' style='display:{{display5}}'></image>
+  </view>
+</view>
+
+<view class='btn'>确认修改</view>

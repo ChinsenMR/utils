@@ -1,0 +1,44 @@
+<!--pages/userInfo/userInfo.wxml-->
+<view class='userInfo'>
+  <view class="skin-vuserInfo">
+		<view class="headImg">
+			<view class="img"><image src="{{imgURL}}" mode='aspectFitf'></image></view>
+			<view class="btnUpload">
+				<view class="uploadImg active" bindtap='imgLoad'>
+					<!-- <input type="file" id="idFile" name="idFile" > -->
+					<text>重新上传图片</text>
+				</view>
+        <button class='gain' style=" border-color: #E0001B;"  open-type="getUserInfo" bindgetuserinfo="getWxPic">获取微信头像</button>
+			</view>
+		</view>
+		<view class="formData">
+			<form bindsubmit="formSubmit">
+				<view class='formContent'>
+					<view class='list'>
+						<view>用户名</view>
+            <input type='text' placeholder-class="place-holder" placeholder='请输入用户名' bindinput="watchInput" value='{{userInfo.UserName}}' name="username"></input>
+					</view>
+					<view class='list'>
+						<view>姓名</view>
+            <input type='text' placeholder-class="place-holder" placeholder='请输入姓名' value='{{userInfo.RealName}}' name="Name"></input>
+					</view>
+					<view class='list'>
+						<view>手机</view>
+            <input type='number' placeholder-class="place-holder" placeholder='请输入手机号' maxlength='11' value='{{userInfo.CellPhone}}' name="phone"></input>
+					</view>
+					<view class='list'>
+						<view>QQ</view>
+            <input type='text' placeholder-class="place-holder" placeholder='请输入您的QQ号码' value='{{userInfo.QQ}}' name="QQNumber"></input>
+					</view>
+					<view class='list'>
+						<view>身份证号码</view>
+            <input type='idcard' placeholder-class="place-holder" placeholder='请输入您的身份证号码' value='{{userInfo.CardID}}' name="IdCard"></input>
+					</view>
+				</view>
+        <!-- <view class="changePassword" bindtap='alterPsd'>修改密码 <icon class="icons"></icon></view> -->
+        <button class="saveBtn" id="btnSetUserName"  form-type="submit">保存</button>
+    </form>
+		</view>
+		<view class="under"></view>
+	</view>
+</view>

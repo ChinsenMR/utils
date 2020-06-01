@@ -1,0 +1,80 @@
+page{
+    height: 100%;
+    font-size: 26rpx;
+    background: #f1f1f1;
+}
+
+#fuClassify{
+    color: #666;
+
+
+    // 
+    .seachF{
+        padding: 20rpx 40rpx;
+        box-sizing: border-box;
+        display: flex;
+        align-items: center;
+        .input{
+            flex: 1;
+            input{
+                width:100%;
+                border-radius: 10rpx 0 0 10rpx;
+                background: rgb(255, 255, 255);
+                text-align: center;
+                padding:0 20rpx;
+                font-size: 30rpx;
+                height: 70rpx;
+                line-height: 70rpx;
+                box-sizing: border-box;
+                border:1px solid rgb(197, 197, 197);
+                border-right: 0;
+            }
+        }
+        
+        button{
+            border-radius: 0 10rpx 10rpx 0;
+            font-size: 28rpx;
+            background: #e0001b;
+            color: #fff;
+        }
+    }
+
+    
+    // 
+    .classify{
+        // height: 70rpx;
+        // overflow: hidden;
+        .all{
+            font-size: 32rpx;
+            color: #333;
+            height: 80rpx;
+            padding: 0 30rpx;
+            box-sizing: border-box;
+            background: -webkit-gradient(linear, 0 0, 0 100%, from(#fff), to(#F3F3F3));
+            display: flex;
+            align-items: center;
+            .name{
+                flex: 1;
+            }
+            .img{
+                font-size: 50rpx;
+                font-weight: 900;
+            }
+        }
+        .child{
+            font-size: 30rpx;
+            height: 80rpx;
+            padding: 0 30rpx 0 40rpx;
+            box-sizing: border-box;
+            display: flex;
+            align-items: center;
+            .name{
+                flex: 1;
+            }
+            .img{
+                font-size: 50rpx;
+                font-weight: 900;
+            }
+        }
+    }
+}

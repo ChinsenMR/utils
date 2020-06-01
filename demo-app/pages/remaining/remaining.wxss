@@ -1,0 +1,109 @@
+
+.nav {
+  display: flex;
+  margin-bottom: 30rpx;
+  margin-top: 2rpx;
+  width: 100%;
+  height: 80rpx;
+  line-height: 80rpx;
+  font-size: 30rpx;
+  background-color: #fff;
+}
+
+.left {
+  position: relative;
+}
+
+.left::after {
+  content: '';
+  position: absolute;
+  display: block;
+  width: 2rpx;
+  height: 40rpx;
+  top: 20rpx;
+  right: 0;
+  background-color: #eee;
+}
+
+.default {
+  flex: 1;
+  text-align: center;
+  color: #bebebe;
+}
+
+.red {
+  flex: 1;
+  text-align: center;
+  font-weight: 600;
+  color: #e0001b;
+  border-bottom: 6rpx solid #e0001b;
+}
+
+.show {
+  display: block;
+}
+
+.hidden {
+  display: none;
+}
+
+.list {
+  display: flex;
+  padding: 26rpx;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rpx;
+  background-color: #fff;
+}
+
+.list .l_left {
+  width: 84%;
+  font-size: 30rpx;
+  color: #333;
+}
+
+.list .l_left view {
+  width: 92%;  
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.list .l_left .time {
+  margin-top: 8rpx;
+  font-size: 24rpx;
+  color: #999;
+}
+.list .l_right{
+  padding-right: 10rpx;
+  text-align: right;
+}
+.list .l_right .money{
+  color: #e0001b;
+}
+
+.list .l_right .finish{
+  font-size: 24rpx;
+  color: #bebebe;
+}
+.list .l_right .wait{
+  font-size: 24rpx;
+  color: #29c500;
+}
+.list .l_right text{
+  font-size: 28rpx;
+}
+
+.empty{
+  position: fixed;
+  top: 30%;
+  left: 50%;
+  transform: translate(-50%,-40%);
+  font-size: 14px;
+  text-align: center;
+  color: #666666;  
+}
+.empty>image{
+  width: 360rpx;
+  height: 360rpx;
+}

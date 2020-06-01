@@ -1,0 +1,35 @@
+/* pages/psd/psd.wxss */
+.list{
+  display: flex;
+  align-items: center;
+  margin-top: 3rpx;
+  padding: 20rpx 0;
+  font-size: 30rpx;
+  background-color: #fff;
+
+}
+.list .left{
+  width: 26%;
+  padding-left: 40rpx;
+}
+.list .right{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 74%;
+}
+.list .right image{
+  margin-right: 30rpx;
+  width: 34rpx;
+  height: 34rpx;
+}
+.btn {
+  margin: 70rpx auto;
+  padding: 20rpx 0;
+  width: 90%;
+  font-size: 32rpx;
+  text-align: center;
+  border-radius: 10rpx;
+  color: #fff;
+  background-color: #e0001b;
+}

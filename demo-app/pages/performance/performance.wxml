@@ -1,0 +1,21 @@
+<!--pages/performance/performance.wxml-->
+<!-- <text>pages/performance/performance.wxml</text> -->
+<view class='content'>
+<view class='topimg'>
+  <image src="{{avatarUrl}}" mode='aspectFitf'></image>
+  <view class='name'>{{nickName}}</view>
+</view>
+  <view class='graded'>
+    <view class='title'>请您对本次服务进行评价：</view>
+    <!-- 打分 -->
+    <view class='startpanel'>
+      <view wx:for="{{stars}}">
+        <image class='stars' data-index="{{item}}" bindtap="onPitch" src="{{key >= item?'https://s1.mtcdn.cn/hme/html/20181031/2f06fb63-8b25-498a-8e5b-64fc4b71fb97.png':'https://s1.mtcdn.cn/hme/html/20181031/a4e7dbf2-39e2-4b75-bc25-47f8bfb43858.png'}}"></image>
+      </view>
+    </view>
+    <!-- 文本域 -->
+    <textarea placeholder-class='textarea' value="{{inputTxt}}" maxlength='300' placeholder='输入您对该客服的评价' bindinput="consultInput"></textarea>
+    <!-- 按钮 -->
+    <view bindtap='Sumbit' class="{{key != '-1'?'button':'btn'}}">{{key != '-1'?'提交评价':'请评价服务'}}</view>
+  </view>
+</view>

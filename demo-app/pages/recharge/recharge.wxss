@@ -1,0 +1,143 @@
+
+.top {
+  position: relative;
+  margin: 2rpx 0;
+  padding: 20rpx;
+  padding-left: 60rpx;
+  width: 100%;
+  font-size: 30rpx;
+  box-sizing: border-box;
+  color: #666;
+  background-color: #fff;
+}
+
+.top view {
+  position: absolute;
+  width: 8rpx;
+  height: 30rpx;
+  top: 26rpx;
+  left: 28rpx;
+  border-radius: 4rpx;
+  background-color: #ff950d;
+}
+
+.content {
+  display: flex;
+  flex-wrap: wrap;
+  font-size: 32rpx;
+  box-sizing: border-box;
+  color: #666;
+  background-color: #fff;
+}
+
+.content>view {
+  display: flex;
+  margin: 40rpx;
+  padding: 20rpx 0 20rpx 20rpx;
+  width: 35%;
+  text-align: center;
+  border: 2rpx solid transparent;
+}
+
+.content>view>view{
+  margin-left: 20rpx;
+  margin-right: 24rpx;
+  width: 17%;
+  height: 46rpx;
+}
+.content>view>view image{
+  width: 100%;
+  height: 100%;
+}
+.active {
+  border-radius: 6rpx;
+  border: 2rpx solid #e0001b !important;
+}
+
+.show {
+  display: block;
+}
+
+.hidden {
+  display: none;
+}
+
+.tixian {
+  display: flex;
+  align-items: center;
+  padding: 30rpx;
+  margin-top: 30rpx;
+  margin-bottom: 30rpx;
+  box-sizing: border-box;
+  font-size: 32rpx;
+  color: #333;
+  background-color: #fff;
+}
+.tixian .tixianFont{
+  width: 26%;
+}
+.tixian .fuhao {
+  width: 6%;
+  margin-top: 12rpx;
+  font-size: 30rpx;
+  font-weight: 600;
+}
+
+.tixian input {
+  width: 68%;
+  margin-top: 4rpx;
+  font-size:40rpx;
+  line-height: 52rpx;
+}
+
+.content2 {
+  display: flex;
+  padding: 0 30rpx;
+  font-size: 30rpx;
+  box-sizing: border-box;
+  color: #666;
+}
+
+.content2 image {
+  margin-right: 20rpx;
+  width: 5%;
+  height: 38rpx;
+}
+
+
+.place-holder {
+  /* margin-top: 4rpx; */
+  font-size: 28rpx;
+  color: #bfbfbf;
+}
+.place-holder1{
+  font-size: 30rpx;
+} 
+
+.list{
+  display: flex;
+  align-items: center;
+  padding: 16rpx 0;
+  font-size: 30rpx;
+  margin-bottom: 2rpx;
+  background-color: #fff;
+
+}
+.list .left{
+  width: 26%;
+  padding-left: 40rpx;
+}
+.list .right{
+  width: 74%;
+}
+
+.btn {
+  margin: 70rpx auto;
+  padding: 20rpx 0;
+  width: 90%;
+  font-size: 32rpx;
+  text-align: center;
+  border-radius: 10rpx;
+  color: #fff;
+  background-color: #e0001b;
+}

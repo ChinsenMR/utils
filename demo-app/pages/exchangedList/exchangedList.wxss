@@ -1,0 +1,114 @@
+/* pages/exchangedList/exchangedList.wxss */
+page{
+  background: #f5f5f5;
+}
+.exchanged-item{
+  margin-top: 20rpx;
+  background: #ffffff;
+  border-bottom: 2rpx #e5e5e5 solid; 
+  box-sizing: border-box;
+}
+.exchanged-item:first-child{
+  margin-top: 0;
+}
+.exchanged-item>.top{
+  position: relative;
+  width: 100%;
+  height: 88rpx;
+  line-height: 88rpx;
+  padding: 0 30rpx;
+  border-top: 2rpx #e5e5e5 solid; 
+  border-bottom: 2rpx #e5e5e5 solid; 
+  box-sizing: border-box;
+  color: #666666;
+}
+.exchanged-item>.top>.title{
+  font-size: 26rpx;
+}
+.exchanged-item>.top>.number{
+  font-size: 24rpx;  
+}
+.state{
+  position: absolute;
+  top: 50%;
+  right: 30rpx;
+  transform: translateY(-50%);
+  font-size: 26rpx;
+  color: #E0001B;
+}
+.content{
+  padding: 20rpx 30rpx;
+  box-sizing: border-box;
+  display: -webkit-flex;
+  display: flex;
+  align-items: center;
+}
+.content>.left{
+  flex: 1;
+}
+.content>.left>view{
+  margin-top: 4rpx;
+}
+.content>.left,.left>.title-box>.title{
+  font-size: 26rpx;
+  color: #333333;
+}
+.left>.item>text,.left>.title-box>.title-name{
+  color: #999999;
+  font-size: 24rpx;
+}
+.left>.title-box{
+  display: -webkit-flex;
+  display: flex;
+
+}
+.left>.title-box>.title{
+  flex-shrink: 0;
+}
+.left>.title-box>.title-name{
+  padding-right: 80rpx;
+  box-sizing: border-box;
+  word-break: break-all;
+  text-overflow: ellipsis;
+  display: -webkit-box; /** 对象作为伸缩盒子模型显示 **/
+  -webkit-box-orient: vertical; /** 设置或检索伸缩盒对象的子元素的排列方式 **/
+  -webkit-line-clamp: 2; /** 显示的行数 **/
+  overflow: hidden; /** 隐藏超出的内容 **/
+}
+.arrow{
+  flex-shrink: 0;
+  width: 16rpx;
+  height: 16rpx;
+  display: inline-block;
+  border-top: 4rpx solid #999999;
+  border-right: 4rpx solid #999999;
+  transform:rotate(45deg); 
+}
+.bottom{
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  z-index: 1;
+  height: 88rpx;
+  width: 100%;
+  text-align: center;
+  line-height: 88rpx;
+  font-size: 30rpx;
+  color: #666666;
+  background: #ffffff;
+}
+
+.empty{
+  position: fixed;
+  top: 30%;
+  left: 50%;
+  z-index: -1;
+  transform: translate(-50%,-40%);
+  color: #666666;
+  font-size: 14px;
+  text-align: center;
+}
+.empty>image{
+  width: 360rpx;
+  height: 360rpx;
+}

@@ -1,0 +1,102 @@
+/* pages/voteDetail/voteDetail.wxss */
+
+.box .img {
+  margin-top: 2rpx;
+  width: 100%;
+  height: 320rpx;
+}
+
+.box .img image {
+  width: 100%;
+  height: 100%;
+}
+
+.box .font {
+  padding: 20rpx 0 20rpx 40rpx;
+  box-sizing: border-box;
+  font-size: 24rpx;
+  color: #666;
+  background-color: #fff;
+}
+
+.box .font1 {
+  margin-top: 20rpx;
+  font-size: 26rpx;
+  color: #333;
+}
+
+.box .font2 {
+  margin-top: 2rpx;
+}
+
+.discounts {
+  margin-top: 2rpx;
+  margin-bottom: 20rpx;
+  padding: 20rpx 40rpx;
+  background-color: #fff;
+}
+
+.discounts .left {
+  font-size: 32rpx;
+  font-weight: 800;
+  color: #333;
+}
+.evaluate>view{
+  display: flex;
+  padding: 30rpx;
+  margin-bottom: 2rpx;
+  background-color: #fff;
+}
+.evaluate .e_left{
+  width: 76%;
+}
+.evaluate .e_left .l_top{
+  display: flex;
+  justify-content: space-between;
+  font-size: 30rpx;
+}
+.evaluate .e_left .l_top text{
+  color: #999999;
+}
+.evaluate .e_left .l_bottom{
+  margin-top: 30rpx;
+  width: 100%;
+  height: 10rpx;
+  border-radius: 30rpx;
+  overflow: hidden;
+  background-color: #f5f5f5;
+}
+.evaluate .e_left .l_bottom view{
+  width: 30%;
+  height: 10rpx;
+  border-radius: 30rpx;
+  overflow: hidden;  
+  background-color: #e0001b;
+
+}
+
+.evaluate .e_right{
+  display: flex;
+  align-items: center;
+  text-align: center;
+  font-size: 30rpx;
+  color: #999;
+}
+.evaluate .e_right checkbox{
+  margin-left: 50rpx;
+  margin-right: 10rpx;
+
+}
+
+
+
+.voteBtn {
+  margin: 60rpx auto;
+  padding: 20rpx 0;
+  border-radius: 10rpx;
+  width: 90%;
+  font-size: 30rpx;
+  text-align: center;
+  color: #fff;
+  background-color: #e0001b;
+}

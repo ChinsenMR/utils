@@ -1,0 +1,7 @@
+{
+  "navigationBarTitleText": "商品详情",
+  "onReachBottomDistance": 200,
+  "usingComponents": {
+    "btn-to-top": "/components/btnToTop/btnToTop"
+  }
+}

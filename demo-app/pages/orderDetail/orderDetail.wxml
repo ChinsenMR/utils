@@ -1,0 +1,58 @@
+<!--pages/orderDetail/orderDetail.wxml-->
+<view>
+  <view class="addr-wrap">
+    <view class="addr-name list">收货人：{{orderDetailData.ShipTo}} {{orderDetailData.CellPhone}}</view>
+    <view class="addr-info list">收货地址：{{orderDetailData.OrderAddress}}</view>
+    <view class="right-nav-box">
+      <image src="../../images/path-right@2x.png"></image>
+    </view>
+  </view>
+  <view class='borderImg'>
+    <image src='/images/bg-line@2x.png'></image>
+  </view>
+  <view class='orderDetail'>
+    <view class='o_top'>
+      <view class='ot_left'>
+        <view>订单编号：{{orderDetailData.OrderId}}</view>
+        <view>成交时间：{{orderDetailData.OrderDate}}</view>
+      </view>
+      <view class='ot_right'>{{orderDetailData.OrderStatus}}</view>
+    </view>
+    <view>
+      <view class="cart-list">
+        <view wx:for="{{orderDetailData.OrderItems}}" wx:key="item.ProductId">
+          <view class="img-box">
+            <image src="{{item.Img}}"></image>
+          </view>
+          <view class="right">
+            <view class="title">{{item.ProductName}}</view>
+            <view class="wrap">
+              <text class="price" wx:if="{{item.Type === 0}}">¥{{item.Price}}</text>
+              <text class="price" wx:else>{{item.SinglePointNumber}}积分</text>
+              <text class="count">x{{item.Quantity}}</text>
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+    <view class='bottom'>
+      <view>
+        <text>商品合计</text>
+        <text wx:if="{{orderDetailData.OrderItems[0].Type === 0}}">￥{{orderDetailData.Amount}}</text>
+        <text wx:else>{{orderDetailData.OrderItems[0].PointNumber}}积分</text>
+      </view>
+      <view>
+        <text>价格调整</text>
+        <text>￥{{orderDetailData.AdjustCommssion}}</text>
+      </view>
+      <view>
+        <text>运费</text>
+        <text>￥{{orderDetailData.AdjustedFreight}}</text>
+      </view>
+      <view>
+        <text>实付</text>
+        <text class='pay'>￥{{orderDetailData.OrderTotal}}</text>
+      </view>
+    </view>
+  </view>
+</view>

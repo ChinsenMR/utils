@@ -1,0 +1,27 @@
+<scroll-view scroll-x class="bg-white nav">
+  <view class="flex text-center">
+    <view class="cu-item flex-sub {{index==TabCur?'tab-active':''}}" wx:for="{{tabText}}" wx:key="item" bindtap="tabSelect" data-id="{{index}}">
+      {{item}}
+    </view>
+  </view>
+</scroll-view>
+<view class="margin-t-100"></view>
+<block wx:for="{{LiveList}}" wx:for-item="item" wx:for-index="index" :key="index">
+  <view class="cu-card" style="position: relative">
+    <view class="cu-card dynamic" hover-class="navigator-hover" hover-stop-propagation="false" bindtap="toUrl" data-id="{{item.RoomId}}" data-status="{{item.LiveStatus}}">
+      <view class="cu-item shadow">
+        <view class="cu-info flex">
+          <button class="flex flex-center {{'status-' + (item.LiveStatus == '101'  ? '1': item.LiveStatus == '103' ? '2':  '0')}}">
+            <image class="ico" src="/images/icon_zhibo.png" wx:if="{{item.LiveStatus == 1}}"></image>
+            {{item.LiveStatus == '101'  ? '直播中': item.LiveStatus == '103' ? '回放':  '预告中'}}
+          </button>
+        </view>
+        <view class="text-content">{{item.LiveTitle}}</view>
+        <view class="grid flex-sub padding-lr {{isCard?'col-3 grid-square':'col-1'}}">
+          <view class="bg-img {{isCard?'':'only-img'}}" style="background-image:url({{item.LiveCardImgUrl || ''}});"></view>
+        </view>
+      </view>
+    </view>
+  </view>
+</block>
+<view class="cu-load  {{isLoading?'loading':'over'}}"></view>

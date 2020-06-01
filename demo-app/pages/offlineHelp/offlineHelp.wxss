@@ -1,0 +1,29 @@
+/* pages/offlineHelp/offlineHelp.wxss */
+@import "/pages/finishOrder/finishOrder.wxss";
+page{
+  padding-top: 44px;
+  box-sizing: border-box;
+}
+.img-box{
+  margin: 0 auto;
+  width: 360rpx;
+  height: 360rpx;
+}
+.info-wrapper{
+  width: 100%;
+  padding: 0 30rpx;
+  box-sizing: border-box;
+}
+textarea.input-info{
+  margin-bottom: 60rpx;
+  padding: 30rpx;
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 100%;
+  background: rgba(245,245,245,1);
+  font-size: 13px;
+}
+.submit{
+  margin: 0 30rpx;
+  background: #E0001B !important;
+}

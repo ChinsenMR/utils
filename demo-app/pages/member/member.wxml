@@ -1,0 +1,303 @@
+<!--pages/member/member.wxml-->
+<view class='box'>
+	<image src='https://hmeshop-1256233971.cos.ap-guangzhou.myqcloud.com/wxapp/images/bg.png'></image>
+	<view class='content'>
+		<view class='c_top'>
+			<image src='{{userData.UserHead}}' wx:if="{{!showlogin}}"></image>
+			<view class='c_t_center' wx:if="{{!showlogin}}">
+				<text>{{userData.UserName}}</text>
+				<text>ID:{{userData.UserId}}</text>
+				<text>注册时间：{{userData.CreateDate}}</text>
+			</view>
+			<view class="logincss" wx:if="{{showlogin}}">
+				<navigator class="nav" url='/pages/authorizationLogin/authorizationLogin'>
+					<span>点我前往登录</span>
+				</navigator>
+			</view>
+			<navigator wx:if="{{!showlogin}}" class='img' url='/pages/myNews/myNews' hover-class="none">
+				<view>
+					<image src='https://hmeshop-1256233971.cos.ap-guangzhou.myqcloud.com/wxapp/images/news.png'></image>
+				</view>
+			</navigator>
+		</view>
+		<view class='c_bottom'>
+			<text class='text1'>{{userData.UserGradeName}}</text>
+			<text class='text2'>消费金额：￥{{userData.Expenditure}}</text>
+			<view bindtap='onSignIn'>
+				<image src='https://hmeshop-1256233971.cos.ap-guangzhou.myqcloud.com/wxapp/images/sign.png'></image>
+				<text>{{signIn}}</text>
+			</view>
+		</view>
+	</view>
+</view>
+<view class='notice' wx:if="{{newsData.length>0}}">
+	<view>
+		<image src='https://hmeshop-1256233971.cos.ap-guangzhou.myqcloud.com/wxapp/images/ad.png'></image>
+	</view>
+	<swiper indicator-dots="{{indicatorDots}}" autoplay="true" interval="2000" duration="400" vertical="true" circular="true">
+		<swiper-item bindtap='goMyMessage' wx:for="{{newsData}}" wx:key="item.Id" data-id='{{item.Id}}'>
+			<text>{{item.Title}}</text>
+		</swiper-item>
+	</swiper>
+</view>
+<view class='show'>
+	<navigator class='list' url='/pages/myIntegral/myIntegral' hover-class="none">
+		<view>
+			<image src='https://hmeshop-1256233971.cos.ap-guangzhou.myqcloud.com/wxapp/images/hui.png'></image>
+		</view>
+		<view>积分</view>
+		<view class='num'>{{userData.Point}}</view>
+	</navigator>
+	<navigator class='list' url='/pages/coupons/coupons' hover-class="none">
+		<view>
+			<image src='https://hmeshop-1256233971.cos.ap-guangzhou.myqcloud.com/wxapp/images/hui_02.png'></image>
+		</view>
+		<view>优惠券</view>
+		<view class='num'>{{userData.CouponCount}}张</view>
+	</navigator>
+	<navigator class='list' url='/pages/myAccount/myAccount?money={{userData.AvailableAmount?userData.AvailableAmount:0}}' hover-class="none">
+		<view>
+			<image src='https://hmeshop-1256233971.cos.ap-guangzhou.myqcloud.com/wxapp/images/hui_03.png'></image>
+		</view>
+		<view>钱包</view>
+		<view class='num'>￥{{userData.AvailableAmount}}</view>
+	</navigator>
+	<navigator class='list' url='/pages/myOrder/myOrder?status=0' hover-class="none">
+		<view>
+			<image src='https://hmeshop-1256233971.cos.ap-guangzhou.myqcloud.com/wxapp/images/hui_04.png'></image>
+		</view>
+		<view>全部订单</view>
+		<view class='num'>{{userData.OrderCount}}单</view>
+	</navigator>
+</view>
+<view class='waitList'>
+	<navigator class='wait' url='/pages/myOrder/myOrder?status=1' hover-class="none">
+		<view class='img'>
+			<image src='https://hmeshop-1256233971.cos.ap-guangzhou.myqcloud.com/wxapp/images/hui_05.png'></image>
+		</view>
+		<view class='newTips' wx:if="{{userData.PaymentOrderCount > 0}}"><text>{{userData.PaymentOrderCount}}</text></view>
+		<view>待付款</view>
+	</navigator>
+	<navigator url='/pages/myOrder/myOrder?status=3' class='wait' hover-class="none">
+		<view class='img'>
+			<image src='https://hmeshop-1256233971.cos.ap-guangzhou.myqcloud.com/wxapp/images/hui_06.png'></image>
+		</view>
+		<view class='newTips' wx:if="{{userData.CollectOrderCount > 0}}"><text>{{userData.CollectOrderCount}}</text></view>
+		<view>待收货</view>
+	</navigator>
+	<navigator class='wait' url='/pages/waitEvaluate/waitEvaluate' hover-class="none">
+		<view class='img'>
+			<image src='https://hmeshop-1256233971.cos.ap-guangzhou.myqcloud.com/wxapp/images/hui_07.png'></image>
+		</view>
+		<view class='newTips' wx:if="{{userData.EvaluateOrderCount > 0}}"><text>{{userData.EvaluateOrderCount}}</text></view>
+		<view>待评价</view>
+	</navigator>
+	<navigator class='wait' url='/pages/exchangedList/exchangedList' hover-class="none">
+		<view class='img'>
+			<image src='https://hmeshop-1256233971.cos.ap-guangzhou.myqcloud.com/wxapp/images/hui_08.png'></image>
+		</view>
+		<view class='newTips' wx:if="{{userData.ReturnOrderCount > 0}}"><text>{{userData.ReturnOrderCount}}</text></view>
+		<view>退换货</view>
+	</navigator>
+</view>
+<view class='center'>
+	<view class='centerTitle'>
+		<view class='line'></view>
+		<view class='title'>
+			我的信息
+		</view>
+	</view>
+	<view class='tablist'>
+		<navigator class='tabli' url='/pages/myCollect/myCollect' hover-class="none">
+			<view class='img'>
+				<image src='https://hmeshop-1256233971.cos.ap-guangzhou.myqcloud.com/wxapp/images/hui_01.png'></image>
+			</view>
+			<view>我的收藏</view>
+		</navigator>
+		<navigator class='tabli' url='/pages/myConsultation/myConsultation' hover-class="none">
+			<view class='img'>
+				<image src='https://hmeshop-1256233971.cos.ap-guangzhou.myqcloud.com/wxapp/images/hui_09.png'></image>
+			</view>
+			<view>我的咨询</view>
+		</navigator>
+		<navigator class='tabli' url='/pages/shippingAddress/shippingAddress?type=0' hover-class="none">
+			<view class='img'>
+				<image src='https://hmeshop-1256233971.cos.ap-guangzhou.myqcloud.com/wxapp/images/hui_10.png'></image>
+			</view>
+			<view>收货地址</view>
+		</navigator>
+		<!-- <navigator class='tabli' hover-class="none">
+      <view class='img'>
+        <image src='https://hmeshop-1256233971.cos.ap-guangzhou.myqcloud.com/wxapp/images/hui_11.png'></image>
+      </view>
+      <view>优惠金额</view>
+    </navigator> -->
+		<navigator class='tabli' url='/pages/userInfo/userInfo' hover-class="none">
+			<view class='img'>
+				<image src='https://hmeshop-1256233971.cos.ap-guangzhou.myqcloud.com/wxapp/images/hui_12.png'></image>
+			</view>
+			<view>个人资料</view>
+		</navigator>
+		<navigator wx:if="{{!IsSync}}" class='tabli' url='/pages/binding/binding' hover-class="none">
+			<view class='img'>
+				<image src='https://hmeshop-1256233971.cos.ap-guangzhou.myqcloud.com/wxapp/images/hui_13.png'></image>
+			</view>
+			<view>绑定授权账号</view>
+		</navigator>
+		<!-- <navigator class='tabli' url='/pages/snatch/snatch' hover-class="none">
+      <view class='img'>
+        <image src='https://hmeshop-1256233971.cos.ap-guangzhou.myqcloud.com/wxapp/images/hui_14.png'></image>
+      </view>
+      <view>一元夺宝奖品</view>
+    </navigator> -->
+		<navigator style='display:none;' class='tabli' url='/pages/award/award' hover-class="none">
+			<view class='img'>
+				<image src='https://hmeshop-1256233971.cos.ap-guangzhou.myqcloud.com/wxapp/images/hui_15.png'></image>
+			</view>
+			<view>抽奖活动奖品</view>
+		</navigator>
+
+		<navigator wx:if="{{isPay}}" class='tabli' url='/pages/myCommission/myCommission' hover-class="none">
+			<view class='img'>
+				<image src='https://hmeshop-1256233971.cos.ap-guangzhou.myqcloud.com/wxapp/images/hui_15.png'></image>
+			</view>
+			<view>查看佣金</view>
+		</navigator>
+
+		<navigator wx:if="{{isPay}}" class='tabli' url='/pages/shopkeeperCard/shopkeeperCard' hover-class="none">
+			<view class='img'>
+				<image src='https://hmeshop-1256233971.cos.ap-guangzhou.myqcloud.com/wxapp/images/dai_05.png'></image>
+			</view>
+			<view>推广</view>
+		</navigator>
+
+		<navigator wx:if="{{isPay}}" class='tabli' url='/pages/shopOrders/shopOrders' hover-class="none">
+			<view class='img'>
+				<image src='https://hmeshop-1256233971.cos.ap-guangzhou.myqcloud.com/wxapp/images/hui_04.png'></image>
+			</view>
+			<view>推广订单</view>
+		</navigator>
+
+		<navigator wx:if="{{isPay}}" class='tabli' url='/pages/friendCircle/friendCircle' hover-class="none">
+			<view class='img'>
+				<image src='https://hmeshop-1256233971.cos.ap-guangzhou.myqcloud.com/wxapp/images/dai_09.png'></image>
+			</view>
+			<view>朋友圈素材</view>
+		</navigator>
+
+	<!-- wx:if="{{userData.IsFullAmount}}" -->
+
+	
+	</view>
+</view>
+
+
+<!--start 主播中心 -->
+<view class='center'  wx:if="{{ userData.IsLiveAnchor }}">
+	<view class='centerTitle'>
+		<view class='line'></view>
+		<view class='title'>主播中心</view>
+	</view>
+	<view class='tablist'>
+		<navigator class='tabli' url='/pages/anchorApply/anchorApply' hover-class="none">
+			<view class='img'>
+				<image src='/images/icon_10_s@2x.png'></image>
+			</view>
+			<view>申请开播</view>
+		</navigator>
+		<navigator class='tabli' url='/pages/anchorList/anchorList' hover-class="none">
+			<view class='img'>
+				<image src='/images/icon_02_z@2x.png'></image>
+			</view>
+			<view>直播列表</view>
+		</navigator>
+		<navigator class='tabli' url='/pages/anchorAward/anchorAward' hover-class="none">
+			<view class='img'>
+				<image src='/images/icon_08_b@2x.png'></image>
+			</view>
+			<view>直播奖励</view>
+		</navigator>
+
+		<navigator class='tabli' url='/pages/anchorFans/anchorFans' hover-class="none">
+			<view class='img'>
+				<image src='/images/icon_09_w@2x.png'></image>
+			</view>
+			<view>我的粉丝</view>
+		</navigator>
+
+	</view>
+</view>
+<!-- 主播中心 end-->
+
+<!--start 代理中心 -->
+<view class='center' style="margin-bottom: 100rpx" >
+	<view class='centerTitle'>
+		<view class='line'></view>
+		<view class='title'>代理中心</view>
+	</view>
+	<view class='tablist'>
+		<navigator class='tabli' url='/expandPages/pages/applyAgent/index' hover-class="none">
+			<view class='img'>
+				<image src='https://img.hmeshop.cn/hmeshopV3/Storage/master/202005281147425800250.png'></image>
+			</view>
+			<view>申请代理</view>
+		</navigator>
+
+	</view>
+</view>
+<!-- 代理中心 end-->
+
+
+<!-- <view class='mask' wx:if="{{!warrantMask}}" bindtap="warrantEven"> -->
+<view class='mask' wx:if="{{false}}" bindtap="warrantEven" hidden='{{showAccount}}'>
+	<view class='findAccount'>
+		<view class='findTitle'>
+			<image src='https://img.hmeshop.cn/Common/tubiao@2x.png' style="width:130rpx;height:130rpx;"></image>
+			<text>发现其他关联账号</text>
+
+		</view>
+		<text class='dashed'></text>
+		<view class='headportrait'>
+			<image src="https://img.hmeshop.cn/Common/touxiang_01@2x.png" style="width:130rpx;height:130rpx;"></image>
+			<image src="https://img.hmeshop.cn/Common/touxiang_02@2x.png" style="width:130rpx;height:130rpx;"></image>
+			<image src="https://img.hmeshop.cn/Common/touxiang_03@2x.png" style="width:130rpx;height:130rpx;"></image>
+		</view>
+		<view class='headportrait'>
+			<text>微信：DFD2554</text>
+			<text>小程序：DFD2...</text>
+			<text>APP：DFD2554</text>
+		</view>
+		<view class='textscript'>
+			<text>
+      选择下列其中一个账号作为主账号，合并后以该账号作为基本信息（例如：账号推荐人信息、推荐人信息等），其余账号相关信息（例如：订单、佣金等）将合并到当前账号上，此操作不可逆。
+      </text>
+		</view>
+		<button class='btnyes' bindtap='sure'>确定</button>
+		<text class='btnno' bindtap='later'>以后再说</text>
+	</view>
+
+</view>
+
+
+<!-- 直播入口广告 -->
+<block wx:if="{{ !userData.IsLiveAnchor && !showlogin }}">
+	<view class="live-block">
+		<view class="live-container">
+			<!-- 背景 -->
+			<image class="live-bg" src="https://img.hmeshop.cn/Common/bg_o2@2x.png"></image>
+			<!-- 主体 -->
+			<view class="list-block-left">
+				<view class="text-content">
+					<view class="b-text">申请成为主播，成为主播</view>
+					<view class="s-text">成为下一个带货王！</view>
+				</view>
+			</view>
+			<view class="list-block-right">
+				<navigator url="/pages/joinNest/joinNest?parameter=/custom/beAnchor" hover-class="navigator-hover" open-type="navigate">
+					<button class="jump-btn">申请主播</button>
+				</navigator>
+			</view>
+		</view>
+	</view>
+</block>
+

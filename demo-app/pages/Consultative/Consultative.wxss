@@ -1,0 +1,193 @@
+/* pages/Consultative/Consultative.wxss */
+
+page {
+  background-color: #f5f5f5;
+}
+
+.product {
+  width: 100%;
+  height: 188rpx;
+  background-color: #fff;
+  display: flex;
+  box-sizing: border-box;
+}
+
+.product .left {
+  width: 25%;
+}
+
+.product .left image {
+  width: 100%;
+  height: 100%;
+}
+
+.product .right {
+  position: relative;
+  margin-left: 20rpx;
+  width: 70%;
+}
+
+.product .right .top {
+  font-size: 30rpx;
+  font-weight: bold;
+  color: #333;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  margin:20rpx 0 0 10rpx;
+}
+
+.product .right .bottom {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  position: absolute;
+  left: 10rpx;
+  bottom: 25rpx;
+}
+
+.product .right .bottom .price {
+  font-size: 30rpx;
+  font-weight: bold;
+  color: #e0001b;
+}
+
+.product .right .bottom .sold {
+  font-size: 26rpx;
+  color: #999;
+}
+
+.Consultative {
+  width: 100%;
+  margin-top: 30rpx;
+}
+
+.Consultative textarea {
+  width: 100%;
+  background-color: #fff;
+}
+
+.placeholder {
+  font-size: 35rpx;
+  color: #bfbfbf;
+  text-indent: 2em;
+  margin-left: 40rpx;
+}
+
+/* 提交咨询 */
+
+.submit {
+  margin: 50rpx auto 60rpx;
+  padding: 0 30rpx;
+  box-sizing: border-box;
+  width: 90%;
+  height: 100%;
+  background: #e0001b;
+  color: #fff;
+  font-size: 15px;
+  border-radius: 4px;
+}
+
+/*咨询  */
+
+.allevaluate {
+  width: 100%;
+  background-color: #fff;
+  height: 80rpx;
+  font-weight: bold;
+  font-size: 28rpx;
+  color: #333;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-bottom: 2rpx solid #e5e5e5;
+}
+
+.all-evaluate {
+  background: #fff;
+}
+
+.all-evaluate>.ae-top {
+  display: -webkit-flex;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 88rpx;
+  width: 100%;
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.all-evaluate>.ae-top image {
+  margin-right: 14rpx;
+  margin-top: 4px;
+  width: 44rpx;
+  height: 44rpx;
+  vertical-align: middle;
+}
+
+.evaluate-contents {
+  padding-left: 30rpx;
+  box-sizing: border-box;
+}
+
+.items {
+  padding: 30rpx 30rpx 30rpx 0;
+  box-sizing: border-box;
+  border-bottom: 2rpx solid #e5e5e5;
+}
+
+.items:last-child {
+  border-bottom: none;
+}
+
+.items>.items-top {
+  /* display: -webkit-flex;
+  display: flex;
+  justify-content: space-between; */
+  font-size: 28rpx;
+  color: #666;
+}
+
+.items>.items-content {
+  font-size: 14px;
+  color: #666;
+  width: 100%;
+  word-break: break-all;
+}
+
+.usercon {
+  color: #999;
+  font-size: 28rpx;
+}
+
+.item-bottom {
+  color: #fff;
+}
+
+.item-bottom .items-content {
+  color: #a86e3c;
+  font-size: 35rpx;
+}
+
+.item-Data {
+  color: #767676;
+  font-size: 24rpx;
+}
+
+/*缺省页  */
+
+.empty {
+  padding-bottom: 98rpx;
+  display: -webkit-flex;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: #666;
+  font-size: 14px;
+}
+
+.empty>image {
+  width: 360rpx;
+  height: 360rpx;
+}

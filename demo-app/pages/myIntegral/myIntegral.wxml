@@ -1,0 +1,30 @@
+<!--pages/myIntegral/myIntegral.wxml-->
+<view class="top">
+  <image src='https://hmeshop-1256233971.cos.ap-guangzhou.myqcloud.com/wxapp/images/bg_yellow.png'></image>
+  <view class='top_content'>
+    <view class='c_center'>
+      <view class='first'>
+        <text class='symbol'></text> {{SurplusIntegral}}</view>
+      <!-- <view class='residue'>(剩余{{SurplusIntegral}}积分)</view> -->
+    </view>
+    <view class='c_bottom'>我剩余的积分</view>
+  </view>
+</view>
+<view class="tabbox">
+  <view class="nav" bindtap="onChangeTab">
+    <view class="{{IntegralSourceType === 1?'red':'default'}} left" data-type='1'>积分收入 </view>
+    <view class="{{IntegralSourceType === 2?'red':'default'}} left" data-type='2'>积分支出</view>
+    <view class="{{IntegralSourceType === 0?'red':'default'}}" data-type='0'>积分明细</view>
+  </view>
+  <view class='list' wx:for="{{dataList}}" wx:key="{{index}}">
+    <view class='l_left'>
+      <view>{{item.IntegralSource}}</view>
+      <view class='time'>{{item.TrateTime}}</view>
+    </view>
+    <view class='l_right'>{{item. IntegralChange>0?"+"+item. IntegralChange:item. IntegralChange}}</view>
+  </view>
+  <view class='empty' wx:if="{{isEmpty}}">
+    <image src='https://hmeshop-1256233971.cos.ap-guangzhou.myqcloud.com/wxapp/images/pic-kong.png'></image>
+    <text>暂无数据</text>
+  </view>
+</view>

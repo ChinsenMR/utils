@@ -1,0 +1,440 @@
+/* pages/CustomerService/CustomerService.wxss */
+
+page {
+  background: #f5f5f5;
+}
+
+/* .consultation {
+  margin-bottom: 40rpx;
+  border-top: 2rpx #e5e5e5 solid;
+  padding: 30rpx 30rpx;
+  box-sizing: border-box;
+  background: #fff;
+} */
+
+.content-box {
+  font-size: 26rpx;
+}
+
+.content-box .ask {
+  padding: 20rpx;
+  display: -webkit-flex;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.content-box .ask .ask-text {
+  margin-right: 14rpx;
+  display: inline-block;
+  align-items: center;
+  padding: 14rpx 30rpx;
+  box-sizing: border-box;
+  border-radius: 40rpx 66rpx 12rpx 40rpx;
+  background: #e0001b;
+  color: #fff;
+  float: right;
+  word-break: break-all;
+  flex-shrink: 0
+}
+
+.content-box .ask .askvoice {
+  display: block;
+}
+
+.content-box .ask .askvoice .ask-voice {
+  margin-right: 14rpx;
+  display: inline-block;
+  padding: 30rpx 70rpx;
+  box-sizing: border-box;
+  border-radius: 40rpx 66rpx 12rpx 40rpx;
+  background: #e0001b;
+  float: right;
+  position: relative;
+}
+
+.content-box .ask .askvoice .view {
+  color: #979797;
+  font-size: 30rpx;
+  margin-left: 10px;
+}
+
+.content-box .ask .askvoice .ask-voice .image {
+  width: 35rpx;
+  height: 35rpx;
+  position: absolute;
+  right: 25rpx;
+  top: 15rpx;
+}
+
+.content-box .date {
+  display: block;
+  font-size: 22rpx;
+  color: #999;
+}
+
+.left .date {
+  width: 220rpx;
+  clear: both;
+  float: right;
+}
+
+.content-box .avatarimg {
+  flex-shrink: 0;
+  width: 78rpx;
+  height: 78rpx;
+  border-radius: 50%;
+  overflow: hidden;
+  margin-left: 10rpx;
+}
+
+.askimg {
+  width: 100%;
+}
+
+.askimg .image {
+  width: 150rpx;
+  height: 150rpx;
+  float: right;
+}
+
+.askimg .img {
+  width: 150rpx;
+  height: 150rpx;
+  float: left;
+  margin-left: 10rpx;
+}
+
+.goodsCard {
+  width: 350rpx;
+  background-color: white;
+  border-radius: 15rpx;
+  float: right;
+  margin-left: 5rpx;
+}
+
+.goodsCard .card {
+  width: 330rpx;
+  background-color: #f0ffff;
+  display: flex;
+  align-items: center;
+  margin: 15rpx auto;
+}
+
+.goodsCard .card .img {
+  width: 120rpx;
+  height: 120rpx;
+  padding-right: 10rpx;
+}
+
+.goodsCard .card .txt {
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  overflow: hidden;
+  -webkit-box-orient: vertical;
+}
+
+.content-box .answer {
+  margin: 32rpx 20rpx 0 0;
+  display: -webkit-flex;
+  display: flex;
+  align-items: center;
+}
+
+.content-box>.answer .answer-text {
+  margin-left: 14rpx;
+  display: inline-block;
+  align-items: center;
+  padding: 14rpx 28rpx;
+  box-sizing: border-box;
+  border: 2rpx #e5e5e5 solid;
+  border-radius: 40rpx 40rpx 40rpx 12rpx;
+  color: #666;
+  background-color: #fff;
+  word-break: break-all;
+  flex-shrink: 0
+}
+.textEmoji {
+  width: 40rpx;
+  height: 40rpx;
+  display: inline-block;
+}
+
+.custom-list{
+  margin-left: 14rpx;
+  display: inline-block;
+  padding: 14rpx 28rpx;
+  box-sizing: border-box;
+  border: 2rpx #e5e5e5 solid;
+  border-radius: 40rpx 40rpx 40rpx 12rpx;
+  color: #E0001B;
+  background-color: #fff;
+  word-break: break-all;
+}
+
+.right .date {
+  margin-top: 14rpx;
+}
+
+.ask .date {
+  margin-top: 10rpx;
+}
+
+.nothing {
+  padding: 0 0 30rpx 0;
+  font-size: 26rpx;
+  text-align: center;
+  color: #999;
+  background-color: #f5f5f5;
+}
+
+.empty {
+  position: fixed;
+  top: 30%;
+  left: 50%;
+  z-index: -1;
+  transform: translate(-50%, -40%);
+  color: #666;
+  font-size: 14px;
+  text-align: center;
+}
+
+.empty>image {
+  width: 360rpx;
+  height: 360rpx;
+}
+
+/* 信息输入区域 */
+
+.bottom {
+  width: 100%;
+  height: 105rpx;
+}
+
+.bottomput {
+  width: 100%;
+  height: 485rpx;
+}
+
+.message {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+}
+
+.sendMessage {
+  height: 100rpx;
+  padding: 10rpx;
+  background-color: #fff;
+  border-top: 2rpx solid #eee;
+  /* border-bottom: 2rpx solid #eee; */
+  display: flex;
+  justify-content: space-between;
+}
+
+.voice {
+  width: 14%;
+}
+
+.voice .voiceimg {
+  width: 80rpx;
+  height: 80rpx;
+}
+
+.voiceinput {
+  height: 100rpx;
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  font-size: 35rpx;
+  color: #666;
+  border-radius: 15rpx;
+  border: 2rpx solid #f5f5f5;
+}
+
+.voicepress {
+  background-color: gainsboro;
+}
+
+.sendMessage .sendinput {
+  width: 90%;
+  height: 100%;
+  line-height: 80rpx;
+  padding: 0 10rpx;
+  font-size: 35rpx;
+  color: #666;
+}
+
+.sendMessage input {
+  height: 80rpx;
+  line-height: 100rpx;
+  font-size: 35rpx;
+  color: #666;
+  border-radius: 15rpx;
+  background-color: #f5f5f5;
+}
+
+.sendMessage .button {
+  width: 16%;
+}
+
+.sendMessage .button .send {
+  width: 80rpx;
+  height: 80rpx;
+  text-align: center;
+  line-height: 80rpx;
+  font-size: 30rpx;
+  color: #fff;
+  border-radius: 10rpx;
+  background: linear-gradient(#ff3b53, #e0001b);
+}
+
+.sendMessage .button .images{
+  width: 80rpx;
+  height: 80rpx;
+}
+.sendMessage .add {
+  width: 80rpx;
+  height: 80rpx;
+  line-height: 80rpx;
+  font-size: 60rpx;
+  text-align: center;
+  color: #fff;
+  border: 1rpx solid #ccc;
+  border-radius: 50%;
+  margin: 0 10rpx;
+  background: linear-gradient(#ff3b53, #e0001b);
+}
+
+.increased {
+  width: 100%;
+  height: 300rpx;
+  padding: 40rpx 30rpx;
+  background-color: #fff;
+  display: flex;
+  justify-content: flex-start;
+}
+
+.increased .image {
+  width: 128rpx;
+  height: 128rpx;
+  padding-right: 50rpx;
+}
+
+.increased .image text {
+  font-size: 24rpx;
+  color: #999;
+  display: flex;
+  padding-top: 5rpx;
+  justify-content: center;
+}
+
+@keyframes slidedown {
+  from {
+    transform: translateY(0);
+  }
+
+  to {
+    transform: translateY(100%);
+  }
+}
+
+.slidedown {
+  animation: slidedown 0.5s linear;
+}
+
+.slideup {
+  animation: slideup 0.5s linear;
+}
+
+@keyframes slideup {
+  from {
+    transform: translateY(100%);
+  }
+
+  to {
+    transform: translateY(0);
+  }
+}
+
+/* 客服评价 */
+
+.performance {
+  width: 80%;
+  height: 80rpx;
+  border-radius: 5%;
+  background-color: white;
+  margin: 20rpx auto 60rpx;
+  text-align: center;
+  line-height: 80rpx;
+  color: #6495ed;
+}
+
+.perform {
+  width: 80%;
+  height: 80rpx;
+  border-radius: 5%;
+  background-color: #e5e5e5;
+  margin: 20rpx auto 60rpx;
+  text-align: center;
+  line-height: 80rpx;
+  color: #8c8c8c;
+}
+
+/* showToast */
+
+.showToast {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  position: fixed;
+  bottom: 5%;
+  justify-content: center;
+  align-items: center;
+}
+
+.showToast .content {
+  width: 330rpx;
+  height: 400rpx;
+  border-radius: 20rpx;
+  background-color: rgba(0, 0, 0, 0.6);
+}
+
+.showToast .content .img {
+  width: 220rpx;
+  height: 220rpx;
+  margin: 40rpx auto;
+}
+
+.showToast .content .txt {
+  font-size: 32rpx;
+  color: white;
+  text-align: center;
+}
+
+/* emoji */
+  .AllEmoji{
+    width: 100%;
+    display: flex;
+    display:-webkit-flex;
+    flex-wrap:wrap;
+  }
+  .emojiContent{
+    width: 12.5%;
+    padding: 2% 0 2% 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .emojiContent .emojiImg{
+    width: 55rpx;
+    height:55rpx;
+  }
+
+  .FullIphone{
+    width: 100%;
+    height: 20px;
+    background-color: white;
+    position: fixed;
+    bottom: 0;
+  }

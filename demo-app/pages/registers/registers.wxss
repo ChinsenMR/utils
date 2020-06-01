@@ -1,0 +1,56 @@
+/* pages/psd/psd.wxss */
+
+.list {
+  display: flex;
+  align-items: center;
+  margin-top: 3rpx;
+  padding: 20rpx 0;
+  font-size: 28rpx;
+  background-color: #fff;
+}
+
+.list .left {
+  display: flex;
+  align-items: center;
+  width: 26%;
+  padding-left: 20rpx;
+}
+.list .left image{
+  margin-right: 30rpx;
+  width: 40rpx;
+  height: 40rpx;
+}
+.list .right {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 74%;
+}
+
+.list .right image {
+  margin-right: 30rpx;
+  width: 34rpx;
+  height: 34rpx;
+}
+
+.btn {
+  margin: 70rpx auto 0;
+  padding: 20rpx 0;
+  width: 90%;
+  font-size: 32rpx;
+  text-align: center;
+  border-radius: 6rpx;
+  color: #fff;
+  background-color: #e0001b;
+}
+
+.register {
+  margin: 40rpx auto;
+  padding: 20rpx 0;
+  width: 90%;
+  font-size: 32rpx;
+  text-align: center;
+  border-radius: 6rpx;
+  color: #e0001b;
+  border: 2rpx solid #e0001b;
+}

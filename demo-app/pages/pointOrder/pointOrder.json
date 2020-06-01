@@ -1,0 +1,6 @@
+{
+    "navigationBarTitleText": "确定订单",
+    "usingComponents": {
+      "mask": "/components/mask/mask"
+    }
+}

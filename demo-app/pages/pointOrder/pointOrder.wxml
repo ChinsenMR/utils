@@ -1,0 +1,95 @@
+<!--pages/pointOrder/pointOrder.wxml-->
+<view class="cart-main" style="padding-bottom: 79px">
+  <view class="cart-header">
+    <view class="cart-header-top">
+      <icon class="finish"></icon>
+      <icon class="finish"></icon>
+      <icon></icon>
+      <icon></icon>
+    </view>
+    <view class="cart-header-bottom">
+      <!-- <text class="current-item">购物车</text> -->
+      <text class="current-item">确认订单</text>
+      <text>下单成功</text>
+    </view>
+  </view>
+  <view class="addr-wrap" wx:if="{{selectAddress.ShipTo}}" bindtap='onToAddressPage'>
+    <view class="addr-name list">{{selectAddress.ShipTo}} {{selectAddress.CellPhone}}</view>
+    <view class="addr-info list">{{selectAddress.RegionName}} {{selectAddress.Address}}</view>
+    <view class="right-nav-box">
+      <image src="https://hmeshop-1256233971.cos.ap-guangzhou.myqcloud.com/wxapp/images/path-right@2x.png"></image>
+    </view>
+  </view>
+  <view class="addr-wrap" bindtap='onToAddressPage' wx:else>
+    <text>选择地址</text>
+    <view class="right-nav-box">
+      <image src="https://hmeshop-1256233971.cos.ap-guangzhou.myqcloud.com/wxapp/images/path-right@2x.png"></image>
+    </view>
+  </view>
+  <view class='borderImg'>
+    <image src='https://hmeshop-1256233971.cos.ap-guangzhou.myqcloud.com/wxapp/images/bg-line@2x.png'></image>
+  </view>
+  <view class="cart-list-top">
+    <text>购物商品</text>
+    <text>积分余额：<text style='color:red'>{{pointList.MemberPoint}} </text>积分</text>
+  </view>
+
+  <view class="cart-list">
+    <view wx:for="{{pointOrder.data}}">
+      <view class="img-box">
+        <image src="{{item.Img}}"></image>
+      </view>
+      <view class="right">
+        <view class="title">{{item.productName}}</view>
+        <view class="wrap">
+          <text class="price">{{item.PointNumber}}积分</text>
+          <text class="count">x{{item.Quantity}}</text>
+        </view>
+      </view>
+    </view>
+  </view>
+  <view class="other-select-items">
+    <view class="item">派送时间
+      <picker bindchange="bindTimeChange" value="{{timeType[timeIndex]}}" range="{{timeType}}">
+        <view class="picker">
+          {{timeType[timeIndex]}}
+        </view>
+      </picker>
+      <view class="img-box">
+        <image src="https://hmeshop-1256233971.cos.ap-guangzhou.myqcloud.com/wxapp/images/path-right@2x.png"></image>
+      </view>
+    </view>
+    <view class="item">支付方式
+      <picker bindchange="bindPayChange" value="{{payIndex}}" range="{{payType}}">
+        <view class="picker">
+          {{payType[payIndex]}}
+        </view>
+      </picker>
+      <view class="img-box">
+        <image src="https://hmeshop-1256233971.cos.ap-guangzhou.myqcloud.com/wxapp/images/path-right@2x.png"></image>
+      </view>
+    </view>
+    <view class="item">配送方式
+      <text class='express'>快递</text>
+    </view>
+    <view class="comment">
+      <text>备注说明</text>
+      <textarea maxlength="30" bindinput='onGetRemark ' placeholder="填写文字限制在30字以内" auto-height auto-focus></textarea>
+    </view>
+  </view>
+  <view class="score-wrap">
+    <view class='left'>兑换所需积分</view>
+    <view class='right' style='color:#FFA500'>{{RealPaymentPoint}}积分</view>
+  </view>
+  <!-- <view class="score-wrap">
+    <view class='left'>商品金额</view>
+    <view class='right'>{{RealPaymentPoint}}积分</view>
+  </view> -->
+  <view class="cart-footer">
+    <view class='footerList '>
+      <view>还需支付：<text>0.00</text></view>
+    </view>
+    <view bindtap="submit" data-order="submit" class='footerList1 '>提交订单</view>
+  </view>
+</view>
+<mask wx:if="{{isMask}}" />

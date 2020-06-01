@@ -1,0 +1,153 @@
+/* pages/myIntegral/myIntegral.wxss */
+
+.top {
+  position: relative;
+  width: 100%;
+  height: 340rpx;
+}
+
+.top .top_content {
+  position: absolute;
+  padding: 20rpx;
+  width: 100%;
+  top: 0;
+  left: 0;
+  box-sizing: border-box;
+  color: #fff;
+}
+
+/* 
+.top .top_content .c_top {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  font-size: 32rpx;
+}
+
+.top .top_content .c_top .ct_left {
+  width: 40rpx;
+  height: 40rpx;
+} */
+
+.top .top_content .c_center {
+  margin: 90rpx auto 50rpx;
+  text-align: center;
+  font-size: 46rpx;
+}
+
+.top .top_content .c_center .first {
+  display: flex;
+  justify-content: center;
+  align-content: center;
+}
+
+.top .top_content .c_center .residue {
+  font-size: 28rpx;
+}
+
+.top .top_content .c_center .symbol {
+  margin-top: 14rpx;
+  font-size: 30rpx;
+}
+
+.top .top_content .c_bottom {
+  font-size: 32rpx;
+  text-align: center;
+}
+
+.nav {
+  display: flex;
+  margin-bottom: 30rpx;
+  width: 100%;
+  height: 80rpx;
+  line-height: 80rpx;
+  font-size: 30rpx;
+  background-color: #fff;
+}
+
+.left {
+  position: relative;
+}
+
+.left::after {
+  content: '';
+  position: absolute;
+  display: block;
+  width: 2rpx;
+  height: 40rpx;
+  top: 20rpx;
+  right: 0;
+  background-color: #eee;
+}
+
+.default {
+  flex: 1;
+  text-align: center;
+  color: #bebebe;
+}
+
+.red {
+  flex: 1;
+  text-align: center;
+  font-weight: 600;
+  color: #ff950d;
+  border-bottom: 6rpx solid #ff950d;
+}
+
+.show {
+  display: block;
+}
+
+.hidden {
+  display: none;
+}
+
+.list {
+  display: flex;
+  margin-bottom: 2rpx;
+  padding: 20rpx 30rpx;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #fff;
+}
+
+.list .l_left {
+  width: 89%;
+  font-size: 30rpx;
+  color: #333;
+}
+
+.list .l_left view {
+  width: 92%;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.list .l_left .time {
+  margin-top: 6rpx;
+  font-size: 26rpx;
+  color: #999;
+}
+
+.list .l_right {
+  font-size: 36rpx;
+  color: #ff950d;
+}
+
+/*缺省页*/
+
+.empty {
+  position: fixed;
+  top: 60%;
+  left: 50%;
+  transform: translate(-50%, -60%);
+  color: #666;
+  text-align: center;
+  font-size: 16px;
+}
+
+.empty>image {
+  width: 360rpx;
+  height: 360rpx;
+}

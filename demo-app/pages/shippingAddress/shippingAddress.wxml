@@ -1,0 +1,36 @@
+<!--pages/shippingAddress/shippingAddress.wxml-->
+<view class='shipping-address'>
+<radio-group class="radio-group" bindchange="bindRadioAddressChange">
+  <view class='content' wx:for="{{addressList}}" data-index="{{index}}" bindtap="backConfirmOrder">
+    <view class="liTop" data-index="{{index}}">
+      <view class='left'>
+        <text class='name'>{{item.ShipTo}}  {{item.CellPhone}}</text>
+        <text class='addr'>{{item.RegionName}} {{item.Address}}</text>
+      </view>
+      <!-- <view class='right'>
+        <view class='edit'></view>
+      </view> -->
+    </view>
+    <view class='operation'>
+      <view class="addressmor">
+        <!-- 是否设为默认 -->
+        <radio checked="{{item.IsDefault === 'True'}}" color="#ff5722" data-index="{{index}}" size="10" value="{{index}}"></radio>
+        <text class="{{item.IsDefault === 'True'?'active':''}}">{{item.IsDefault === 'True'?'默认地址':'设为默认'}}</text>
+      </view>
+      <!-- 删除 -->
+      <view class="addressmorr" data-index="{{index}}">
+        <image catchtap="onEdit" style='margin-right:50rpx;'  data-index="{{index}}" src='https://hmeshop-1256233971.cos.ap-guangzhou.myqcloud.com/wxapp/images/edit.png'></image>
+        <image catchtap="onDelete" data-index="{{index}}" src='https://hmeshop-1256233971.cos.ap-guangzhou.myqcloud.com/wxapp/images/del_icon.png'></image>
+      </view>
+    </view>
+  </view>
+</radio-group>
+</view>
+<view class='empty' wx:if="{{!addressList.length}}">
+  <image src='https://hmeshop-1256233971.cos.ap-guangzhou.myqcloud.com/wxapp/images/pic-kong.png'></image>
+  <text>您还没有收货地址哦！</text>
+</view>
+<view class='addr-btn-add'>
+ <button bindtap='getAddress' class="greed">一键获取地址</button>
+  <button bindtap='onToAddPage'>新增地址</button>
+</view>

@@ -1,0 +1,216 @@
+<!--pages/newPage/detail.wxml-->
+<import src="../../wxParse/wxParse.wxml" />
+
+<!-- <view class='detail-header'>
+  <view class='dh-wrap'>
+    <view class='{{tabCurrentItem === 0?"dh-current-item":""}}' bindtap='onSelectTabs' data-item="0">
+      <text class='dhi-text'>商品</text>
+    </view>
+    <view class='{{tabCurrentItem === 1?"dh-current-item":""}}' bindtap='onSelectTabs' data-item="1">
+      <text class='dhi-text'>评价</text>
+    </view>
+    <view class='{{tabCurrentItem === 2?"dh-current-item":""}}' bindtap='onSelectTabs' data-item="2">
+      <text class='dhi-text'>咨询</text>
+    </view>
+    <view class='{{tabCurrentItem === 3?"dh-current-item":""}}' bindtap='onSelectTabs' data-item="3">
+      <text class='dhi-text'>详情</text>
+    </view>
+  </view>
+</view> -->
+
+<view class='content'>
+  <swiper indicator-dots='true' autoplay='true' interval='3000' circular='true' bindtap="previewImage" style='height: {{swiperH}}px'>
+    <block wx:for="{{proDetail.Img}}">
+      <swiper-item>
+        <image mode='widthFix' src="{{item}}" bindload='onLoadImg' />
+      </swiper-item>
+    </block>
+  </swiper>
+
+  <!-- 商品售卖信息区 -->
+  <view class='buy-area'>
+    <view class='ba-top-wrap'>
+      <view class='title-box'>
+        <text class='title'>{{proDetail.productinfo[0].ProductName}}</text>
+        <view class='focus {{isFocus?"focused":""}}' catchtap='onFocus'>
+          <text>{{isFocus?"已关注":"关注"}}</text>
+        </view>
+      </view>
+      <!--title-box (end)-->
+    </view>
+    <!--ba-top-wrap (end)-->
+
+    <view class='price-wrap'>
+      <view class='pw-price-box'>
+        <view class='price' wx:if="{{!exChangeId}}">
+          <text class='pw-min'>¥</text>{{!proDetail.LimitedTimeDiscountInfo?salePrice:proDetail.LimitedTimeDiscountInfo[0].FinalPrice}}
+        </view>
+
+        <view class='price' wx:else>
+          <text class='pw-min'>¥</text>{{salePrice}}
+        </view>
+
+        <view class='original-price'>
+          <text class='pw-min'>¥</text>{{proDetail.productinfo[0].MarketPrice}}</view>
+      </view>
+
+      <text class='sale'>已售{{proDetail.productinfo[0].SaleCounts}}件</text>
+    </view>
+    <!--price-wrap (end)-->
+    
+    <!-- 活动 wx:if="{{proDetail.LimitedTimeDiscountInfo}}"-->
+     <view class='buy-item border-bottom' wx:if="{{proDetail.LimitedTimeDiscountInfo}}">
+      <text class='bi-name'>活动</text>
+      <view class='col-red flex1 flex-between'><text>{{proDetail.LimitedTimeDiscountInfo[0].ActivityName}}</text>
+        <view>{{(date.hour!=0||date.minute!=0||date.second!=0)?('距结束:'+date.hour+':'+date.minute+':'+date.second):''}}</view>
+      </view>
+    </view>
+     <view class='buy-item border-bottom' wx:if="{{proDetail.ActivityInfo}}">
+      <text class='bi-name'>满减</text>
+      <view class='col-red'>
+          <text wx:for="{{proDetail.ActivityInfo}}">满{{item.MeetMoney}}元减{{item.ReductionMoney}}元{{proDetail.ActivityInfo.length>1?((proDetail.ActivityInfo.length-1)===index?'':"；"):''}}</text>
+      </view>
+    </view>
+
+
+    <view class='buy-item border-bottom' bindtap='onShowSku' wx:if="{{proDetail.skuinfo.length}}">
+      <text class='bi-name'>规格</text>
+      <text class='bi-content text-wrap'>{{skuSelectedInfo?skuSelectedInfo:"请选择"}}</text>
+    </view>
+
+  </view>
+  <!--buy-area (end)-->
+
+  <!--评价  -->
+  <view class='evalute-box'>
+    <view class='buy-item border-bottom'>
+      <text class='bi-name'>评价</text>
+      <navigator hover-class='none' class='bi-content text-right' url='/pages/detailsEvalutePage/detailsEvalutePage?productId={{proDetail.productinfo[0].ProductId}}'>{{proDetail.productinfo[0].ReviewsCount&&proDetail.productinfo[0].ReviewsCount != 0?('共'+proDetail.productinfo[0].ReviewsCount+'条'):'暂无评价'}}</navigator>
+    </view>
+    <view class='all-evaluate' wx:if="{{evaluationCount != 0}}">
+      <view class='evaluate-contents'>
+          <view class='items' wx:for="{{evaluationList}}" wx:key="index">
+            <view class='items-top'>
+              <text>{{item.UserName}}：</text>
+              <text>{{item.ReviewDate}}</text>
+            </view>
+            <text class='items-content'>{{item.ReviewText}}</text>
+          </view>
+      </view>
+      <view class='evalute-to-all' wx:if="{{proDetail.productinfo[0].ReviewsCount!=evaluationList.length}}">
+        <navigator class='btn-to-all' hover-class='none' url='/pages/detailsEvalutePage/detailsEvalutePage?productId={{proDetail.productinfo[0].ProductId}}'>查看全部评价</navigator>
+      </view>
+    </view>
+  </view>
+
+  <!-- 咨询 -->
+  <view class='buy-item border-bottom'>
+    <text class=''>咨询专区</text>
+    <navigator hover-class='none' url='/pages/Consultative/Consultative?productId={{proDetail.productinfo[0].ProductId}}' class='bi-content text-right'>{{proDetail.productinfo[0].ConsultationsCount&&proDetail.productinfo[0].ConsultationsCount != 0?('共'+proDetail.productinfo[0].ConsultationsCount+'条，'):'暂无提问信息，'}}去提问</navigator>
+  </view>
+
+  <!-- 参数 -->
+  <view class='property-wrap'>
+    <view class='id-text'>
+      <text>{{proDetail.productinfo[0].Attributes.length?"商品参数":"商品参数为空"}}</text>
+    </view>
+    <view class='property'>
+      <view class='property-item' wx:for="{{proDetail.productinfo[0].Attributes}}">
+        <text class='property-key'>{{item.AttributeName}}</text>
+        <text class='property-value'>{{item.ValueStr}}</text>
+      </view>
+    </view>
+  </view>
+
+  <!--商品详情  -->
+  <view class='info-detail'>
+    <view class='id-text'>
+      <text>商品详情</text>
+    </view>
+    <view class='richtext'>
+      <template is="wxParse" data="{{wxParseData:richtext.nodes}}" />
+    </view>
+  </view>
+
+  <!-- 底部区 -->
+  <view class='tab-nav'>
+    <view class='left'>
+      <navigator class='tab-item' url='/pages/index/index' open-type="switchTab">
+        <image mode='widthFix' src='https://hmeshop-1256233971.cos.ap-guangzhou.myqcloud.com/wxapp/images/store0.png'></image>
+        <text>店铺</text>
+      </navigator>
+      <navigator class='tab-item' open-type='switchTab' url='/pages/cart/cart'>
+        <image src='https://hmeshop-1256233971.cos.ap-guangzhou.myqcloud.com/wxapp/images/cart0.png'></image>
+        <text>购物车</text>
+      </navigator>
+    </view>
+    <view class='add-cart' bindtap='onDetailAddCart' wx:if="{{!exChangeId}}">加入购物车</view>
+    <view class='conversion' bindtap='onDetailConNow' wx:if="{{exChangeId}}">立即兑换</view>
+    <view class='buy-now' bindtap='onDetailBuyNow'>立即购买</view>
+  </view>
+
+  <!-- sku选择弹窗 -->
+  <view class='sku-dialog' hidden='{{!showSelectDialog}}'>
+    <view class='sku-cover' capture-catch:tap="onCloseDialog" capture-catch:touchmove="stop"></view>
+    <view class='sku-dialog-content {{showSelectDialog?"sku-content-show":""}}'>
+      <view class='sku-dialog-top'>
+        <view class='good-img'>
+          <image src='{{proDetail.Img[0]}}'></image>
+        </view>
+        <view class='sku-price'>
+          <view class='sku-money'>
+            <block wx:if="{{!exChangeId}}">
+            <text class='pw-min'>¥</text>{{!proDetail.LimitedTimeDiscountInfo?salePrice:proDetail.LimitedTimeDiscountInfo[0].FinalPrice}}
+            </block>
+
+            <block wx:else>
+              <text class='pw-min'>¥</text>{{salePrice}}
+            </block>
+          </view>
+        </view>
+        <view class='sku-selected' wx:if="{{proDetail.skuinfo.length}}">商品编号：
+          <text class='cl3'>{{skuData.SKU?skuData.SKU:"请选择"}}</text>
+        </view>
+        <text class='closed' capture-catch:touchstart='onCloseDialog'>X</text>
+      </view>
+
+      <view class='sku-box'>
+        <view class='sku-item' wx:for="{{proDetail.skuinfo}}" data-key='{{item.AttributeId}}' bindtap='onSelectSku'>
+          <text class='sku-name'>{{item.AttributeName}}:</text>
+          <view class='sku-details'>
+            <block wx:for="{{item.skus}}" wx:for-item="sku" wx:for-index="idx" wx:key="sku.ValueId">
+              <text data-index='{{index}}' 
+                    data-sku="{{sku.ValueId}}" 
+                    data-skutext="{{item.AttributeName+'：'+sku.ValueStr}}"
+                    class='sku-value {{skuIds[index]&&skuIds[index].ValueId === sku.ValueId?"active-value":""}}'>{{sku.ValueStr}}</text>
+            </block>
+          </view>
+        </view>
+
+        <view class='pm-quantity-box' wx:if="{{skuData.Stock || integralList.ProductNumber}}">
+          <text>购买数量：</text>
+          <view class='pm-right'>
+            <text class='quantity'>剩余库存{{skuData.Stock?skuData.Stock:0}}件</text>
+            <!-- <text class='quantity' wx:if="{{proDetail.PointNumber.length}}">剩余库存{{integralList.ProductNumber}}件</text> -->
+            <view class='btn-box'>
+              <text class='reduce  {{count===1?"active":""}}' capture-catch:tap='onReduce'>-</text>
+              <text class='count'>{{count}}</text>
+              <text class='add' capture-catch:tap='onAdd'>+</text>
+            </view>
+          </view>
+        </view>
+        <view class='pm-quantity-box' wx:else>
+          <text>暂无库存</text>
+        </view>
+      </view>
+      <view class='btn-contain'>
+        <view class='add-cart' capture-catch:tap='onAddCart'>加入购物车</view>
+        <view class='conversion' capture-catch:tap='onConNow' wx:if="{{false}}">立即兑换</view>
+        <view class='buy-now' capture-catch:tap='onBuyNow'>立即购买</view>
+      </view>
+    </view>
+  </view>
+
+</view>
+<!--content (end)-->
+<btn-to-top show="{{showToTop}}" />

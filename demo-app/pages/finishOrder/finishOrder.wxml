@@ -1,0 +1,38 @@
+<!--pages/finishOrder/finishOrder.wxml-->
+<view class='finishOrder'>
+  <view class="cart-main" style="padding-top: 44px;padding-bottom: 79px">
+    <view class="cart-header">
+      <view class="cart-header-top">
+        <icon class="finish"></icon>
+        <icon class="finish"></icon>
+        <icon class="finish"></icon>
+        <icon class="finish"></icon>
+      </view>
+      <view class="cart-header-bottom">
+        <text class="current-item">购物车</text>
+        <text class="current-item">确认订单</text>
+        <text class="current-item">下单成功</text>
+      </view>
+    </view>
+    <view class="finish-content">
+      <view class="img-box-wrap">
+        <view class="img-box">
+          <image src="https://hmeshop-1256233971.cos.ap-guangzhou.myqcloud.com/wxapp/images/pic-ding.png"></image>
+        </view>
+      </view>
+      <view class="tips">{{msg}}</view>
+      <view class='amount'>
+        <text>订单金额：</text>
+        <text wx:if="{{payName==='微信支付'}}">￥{{money}}</text>
+        <text wx:if="{{payName==='积分兑换'}}">{{options.RealPaymentPoint}}积分</text>
+      </view>
+      <view class="btns-wrap">
+        <!-- <navigator wx:if="{{payName!=='微信支付' || money == 0}}" open-type="switchTab" url='/pages/index/index' class="continue">继续逛逛</navigator> -->
+        <navigator wx:if="{{payName!=='微信支付' || money == 0}}" url='/pages/myOrder/myOrder' class="check-order" data-order="checkOrder">查看订单</navigator>
+        <view ontap="gotoindex" url='/pages/index/index' class="continue">返回首页</view>
+      </view>
+      <view class='payment' bindtap='onPayMent' wx:if="{{payName==='微信支付' && money != 0}}">立即支付</view>
+    </view>
+  </view>
+</view>
+<mask wx:if="{{isMask}}" />
