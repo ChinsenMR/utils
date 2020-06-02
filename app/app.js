@@ -1,32 +1,17 @@
-import tools from './utils/index';
+import tools from './utils/tools/index';
+import minxins from './mixins/index';
 
-App({
-    globalData: {
-        scene: '',
-        /* 场景值 */
+const app = {
+	globalData: {},
+	onLaunch(e) {
+		tools.init(this);
+	},
+	onLoad(options) {},
+	onShow() {},
+	onHide() {},
+};
 
-    },
-    onLaunch(e) {
-        /* 获取设备信息 */
-        wx.getSystemInfo({
-            success: res => {
-                let {
-                    height,
-                    width,
-                    statusBar,
-                    customBar,
-                    custom
-                } = this.globalData;
+/* 常用混合器 */
+app.mixin = { ...minxins };
 
-
-            }
-        })
-    },
-    onLoad(options) {
-        tools.init(this)
-    },
-    onShow(options) {
-
-    },
-    onHide() {}
-})
+App(app);
