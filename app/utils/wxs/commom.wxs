@@ -1,0 +1,19 @@
+/* 转换订单状态 */
+var transOrderStatus = function (status) {
+	var statusList = [
+		'待付款',
+		'待发货',
+		'待签收',
+		'交易关闭',
+		'交易成功',
+		'申请退款',
+		'申请退货',
+		'申请换货',
+		'已退款',
+		'已退货',
+	];
+
+	return list[status - 1];
+};
+
+module.exports.transOrderStatus = transOrderStatus;
