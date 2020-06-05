@@ -1,8 +1,7 @@
-
 {
     "component": true,
     "usingComponents": {},
     "enablePullDownRefresh": false,
     "backgroundTextStyle": "dark",
-    "navigationBarTitleText": "登陆"
+    "navigationBarTitleText": "首页"
 }

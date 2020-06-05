@@ -1,4 +1,0 @@
-<!--picker-->
-<view aiitec="picker-wrapper">
-    <view class="picker-container"></view>
-</view>

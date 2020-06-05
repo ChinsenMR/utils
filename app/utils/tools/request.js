@@ -89,6 +89,7 @@ export default {
 
   /**
    *处理异常状态
+   *该接口的宗旨是，处理掉所有异常状态，阻止方法继续执行下去
    */
   handleAbnormal(result) {
     /* 针对新旧版本接口返回值异常处理 */
@@ -106,7 +107,7 @@ export default {
       {
         type: "NO_LOGIN",
         bool: Boolean(
-          result.errCode == 2 || ["Login", "login"].includes(result.Status)
+          result.errCode == 2 || ["Login", "login"].includes(result.Status) || result.Code == -99
         ),
         handle: () => {
           wx.navigateTo({
@@ -118,9 +119,9 @@ export default {
       /* 处理错误结果 */
       {
         type: "WARNNING",
-        bool: Boolean(result.Error || result.Message),
+        bool: Boolean(result.Error || result.Message || result.Code == -1),
         handle: () => {
-          alert.error(result.Error || result.Message);
+          alert.error(result.Error || result.Message || result.Msg);
         },
       },
     ];

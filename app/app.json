@@ -1,8 +1,6 @@
 {
   "pages": [
-    "pages/testWeStore/testWeStore",
-    "pages/testWeStore2/testWeStore",
-    "pages/test/test"
+    "pages/index/index"
   ],
   "subpackages": [
     {

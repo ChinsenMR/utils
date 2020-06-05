@@ -1,8 +1,8 @@
-@import "/assets/wxss/main.wxss"; /* 常用类库 */
-@import "/assets/wxss/clear.wxss"; /* 清除小程序标签自带的废样式 */
-@import "/assets/wxParse/wxParse.wxss"; /*富文本解析*/
+@import '/assets/wxss/main.wxss'; /* 常用类库 */
+@import '/assets/wxss/clear.wxss'; /* 清除小程序标签自带的废样式 */
+@import '/utils/wxParse/wxParse.wxss'; /*富文本解析*/
 
 /*以下放当前项目使用到的样式，保持项目的整洁度 */
-page{
-    background-color: #f5f5f5;
+page {
+	background-color: #f5f5f5;
 }

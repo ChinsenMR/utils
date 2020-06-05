@@ -1,7 +1,3 @@
-import store from '../../store';
-import create from '../../utils/create';
-import { test } from '../../utils/store/stores/test';
-
 const app = getApp();
 
 const init = app.tools.initPage({
@@ -9,7 +5,6 @@ const init = app.tools.initPage({
 		motto: null,
 		test: 333,
 	},
-	store,
 	watch: {},
 	setAllData() {
 		app.tools.setAllData(this, this.data);
@@ -48,4 +43,4 @@ const init = app.tools.initPage({
 	},
 });
 
-create(init);
+Page(init);

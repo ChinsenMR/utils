@@ -1,7 +1,0 @@
-
-<view class="imageViewer-wrapper">
-    <view class="imageViewer-container">
-        <!-- <custom-viewer id="viwer" list="{{imageList}}"></custom-viewer> -->
-        <custom-viewer is="components/custom/imageViewer/imageViewer" id="viwer" list="{{imageList}}"></custom-viewer>
-    </view>
-</view>

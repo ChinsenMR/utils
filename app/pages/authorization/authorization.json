@@ -1,8 +1,0 @@
-
-{
-    "component": true,
-    "usingComponents": {},
-    "enablePullDownRefresh": false,
-    "backgroundTextStyle": "dark",
-    "navigationBarTitleText": "用户授权"
-}

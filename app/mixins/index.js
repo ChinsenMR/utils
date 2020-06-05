@@ -11,7 +11,7 @@ module.exports = {
 		const that = this._currentPage();
 		const {
 			currentTarget: {
-				dataset: { value },
+				dataset: { name },
 			},
 			detail: { value },
 		} = e;
@@ -37,4 +37,9 @@ module.exports = {
 
 		that.setData(form);
 	},
+	/* 修改带参数跳转，简化使用方式 */
+	goPage(e){
+		const { currentTarget: {dataset: { ...args} }} = e;
+		console.log(...args)
+	}
 };

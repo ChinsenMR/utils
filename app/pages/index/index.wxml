@@ -16,6 +16,7 @@
             </view>
             <button bindtap="changeStatus">修改状态</button>
             <button bindtap="changeTest">通过stote方法修改状态</button>
+            <navigator url="/pages/test/test" hover-class="navigator-hover" open-type="navigate">测试</navigator>
             <hello></hello>
         </view>
     </view>
