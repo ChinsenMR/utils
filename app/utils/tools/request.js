@@ -7,10 +7,10 @@ import alert from "./alert";
 
 export default {
   /* 是否需要拦截下一个请求 避免多次跳转到授权页面*/
-  is_need_intercept: false,
+  IS_NEED_INTERCEP: false,
 
   /* 请求超时限制 */
-  timeout: 10 * 1000,
+  TIME_OUT: 10 * 1000,
 
   /**
    * 主请求体
@@ -21,14 +21,14 @@ export default {
     const $ajax = () => {
       const {
         method = "GET",
-        data = {},
-        url = "NO_URL",
-        hideLoading = false,
+          data = {},
+          url = "NO_URL",
+          hideLoading = false,
       } = options;
 
       const header = this.setHeader(method);
 
-      const timeout = this.timeout;
+      const timeout = this.TIME_OUT;
 
       data.sessionId = wx.getStorageSync("sessionId");
 
@@ -49,7 +49,9 @@ export default {
             resolve(res.data);
           },
           fail: (err) => {
-            const { errMsg } = err;
+            const {
+              errMsg
+            } = err;
 
             const isTimeOut = errMsg.indexOf("timeout") != -1;
 
@@ -95,8 +97,11 @@ export default {
    *处理异常状态
    */
   handleAbnormal(result) {
-    /* 针对新旧版本接口返回值异常处理 */
 
+    /* 错误提示 */
+    const ERROR_MESSAGE = result.Error || result.Message || result.msg || result.Msg || result.errMsg || '服务器错误';
+
+    /* 针对新旧版本接口返回值异常处理 */
     const abnormal = [
       /* 接口无返回值 */
       {
@@ -115,23 +120,23 @@ export default {
         ),
         handle: () => {
           /* 如果未登录，并且拦截未开启，那么前往登录 */
-          if (!this.is_need_intercept)
+          if (!this.IS_NEED_INTERCEP)
             wx.navigateTo({
               url: "/pages/authorizationLogin/authorizationLogin",
               success: () => {
                 /* 已经跳转去登录了，无需重复跳转 开启拦截，阻止重复跳转到授权页面 */
-                this.is_need_intercept = true;
+                this.IS_NEED_INTERCEP = true;
               },
             });
         },
       },
 
-      /* 处理错误结果 */
+      /* 处理普通错误结果 */
       {
         type: "WARNNING",
-        bool: Boolean(result.Error || result.Message),
+        bool: Boolean(ERROR_MESSAGE),
         handle: () => {
-          alert.error(result.Error || result.Message);
+          alert.error(ERROR_MESSAGE);
         },
       },
     ];
@@ -142,7 +147,7 @@ export default {
     });
 
     /* 正常返回数据，拦截关闭 */
-    this.is_need_intercept = false;
+    this.IS_NEED_INTERCEP = false;
 
     /* 无异常，返回数据 */
     return result;
