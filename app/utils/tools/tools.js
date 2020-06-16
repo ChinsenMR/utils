@@ -453,6 +453,58 @@ export default {
 
     });
   },
+   /* 长按保存图片 */
+  saveImage(target) {
+    const isObject = typeof target === 'object';
+    const src = isObject ? e.currentTarget.dataset.src : target;
+
+    const save = () => {
+      wx.getImageInfo({ src, success: res => {
+        wx.saveImageToPhotosAlbum({
+          filePath: res.path,
+          success(success) {
+            console.log(success);
+          },
+          fail(error) {
+            console.log(error);
+          }
+        })
+      }})
+    }
+    
+    const getAuth = () => {
+        wx.authorize({
+              scope: 'scope.writePhotosAlbum',
+              success(res) {
+                console.log('用户同意获取权限')
+              },
+              fail() {
+                 /* 用户拒绝后回调 */
+                  Alert.confirm({
+                    title: "提示",
+                    content: "请打开权限，否则无法保存",
+                  }, (confirm) => {
+                    if (confirm) {
+                    wx.openSetting({
+                      success(res) {}
+                    })
+                  } else if (res.cancel) {
+                    console.log('用户点击取消')
+                  }
+                })
+              
+              }
+            })
+    }
+
+    /* 获取设置权限，如果没有权限则去获取，否则保存图片 */
+    wx.getSetting({
+      success(res) {
+        !res.authSetting['scope.writePhotosAlbum'] ? getAuth() : save()
+      }
+    })
+
+  }
   /**
    * start
    * 用于监听，在pages/js文件onload使用
@@ -486,7 +538,7 @@ export default {
     const methods = page.methods;
 
     delete page.methods;
-
+    
     return {
       ...page,
       ...methods
