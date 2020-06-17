@@ -66,4 +66,13 @@ module.exports = {
       })
       .then((res) => res);
   },
+  getGoodsList(data) {
+    return methods
+      .request({
+        url: "/goodsList",
+        data,
+        method: "GET",
+      })
+      .then((res) => res);
+  },
 };

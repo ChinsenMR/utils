@@ -1,3 +1,0 @@
-<!--pages/dicountActivity/dicountActivity.wxml-->
-<import src="../../module/activityArea/activityArea.wxml"/>
-<template is="activity" data="{{activityData: activityData,isEmpty:isEmpty,productList:productList,discount: 1}}"/>

@@ -3,7 +3,7 @@
  **/
 module.exports = {
     api: {
-        domain: 'https://nissanxk.aiitec.net/nissan-php',
+        domain: 'http://127.0.0.1:7001',
         url: 'https://nissanxk.aiitec.net',
         version: '1.0.0.1'
     },

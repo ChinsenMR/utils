@@ -1,7 +1,0 @@
-{
-  "navigationBarTitleText": "直播列表",
-  "usingComponents": {
-    "addr-picker": "/components/addrPicker/addrPicker"
-  },
-  "enablePullDownRefresh": true
-}

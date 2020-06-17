@@ -1,23 +1,19 @@
-<!-- testWeStore -->
-<view class="testWeStore-wrapper">
-    <view class="testWeStore-container">
-        <view class="container">
-            <view class="userinfo">
-                <button wx:if="{{!hasUserInfo && canIUse}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo">
-                    获取头像昵称
-                </button>
-                <block wx:else>
-                    <image bindtap="bindViewTap" class="userinfo-avatar" src="{{userInfo.avatarUrl}}" mode="cover"></image>
-                    <text class="userinfo-nickname">{{userInfo.nickName}}</text>
-                </block>
-            </view>
-            <view class="usermotto text-center padding-30">
-                <text class="user-motto text-center ">{{test}}</text>
-            </view>
-            <button bindtap="changeStatus">修改状态</button>
-            <button bindtap="changeTest">通过stote方法修改状态</button>
-            <navigator url="/pages/test/test" hover-class="navigator-hover" open-type="navigate">测试</navigator>
-            <hello></hello>
-        </view>
-    </view>
-</view>
+<block wx:for="{{list}}" wx:key="{{index}}">
+	<van-card
+	 num="{{item.count}}"
+	 price="{{item.price}}"
+	 desc="{{item.desc}}"
+	 title="{{item.name}}"
+	 thumb="{{ item.goodsImage }}"
+	/>
+</block>
+<block>
+	<van-goods-action>
+		<van-goods-action-icon icon="chat-o" text="客服" dot />
+		<van-goods-action-icon icon="cart-o" text="购物车" info="5" />
+		<van-goods-action-icon icon="shop-o" text="店铺" />
+		<van-goods-action-button text="加入购物车" type="warning" />
+		<van-goods-action-button text="立即购买" />
+	</van-goods-action>
+</block>
+

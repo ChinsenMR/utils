@@ -1,6 +1,0 @@
-{
-  "navigationBarTitleText": "新增地址",
-  "usingComponents": {
-    "addr-picker": "/components/addrPicker/addrPicker"
-  }
-}

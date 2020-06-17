@@ -1,7 +1,0 @@
-{
-  "navigationBarTitleText": "直播奖励",
-  "usingComponents": {
-    "addr-picker": "/components/addrPicker/addrPicker"
-  },
-  "enablePullDownRefresh": true
-}

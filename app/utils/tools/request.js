@@ -37,7 +37,7 @@ export default {
         data,
         header,
         timeout,
-        url: config.url + url,
+        url: config.api.domain + url,
       };
 
       if (!hideLoading) alert.loading();
@@ -108,7 +108,7 @@ export default {
         type: "NO_VALUE",
         bool: Boolean(!result),
         handle: () => {
-          alert.message("返回值错误，请检查");
+          return alert.message("返回值错误，请检查");
         },
       },
 
@@ -121,8 +121,8 @@ export default {
         handle: () => {
           /* 如果未登录，并且拦截未开启，那么前往登录 */
           if (!this.IS_NEED_INTERCEP)
-            wx.navigateTo({
-              url: "/pages/authorizationLogin/authorizationLogin",
+            return wx.navigateTo({
+              url: "/pages/authorization/authorization",
               success: () => {
                 /* 已经跳转去登录了，无需重复跳转 开启拦截，阻止重复跳转到授权页面 */
                 this.IS_NEED_INTERCEP = true;
@@ -134,9 +134,9 @@ export default {
       /* 处理普通错误结果 */
       {
         type: "WARNNING",
-        bool: Boolean(ERROR_MESSAGE),
+        bool: Boolean(ERROR_MESSAGE && result.errCode !== 1),
         handle: () => {
-          alert.error(ERROR_MESSAGE);
+          return alert.error(ERROR_MESSAGE);
         },
       },
     ];

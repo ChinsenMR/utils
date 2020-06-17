@@ -1,6 +1,0 @@
-{
-  "navigationBarTitleText": "代理中心",
-  "usingComponents": {
-    "shop-keeper-center": "/components/shopkeeperCenter/shopkeeperCenter"
-  }
-}

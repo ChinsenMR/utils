@@ -1,8 +1,0 @@
-<view class="dialog-wrapper" wx:if="{{show}}">
-	<view class="dialog-container">
-		<view class="dialog-cover" style="background: url({{noticeData.BgImgUrl}})center center / cover no-repeat" bindtap="gotoLiveRoom" data-id="{{noticeData.LiveRoomId}}"></view>
-		<!-- <view class="dialog-close" bindtap="closeWindow"></view> -->
-		<image class="dialog-close" src="/images/close@2x.png" bindtap="closeWindow" />
-	</view>
-	<view class="dialog-filter"></view>
-</view>

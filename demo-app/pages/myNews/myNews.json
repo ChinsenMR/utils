@@ -1,7 +1,0 @@
-{
-  "navigationBarTitleText": "我的消息",
-  "enablePullDownRefresh": true,
-  "usingComponents": {
-    "select-tabs": "/components/selectTabs/selectTabs"
-  }
-}

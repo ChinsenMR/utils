@@ -1,6 +1,0 @@
-{
-  "navigationBarTitleText": "直播申请",
-  "usingComponents": {
-    "addr-picker": "/components/addrPicker/addrPicker"
-  }
-}

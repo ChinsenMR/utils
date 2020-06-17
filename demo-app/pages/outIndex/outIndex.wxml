@@ -1,4 +1,0 @@
-<view class='content'>
-  <!-- <text>123+{{link}}</text> -->
-  <web-view src="{{link}}"></web-view>
-</view>

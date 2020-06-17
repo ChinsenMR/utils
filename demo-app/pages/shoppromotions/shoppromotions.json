@@ -1,6 +1,0 @@
-{
-  "navigationBarTitleText": "店铺推广",
-  "usingComponents": {
-    "select-tabs": "/components/selectTabs/selectTabs"
-  }
-}

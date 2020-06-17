@@ -1,2 +1,0 @@
-<!--components/btnToTop/btnToTop.wxml-->
-<view class='to-top' bindtap='onToTop' hidden='{{!show}}'></view>

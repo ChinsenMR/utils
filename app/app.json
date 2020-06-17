@@ -1,13 +1,11 @@
 {
   "pages": [
-    "pages/index/index"
+    "pages/index/index", "pages/authorization/authorization"
   ],
-  "subpackages": [
-    {
-      "root": "pages-expand",
-      "pages": ["pages/index/index"]
-    }
-  ],
+  "subpackages": [{
+    "root": "pages-expand",
+    "pages": ["pages/index/index"]
+  }],
   "window": {
     "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#FAFAFA",

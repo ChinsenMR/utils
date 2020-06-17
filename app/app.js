@@ -1,8 +1,10 @@
 import tools from './utils/tools/index';
-import minxins from './mixins/index';
+import minxins from  './utils/mixins/index';
 
 const app = {
-	globalData: {},
+	globalData: {
+		httpUrl: 'http://172.0.0.1:7003'
+	},
 	onLaunch(e) {
 		tools.init(this);
 	},
