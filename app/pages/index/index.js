@@ -20,6 +20,7 @@ Page(app.Page({
 	},
 	onShow() {
 		this.getList();
+		this.getList();
 	},
 	onShareAppMessage() {
 		return {

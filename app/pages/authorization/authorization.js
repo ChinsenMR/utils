@@ -19,7 +19,7 @@ Page(app.Page({
 
 	},
 	onShow() {
-		
+
 	},
 	onShareAppMessage() {
 		return {
@@ -38,8 +38,12 @@ Page(app.Page({
 	 * 自定义方法全部放这里
 	 */
 	methods: {
+		login() {
+			app.tools.storage.set('_cookie_', 'CALm20sm2X1q---', () => app.tools.goBack())
+		},
 		/* 获取列表 */
 		getList() {
+			console.log(22)
 			app.$api.getGoodsList().then(res => {
 				if (res.errCode == 1) {
 					this.setData({
