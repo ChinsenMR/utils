@@ -24,8 +24,8 @@ export default {
   async request(options) {
 
     /* 查看请求权限，如果没有权限那么停止执行 */
-    const IS_HAVE_RIGHT = this.verifyAuth();
-    console.log(IS_HAVE_RIGHT, )
+    const IS_HAVE_RIGHT = this.queryAuth();
+
     /* 无权限直接拦截*/
     if (!IS_HAVE_RIGHT) return
 
@@ -105,31 +105,39 @@ export default {
     };
   },
   /* 验证是否有继续执行下一个方法的权限 */
-  verifyAuth() {
+  queryAuth() {
     const pages = getCurrentPages();
     const CURRENT_PAGE = pages[pages.length - 1].route;
 
-    console.log(this.HISTORY_PAGES, pages)
-
-    let AUTH_OF_REQUEST = true;
+    let AUTH_OF_REQUEST = true; /* 请求接口的权限 */
 
     /* 如果当前路由不等于上一页面路由 */
     if (this.PREV_ROUTE !== CURRENT_PAGE) {
       /* 重新开启跳转拦截 */
       this.IS_NEED_INTERCEP = false;
 
+      /* 如果拦截条件为true那么必然未登录，故没有权限 */
       if (this.IS_NEED_INTERCEP) {
-        /* 如果拦截条件为true那么必然未登录，故没有权限 */
         AUTH_OF_REQUEST = false
       }
 
+      /*对应小程序5条page的限制 */
+      if (this.HISTORY_PAGES.length === 5) {
+        this.HISTORY_PAGES.splice(0, 1);
+      } else {
+        /* 如果历史page里面没有当前路由，那么将当前路由push进历史page */
+        if (!this.HISTORY_PAGES.includes(CURRENT_PAGE)) {
+          this.HISTORY_PAGES.push(CURRENT_PAGE);
+        }
+      }
 
-      /* 逻辑处理完，当前页面赋值为上一页面路由 */
+      /* 逻辑处理完上一页面路由赋值为当前页面 */
       this.PREV_ROUTE = CURRENT_PAGE;
-      this.HISTORY_PAGES = pages;
     } else {
-      const hasThisPage = this.HISTORY_PAGES.find(p => p.route === CURRENT_PAGE);
-      console.log(pages.length, '?')
+      /* 如果历史page中有当前路由，那么确定为返回页，给予请求权限 */
+      if (this.HISTORY_PAGES.includes(CURRENT_PAGE)) {
+        AUTH_OF_REQUEST = true
+      }
       /* 路由相同，仍在当前页面，已请求过一个接口返回未登录，无权限 */
       AUTH_OF_REQUEST = false
     }
@@ -150,9 +158,7 @@ export default {
       {
         type: "NO_RESPONSE",
         bool: Boolean(!result),
-        handle: () => {
-          return alert.message("返回值错误，请检查");
-        },
+        handle: () => alert.message("返回值错误，请检查")
       },
 
       /* 处理未登录 */
@@ -178,14 +184,12 @@ export default {
       {
         type: "WARNNING",
         bool: Boolean(ERROR_MESSAGE && result.errCode !== 1),
-        handle: () => {
-          return alert.error(ERROR_MESSAGE);
-        },
-      },
+        handle: () => alert.error(ERROR_MESSAGE)
+      }
     ];
 
     /* 循环处理异常 */
-    abnormal.map((type) => {
+    abnormal.forEach((type) => {
       if (type.bool) return type.handle();
     });
 

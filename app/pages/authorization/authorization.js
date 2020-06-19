@@ -19,7 +19,7 @@ Page(app.Page({
 
 	},
 	onShow() {
-
+		this.getList();
 	},
 	onShareAppMessage() {
 		return {
