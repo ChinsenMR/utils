@@ -1,7 +1,7 @@
 const app = getApp();
 
 
-Page(app.Page({
+Page(app.$page({
 	data: {
 		list: [],
 	},

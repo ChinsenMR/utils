@@ -281,7 +281,7 @@ export default {
           },
         };
 
-        targetFiles.map((fileItem, fileIndex) => {
+        targetFiles.forEach((fileItem, fileIndex) => {
           const uploadTask = wx.uploadFile({
             ...params,
             filePath: fileItem.path,
