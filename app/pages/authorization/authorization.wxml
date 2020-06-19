@@ -1,2 +1,2 @@
-<button open-type="getUserInfo">登录</button>
+<button open-type="getUserInfo" bindtap="login">登录</button>
 

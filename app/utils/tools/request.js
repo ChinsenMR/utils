@@ -6,32 +6,35 @@ import alert from "./alert";
  */
 
 export default {
-  /* 是否开启拦截跳转 避免多次跳转到授权页面*/
-  IS_NEED_INTERCEP_LOGIN: false,
+  /* 是否需要拦截下一个请求 避免多次跳转到授权页面*/
+  IS_NEED_INTERCEP: false,
+
   /* 请求超时限制 */
   TIME_OUT: 10 * 1000,
-  /* 拦截下一次请求 */
-  IS_NEED_INTERCEP_REQUEST: false,
-  /* 上一个页面*/
-  PREV_PAGE_ROUTE: 'pages/index/index',
+
+  /* 上一页面路由 */
+  PREV_ROUTE: null,
+
+  /* 历史页面 */
+  HISTORY_PAGES: [],
   /**
    * 主请求体
    * @param {*} options
    */
   async request(options) {
 
-    const intercepNextRequest = this.intercepNextRequest();
-    console.log(intercepNextRequest)
-    if (intercepNextRequest) {
-      return
-    }
+    /* 查看请求权限，如果没有权限那么停止执行 */
+    const IS_HAVE_RIGHT = this.verifyAuth();
+    console.log(IS_HAVE_RIGHT, )
+    /* 无权限直接拦截*/
+    if (!IS_HAVE_RIGHT) return
 
     /* request只拿数据 直接返回不做任何数据处理 */
     const $ajax = () => {
       const {
-        method = "GET",
-          data = {},
+        data = {},
           url = "NO_URL",
+          method = "GET",
           hideLoading = false,
       } = options;
 
@@ -41,7 +44,7 @@ export default {
 
       data.sessionId = wx.getStorageSync("sessionId");
 
-      const requestOptions = {
+      const params = {
         method,
         data,
         header,
@@ -53,7 +56,7 @@ export default {
 
       return new Promise((resolve, reject) => {
         wx.request({
-          ...requestOptions,
+          ...params,
           success: (res) => {
             resolve(res.data);
           },
@@ -72,7 +75,7 @@ export default {
             alert.closeLoading();
 
             /* 执行debugger，可在控制台查看请求前后状态 */
-            this.throwDebugger(requestOptions, spin);
+            this.throwDebugger(params, spin);
           },
         });
       });
@@ -84,35 +87,13 @@ export default {
     /* 返回结果 */
     return this.handleAbnormal(response);
   },
-  /* 拦截下一次请求 */
-  intercepNextRequest() {
-    const pages = getCurrentPages();
-    const nowPageRoute = pages[pages.length - 1].route;
 
-    if (!this.PREV_PAGE_ROUTE) {
-      this.PREV_PAGE_ROUTE = nowPageRoute;
-    } else {
-
-
-      if (this.IS_NEED_INTERCEP_LOGIN) {
-        debugger
-        return true
-      }else if(this.IS_NEED_INTERCEP_LOGIN && nowPageRoute !== this.PREV_PAGE_ROUTE){
-        return false
-      } else {
-        return false
-      }
-    }
-
-
-
-  },
   /**
    * 单独处理header
    * @returns header参数
    */
   setHeader(method = "GET") {
-    const Cookie = wx.getStorageSync("cookie");
+    const Cookie = wx.getStorageSync("_cookie_");
     const contentType = {
       POST: "application/x-www-form-urlencoded",
       GET: "application/json",
@@ -123,7 +104,38 @@ export default {
       "content-type": contentType[method],
     };
   },
+  /* 验证是否有继续执行下一个方法的权限 */
+  verifyAuth() {
+    const pages = getCurrentPages();
+    const CURRENT_PAGE = pages[pages.length - 1].route;
 
+    console.log(this.HISTORY_PAGES, pages)
+
+    let AUTH_OF_REQUEST = true;
+
+    /* 如果当前路由不等于上一页面路由 */
+    if (this.PREV_ROUTE !== CURRENT_PAGE) {
+      /* 重新开启跳转拦截 */
+      this.IS_NEED_INTERCEP = false;
+
+      if (this.IS_NEED_INTERCEP) {
+        /* 如果拦截条件为true那么必然未登录，故没有权限 */
+        AUTH_OF_REQUEST = false
+      }
+
+
+      /* 逻辑处理完，当前页面赋值为上一页面路由 */
+      this.PREV_ROUTE = CURRENT_PAGE;
+      this.HISTORY_PAGES = pages;
+    } else {
+      const hasThisPage = this.HISTORY_PAGES.find(p => p.route === CURRENT_PAGE);
+      console.log(pages.length, '?')
+      /* 路由相同，仍在当前页面，已请求过一个接口返回未登录，无权限 */
+      AUTH_OF_REQUEST = false
+    }
+
+    return AUTH_OF_REQUEST
+  },
   /**
    *处理异常状态
    */
@@ -136,7 +148,7 @@ export default {
     const abnormal = [
       /* 接口无返回值 */
       {
-        type: "NO_VALUE",
+        type: "NO_RESPONSE",
         bool: Boolean(!result),
         handle: () => {
           return alert.message("返回值错误，请检查");
@@ -151,13 +163,12 @@ export default {
         ),
         handle: () => {
           /* 如果未登录，并且拦截未开启，那么前往登录 */
-          if (!this.IS_NEED_INTERCEP_LOGIN)
+          if (!this.IS_NEED_INTERCEP)
             return wx.navigateTo({
               url: "/pages/authorization/authorization",
               success: () => {
                 /* 已经跳转去登录了，无需重复跳转 开启拦截，阻止重复跳转到授权页面 */
-                this.IS_NEED_INTERCEP_LOGIN = true;
-                this.IS_NEED_INTERCEP_REQUEST = true;
+                this.IS_NEED_INTERCEP = true;
               },
             });
         },
@@ -179,7 +190,7 @@ export default {
     });
 
     /* 正常返回数据，拦截关闭 */
-    this.IS_NEED_INTERCEP_LOGIN = false;
+    this.IS_NEED_INTERCEP = false;
 
     /* 无异常，返回数据 */
     return result;
