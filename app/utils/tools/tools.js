@@ -69,7 +69,7 @@ export default {
   getDate(targetDate = new Date()) {
     const date = targetDate;
 
-    let [year, month, strDate, line] = [date.getFullYear(), date.getMonth(), date.getDate(), "-"]
+    let [year, month, strDate, line] = [date.getFullYear(), date.getMonth() + 1, date.getDate(), "-"]
 
     month = month >= 1 && month <= 9 ? "0" + month : month;
 
