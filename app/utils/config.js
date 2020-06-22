@@ -4,8 +4,7 @@
 module.exports = {
     api: {
         domain: 'http://127.0.0.1:7001',
-        url: 'https://nissanxk.aiitec.net',
-        version: '1.0.0.1'
+        url: 'http://127.0.0.1:7001',
     },
     share: {
         title: '分享标题',
@@ -13,5 +12,6 @@ module.exports = {
         path: '/pages/index/index',
         imageUrl: 'https://nissan-1251039400.image.myqcloud.com/20190425/20190425_93899.jpg'
     },
-    switchUrl: ['pages/index/index', 'pages/personal/personal']
+    switchPageUrls: ['pages/index/index'],
+    loginPageUrl: '/pages/authorization/authorization'
 };

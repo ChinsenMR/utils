@@ -1,5 +1,4 @@
 import tools from './utils/tools/index';
-import minxins from  './utils/mixins/index';
 
 const app = {
 	globalData: {

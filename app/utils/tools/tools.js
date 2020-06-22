@@ -5,44 +5,8 @@ import Config from '../config'
  * Date: 2020.05.22
  */
 export default {
-  /* 修改小程序标题 */
-  setTitle(title) {
-    wx.setNavigationBarTitle({
-      title
-    });
-  },
-
-  /* 同步缓存处理 */
-  storage: {
-    get(key, success) {
-      wx.getStorage({
-        key,
-        success: res => {
-          success(res)
-        }
-      });
-    },
-    set(key, data, success) {
-      wx.setStorage({
-        key,
-        data,
-        success: res => {
-          success(res)
-        }
-      });
-    },
-    remove(key, success) {
-      wx.removeStorage({
-        key,
-        success: res => {
-          success(res)
-        }
-      });
-    },
-  },
-
   /* 用于请求结束后的操作 */
-  goPage(params = {}, time = 0) {
+  goPageTimeOut(params = {}, time = 0) {
     const timeout = setTimeout(() => {
       wx.navigateTo({
         ...params,
@@ -54,7 +18,7 @@ export default {
   },
 
   /* 用于请求结束后的操作 */
-  goBack(delta = 1, time = 0) {
+  goBackTimeOut(delta = 1, time = 0) {
     const timeout = setTimeout(() => {
       wx.navigateBack({
         delta,
@@ -87,19 +51,6 @@ export default {
     }
 
     that.setData(data);
-  },
-
-  /* 查看图片 */
-  previewImage(current = '', urls = []) {
-    /* 如果传入的是索引值 */
-    if (typeof current == "number") {
-      current = urls[current];
-    }
-
-    wx.previewImage({
-      current,
-      urls
-    });
   },
 
   /* 计算数量,超过一万缩略显示 */
@@ -178,6 +129,7 @@ export default {
 
   /*上传文件 */
   async upload(options) {
+    const app = getApp();
     const {
       url,
       name = "file",
@@ -190,24 +142,24 @@ export default {
     } = options;
 
     /* 参数校验 */
-    const verifyArguments = () => {
+    const checkArguments = () => {
       /* 参数检测 */
       if (!url && typeof type !== "string" && url[0] != "/") {
-        return Alert.message("URL不能为空", "错误");
+        return app.alert.message("URL不能为空", "错误");
       }
 
       if (
         typeof type !== "string" ||
         !["all", "video", "image", "file"].includes(type)
       ) {
-        return Alert.message("TYPE值错误", "错误");
+        return app.alert.message("TYPE值错误", "错误");
       }
     };
 
     /* 根据传入type选择上传文件类型 */
     const chooseFile = () => {
       return new Promise((resolve, reject) => {
-        console.log(type);
+
         wx.chooseMessageFile({
           type,
           count,
@@ -237,70 +189,74 @@ export default {
       } = target;
       const outPutResult = [];
 
-      return new Promise((resolve, reject) => {
-        const params = {
-          header,
-          name,
-          formData,
-          url: Config.url + url,
-          complete(response) {
-            Alert.closeLoading();
+      const uploaders = targetFiles.map(file => {
+        return new Promise((resolve, reject) => {
+          const params = {
+            header,
+            name,
+            formData,
+            url: Config.url + url,
+            complete(response) {
+              app.alert.closeLoading();
 
-            /* 微信服务端返回包装结果 */
-            if (response.errMsg == "uploadFile:ok") {
+              /* 微信服务端返回包装结果 */
+              if (response.errMsg == "uploadFile:ok") {
 
-              /* 纯服务器返回结果 ----------------排查服务端错误请看这里------------*/
-              if (response.data) {
-                const res = JSON.parse(response.data);
-                /* 上传失败 */
-                if (res.Status == "fail") {
-                  Alert.error(res.errorMsg, 3000);
-                  reject(res);
+                /* 纯服务器返回结果 ----------------排查服务端错误请看这里------------*/
+                if (response.data) {
+                  const res = JSON.parse(response.data);
+                  /* 上传失败 */
+                  if (res.Status == "fail") {
+                    app.alert.error(res.errorMsg, 3000);
+                    reject(res);
+                  }
+
+                  /* 上传成功，处理结果*/
+                  outPutResult.push(res.data);
+
+                  /* 返回结果 */
+                  resolve({
+                    files: outPutResult,
+                    beforeUploadFiles: targetFiles,
+                  });
+
+                  app.alert.success("上传成功");
+                } else {
+                  app.alert.message("文件上传失败", "错误");
+                  reject(response);
                 }
+              }
+              if (response.statusCode != 200) {
+                app.alert.message("文件上传失败，请检查文件上传环境", "错误");
 
-                /* 上传成功，处理结果*/
-                outPutResult.push(res.data);
-
-                /* 返回结果 */
-                resolve({
-                  files: outPutResult,
-                  beforeUploadFiles: targetFiles,
-                });
-
-                Alert.success("上传成功");
-              } else {
-                Alert.message("文件上传失败", "错误");
                 reject(response);
               }
-            }
-            if (response.statusCode != 200) {
-              Alert.message("文件上传失败，请检查文件上传环境", "错误");
+            },
+          };
 
-              reject(response);
-            }
-          },
-        };
+          targetFiles.forEach((fileItem, fileIndex) => {
+            const uploadTask = wx.uploadFile({
+              ...params,
+              filePath: fileItem.path,
+            });
 
-        targetFiles.forEach((fileItem, fileIndex) => {
-          const uploadTask = wx.uploadFile({
-            ...params,
-            filePath: fileItem.path,
-          });
+            uploadTask.onProgressUpdate((res) => {
+              const loadText =
+                targetFiles.length > 1 ?
+                `第${fileIndex + 1}个文件上传中...${res.progress}%` :
+                "上传中..." + res.progress + "%";
 
-          uploadTask.onProgressUpdate((res) => {
-            const loadText =
-              targetFiles.length > 1 ?
-              `第${fileIndex + 1}个文件上传中...${res.progress}%` :
-              "上传中..." + res.progress + "%";
-
-            Alert.loading(loadText);
+              app.alert.loading(loadText);
+            });
           });
         });
-      });
+      })
+
+      return Promise.all(uploaders);
     };
 
     /* 上传前检验参数 */
-    verifyArguments();
+    checkArguments();
 
     /* 执行选择文件并上传到服务器，拿取结果 */
 
@@ -537,5 +493,5 @@ export default {
     });
   },
 
- 
+
 };
