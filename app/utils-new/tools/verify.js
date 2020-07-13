@@ -105,7 +105,6 @@ export default {
       if (!field.verify) {
         field.error()
       }
-      
       return field.verify
     })
 

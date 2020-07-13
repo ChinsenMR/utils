@@ -1,0 +1,35 @@
+/* 转换订单状态 */
+var transOrderStatus = function (status) {
+	var statusList = [
+		'待付款',
+		'待发货',
+		'待签收',
+		'交易关闭',
+		'交易成功',
+		'申请退款',
+		'申请退货',
+		'申请换货',
+		'已退款',
+		'已退货',
+	];
+
+	return statusList[status - 1];
+};
+
+var setImage = function (url) {
+	// var defaultUrl = '-----';
+	// var start = getRegExp('https://', '^')
+	// var end = getRegExp('.png', '$')
+	// var start = url.match(/^(https)[:][/][/]/);
+	// var	end = url.match(/^(https)[:][/][/][.](jpg|jpeg|png|gif)$/i);
+	// if (!start || !end) {
+	// 	return defaultUrl
+	// }else{
+	// 	return url + '4854646'
+	// }
+	return 'jhohyohiooho'
+}
+module.exports = {
+	transOrderStatus: transOrderStatus,
+	setImage: setImage
+}
